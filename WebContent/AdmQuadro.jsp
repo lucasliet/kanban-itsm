@@ -20,7 +20,7 @@
 	        </div>
     	</header>
 	    <div class="container my-3">
-	       	<form action="manter_filmes.do" method="POST" class="card my-3 rounded shadow bg-light">
+	       	<form action="quadro.do" method="POST" class="card my-3 rounded shadow bg-light">
 	            <div class="card-header bg-dark text-white p-3">
 	            	<div class="row">
 	            		<div class="col-md-9">
@@ -36,7 +36,7 @@
 	        </form>  
 	        <div class="row">
 	            <div class="col-sm-12 col-md-6">
-	                <form action="manter_filmes.do" method="GET" class="card my-3 rounded shadow bg-light">
+	                <form action="quadro.do" method="GET" class="card my-3 rounded shadow bg-light">
 	                    <div class="card-header bg-dark text-white p-3">
 	                        <h1><i class="fas fa-film"></i> Exibir quadro</h1>
 	                        <p>Selecione o quadro a ser exibido</p>
@@ -65,7 +65,7 @@
 	            </div>
 	
 	            <div class="col-sm-12 col-md-6">
-	                <form action="manter_filmes.do" method="GET" class="card my-3 rounded shadow bg-light">
+	                <form action="quadro.do" method="GET" class="card my-3 rounded shadow bg-light">
 	                    <div class="card-header bg-dark text-white p-3">
 	                        <h1><i class="fas fa-film"></i> Atualizar Quadro</h1>
 	                        <p>Selecione o Quadro para ser alterado</p>
@@ -96,7 +96,7 @@
 			
 			<div class="row">
 			    <div class="col-sm-12 col-md-6"> 
-			        <form action="manter_filmes.do" method="POST" class="card my-3 rounded shadow bg-light">
+			        <form action="quadro.do" method="POST" class="card my-3 rounded shadow bg-light">
 			            <div class="card-header bg-dark text-white p-3">
 			                <h1><i class="fas fa-film"></i> Inserir Quadro</h1>
 			                <p>Preencha os dados para inserir um novo quadro</p>
@@ -118,7 +118,7 @@
 			        </form>
 			     </div>
 			     <div class="col-sm-12 col-md-6">
-	                <form action="manter_filmes.do" method="GET" class="card my-3 rounded shadow bg-light">
+	                <form action="quadro.do" method="GET" class="card my-3 rounded shadow bg-light">
 	                    <div class="card-header bg-dark text-white p-3">
 	                        <h1><i class="fas fa-film"></i> Excluir Quadro</h1>
 	                        <p>Selecione o Quadro a ser deletado</p>
