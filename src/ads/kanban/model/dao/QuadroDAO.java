@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import ads.kanban.model.entity.QuadroEntity;
 
@@ -60,14 +61,16 @@ public class QuadroDAO {
         int id = -1;
         String sql = "INSERT INTO quadros (titulo) VALUES (?)";
 
-        try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement pst = conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionFactory.getConnection(); 
+        		PreparedStatement pst = conn.prepareStatement(sql);) {
 
             pst.setString(1, quadro.getTitulo());
             pst.execute();
 
             // obter o id criado
             String query = "SELECT LAST_INSERT_ID()";
-            try (PreparedStatement pst1 = conn.prepareStatement(query); ResultSet rs = pst1.executeQuery();) {
+            try (PreparedStatement pst1 = conn.prepareStatement(query); 
+            		ResultSet rs = pst1.executeQuery();) {
 
                 if (rs.next()) {
                     id = rs.getInt(1);
@@ -84,7 +87,8 @@ public class QuadroDAO {
 
     public QuadroEntity atualizarQuadro(QuadroEntity quadro) throws IOException {
         String sql = "UPDATE quadros SET titulo = ? WHERE id = ?";
-        try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement pst = conn.prepareStatement(sql);) {
+        try (Connection conn = ConnectionFactory.getConnection(); 
+        		PreparedStatement pst = conn.prepareStatement(sql);) {
             pst.setString(1, quadro.getTitulo());
             pst.setInt(2, quadro.getId());
             pst.execute();
@@ -95,5 +99,31 @@ public class QuadroDAO {
         }
             QuadroEntity quadroAlterado = buscarQuadro(quadro.getId());
         return quadroAlterado;
+    }
+    
+    public ArrayList<QuadroEntity> listarQuadros() throws IOException {
+		String sql ="SELECT id, titulo FROM quadros ORDER BY titulo";
+		ArrayList<QuadroEntity> quadros = new ArrayList<>();
+		QuadroEntity quadro = new QuadroEntity();
+		
+		try (Connection conn = ConnectionFactory.getConnection(); 
+				PreparedStatement pst = conn.prepareStatement(sql)){
+			try (ResultSet rs = pst.executeQuery();){
+				
+				quadro.setId(rs.getInt("id"));
+				quadro.setTitulo(rs.getString("titulo"));
+				quadros.add(quadro);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new IOException(e);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new IOException(e);
+		}
+    	
+    	return quadros;
+    	
     }
 }

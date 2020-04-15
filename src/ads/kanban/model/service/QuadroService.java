@@ -1,6 +1,7 @@
 package ads.kanban.model.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ads.kanban.model.dao.QuadroDAO;
 import ads.kanban.model.entity.QuadroEntity;
@@ -25,5 +26,10 @@ public class QuadroService {
     public QuadroEntity atualizarQuadro(QuadroEntity quadro) throws IOException {
     	QuadroDAO dao = new QuadroDAO();
     	return dao.atualizarQuadro(quadro);
+    }
+    
+    public ArrayList<QuadroEntity> listarQuadros() throws IOException{
+    	QuadroDAO dao = new QuadroDAO();
+    	return dao.listarQuadros();
     }
 }
