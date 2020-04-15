@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -47,6 +49,9 @@
 	                            
 	                                    <select name="id_exibir" class="form-control" required>
 	                                        <option value="" disabled selected>Selecione o quadro</option>
+	                                        <c:forEach var="quadro" items="${quadros}" >
+	                                        	<option value="${quadro.id}">${quadro.titulo}</option>
+	                                        </c:forEach>
 	                                    </select>
 	                                </div>
 	                            </div>
@@ -73,7 +78,9 @@
 	                                    
 	                                    <select name="id_atualizar" class="form-control" required>
 	                                        <option value="" disabled selected>Selecione o quadro</option>
-	                                        
+	                                        <c:forEach var="quadro" items="${quadros}" >
+	                                        	<option value="${quadro.id}">${quadro.titulo}</option>
+	                                        </c:forEach>
 	                                    </select>
 	                                </div>
 	                            </div>
@@ -122,7 +129,10 @@
 	                                <label for="id_excluir">Quadro</label>
 	                                <div class="input-group">
 	                                    <select name="id_excluir" class="form-control" required>
-	                                        <option value="" disabled selected>Selecione o quadro</option>  
+	                                        <option value="" disabled selected>Selecione o quadro</option> 
+                                            <c:forEach var="quadro" items="${quadros}" >
+	                                        	<option value="${quadro.id}">${quadro.titulo}</option>
+	                                        </c:forEach> 
 	                                    </select>
 	                                </div>
 	                            </div>
