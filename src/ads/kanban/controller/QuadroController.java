@@ -22,8 +22,12 @@ public class QuadroController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String acao = request.getParameter("acao");
-		
 		String saida = null;
+		
+		int id;
+		String titulo;
+		
+		QuadroEntity quadro = new QuadroEntity();
 		ArrayList<QuadroEntity> quadros = new ArrayList<>();
         QuadroService qService = new QuadroService();
         
@@ -33,7 +37,11 @@ public class QuadroController extends HttpServlet {
                 request.setAttribute("quadros", quadros);
                 saida = "AdmQuadro.jsp";
                 break;
-            default:
+            case "page-exibir":
+            	id = Integer.parseInt(request.getParameter("id_exibir"));
+            	quadro = qService.buscarQuadro(id);
+            	request.setAttribute("quadro", quadro);
+            	saida = "ExibirQuadro.jsp";
             	break;
 		}
 		RequestDispatcher view = request.getRequestDispatcher(saida);
