@@ -104,15 +104,17 @@ public class QuadroDAO {
     public ArrayList<QuadroEntity> listarQuadros() throws IOException {
 		String sql ="SELECT id, titulo FROM quadros ORDER BY titulo";
 		ArrayList<QuadroEntity> quadros = new ArrayList<>();
-		QuadroEntity quadro = new QuadroEntity();
 		
 		try (Connection conn = ConnectionFactory.getConnection(); 
 				PreparedStatement pst = conn.prepareStatement(sql)){
 			try (ResultSet rs = pst.executeQuery();){
 				
-				quadro.setId(rs.getInt("id"));
-				quadro.setTitulo(rs.getString("titulo"));
-				quadros.add(quadro);
+				while(rs.next()) {
+					QuadroEntity quadro = new QuadroEntity();
+					quadro.setId(rs.getInt("id"));
+					quadro.setTitulo(rs.getString("titulo"));
+					quadros.add(quadro);
+				}
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
