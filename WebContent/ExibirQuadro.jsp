@@ -35,6 +35,7 @@
 												id
 											</span>
 										</div>
+										<input type="hidden" name="id_excluir" value="${quadro.id}" >
 										<p class="form-control" id="titulo">${quadro.id}</p>
 									</div>
 								</div>
@@ -49,8 +50,30 @@
 									</div>
 								</div>
 							</div>
+						<div class="text-right mt-3">${btn}</div>
 						</div>
 					</div>
+					<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog"
+                        aria-labelledby="modalExcluirTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-dark text-white">
+                                    <h5 class="modal-title" id="modalExcluirLongTitle">Tem certeza que deseja excluir?
+                                    </h5>
+                                    <button type="button" class="close text-white" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" name="acao" value="btn-excluir"
+                                        class="btn btn-danger text-uppercase">Excluir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</form>
 			</div>
 		</div>

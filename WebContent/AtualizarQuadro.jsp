@@ -31,7 +31,7 @@
 													id
 												</span>
 											</div>
-											<input type="hidden" value="${quadro.id }">
+											<input type="hidden" name="id_atualizar" value="${quadro.id }">
 											<p class="form-control" id="id">${quadro.id}</p>
 										</div>
 									</div>
