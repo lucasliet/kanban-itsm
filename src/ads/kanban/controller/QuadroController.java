@@ -37,12 +37,20 @@ public class QuadroController extends HttpServlet {
                 request.setAttribute("quadros", quadros);
                 saida = "AdmQuadro.jsp";
                 break;
+                
+            case "page-todos":
+            	quadros = qService.listarQuadros();
+            	request.setAttribute("quadros", quadros);
+            	saida = "TodosQuadros.jsp";
+            	break;
+            	
             case "page-exibir":
             	id = Integer.parseInt(request.getParameter("id_exibir"));
             	quadro = qService.buscarQuadro(id);
             	request.setAttribute("quadro", quadro);
             	saida = "ExibirQuadro.jsp";
             	break;
+            	
             case "page-atualizar":
             	id = Integer.parseInt(request.getParameter("id_atualizar"));
             	quadro = qService.buscarQuadro(id);
