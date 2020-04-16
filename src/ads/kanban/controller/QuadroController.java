@@ -43,6 +43,22 @@ public class QuadroController extends HttpServlet {
             	request.setAttribute("quadro", quadro);
             	saida = "ExibirQuadro.jsp";
             	break;
+            case "page-atualizar":
+            	id = Integer.parseInt(request.getParameter("id_atualizar"));
+            	quadro = qService.buscarQuadro(id);
+            	request.setAttribute("quadro", quadro);
+            	saida = "AtualizarQuadro.jsp";
+            	break;
+            	
+            case "btn-atualizar":
+    			id = Integer.parseInt(request.getParameter("id_atualizar"));
+    			titulo = request.getParameter("titulo");
+    			quadro.setId(id);
+    			quadro.setTitulo(titulo);
+    			QuadroEntity quadroNovo = qService.atualizarQuadro(quadro);
+    			request.setAttribute("quadro", quadroNovo);
+    			saida = "ExibirQuadro.jsp";
+    			break;
 		}
 		RequestDispatcher view = request.getRequestDispatcher(saida);
 		view.forward(request, response);
@@ -53,5 +69,5 @@ public class QuadroController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	
 }
