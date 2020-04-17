@@ -65,7 +65,16 @@ public class QuadroController extends HttpServlet {
     			request.setAttribute("btn", "<button type=\"button\" class=\"btn btn-danger text-uppercase\" data-toggle=\"modal\" data-target=\"#modalExcluir\">Excluir </button>");
     		    saida = "ExibirQuadro.jsp";
     			break;
-            	
+            
+            case "btn-inserir":
+            	titulo = request.getParameter("titulo");
+            	quadro = new QuadroEntity();
+            	quadro.setTitulo(titulo);
+            	id = qService.inserirQuadro(quadro);
+            	request.setAttribute("quadro", quadro);
+            	saida = "ExibirQuadro.jsp";
+            	break;
+
             case "btn-atualizar":
     			id = Integer.parseInt(request.getParameter("id_atualizar"));
     			titulo = request.getParameter("titulo");
