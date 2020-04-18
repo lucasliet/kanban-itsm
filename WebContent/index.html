@@ -19,46 +19,58 @@
 	</head>
 
 	<body>
+    
+        <div class="row">
+            <div class="col-md-12 my-auto d-flex justify-content-center h-100">
+                <img class="img-fluid mt-5" src="../img/logoEmpresa.png">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4  my-auto">
+                <img class="img-fluid" src="../img/personagens.svg">
+            </div>
+            <div class=" col-md-4 mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Fazer login no CTE</h>
+                    </div>
+                    <div class="card-body">
+                        <form action="manter_filmes.do" method="GET">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Senha" required>
+                            </div>
+                            <div class="row align-items-center remember">
+                                <input type="checkbox" class="mr-1">Lembra senha
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" name="acao" value="page-adm" class="btn float-right btn btn btn-danger">Entrar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Ainda não tem cadastro?<a href="#">Clique aqui</a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">Esqueceu a senha?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4  my-auto">
+                <img class="img-fluid" src="../img/personagens.svg">
+            </div>
+        </div>
 		
-		<div class="container">
-			<div class="d-flex justify-content-center h-100">
-				<div class="card">
-					<div class="card-header">
-						<h5>Fazer login no CTE</h>
-					</div>
-					<div class="card-body">
-						<form action="manter_filmes.do" method="GET">
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-user"></i></span>
-								</div>
-								<input type="email" class="form-control" placeholder="Email" required>
-							</div>
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-key"></i></span>
-								</div>
-								<input type="password" class="form-control" placeholder="Senha" required>
-							</div>
-							<div class="row align-items-center remember">
-								<input type="checkbox" class="mr-1">Lembra senha
-							</div>
-							<div class="form-group">
-								<button type="submit" name="acao" value="page-adm" class="btn float-right btn btn btn-danger">Entrar</button>
-							</div>
-						</form>
-					</div>
-					<div class="card-footer">
-						<div class="d-flex justify-content-center links">
-							Ainda não tem cadastro?<a href="#">Clique aqui</a>
-						</div>
-						<div class="d-flex justify-content-center">
-							<a href="#">Esqueceu a senha?</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</body>
 
 </html>
