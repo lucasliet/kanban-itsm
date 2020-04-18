@@ -5,6 +5,12 @@ public class ColunaEntity {
 	private String titulo_coluna;
 	private QuadroEntity quadro;
 	
+	public QuadroEntity getQuadro() {
+		return quadro;
+	}
+	public void setQuadro(QuadroEntity quadro) {
+		this.quadro = quadro;
+	}
 	public int getId() {
 		return id_coluna;
 	}
@@ -19,7 +25,7 @@ public class ColunaEntity {
 	}
 	@Override
 	public String toString() {
-		return "ColunaEntity [id=" + id_coluna + "titulo=" + titulo_coluna +"]";
-		
+		return "ColunaEntity [id_coluna=" + id_coluna + ", titulo_coluna=" + titulo_coluna + ", quadro=" + quadro + "]";
 	}
+	
 }
