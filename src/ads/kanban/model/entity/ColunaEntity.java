@@ -16,7 +16,7 @@ public class ColunaEntity {
 	public void setTitulo(String titulo) {
 		this.titulo_coluna = titulo;
 	}
-	
+	@Override
 	public String toString() {
 		return "ColunaEntity [id=" + id_coluna + "titulo=" + titulo_coluna +"]";
 		
