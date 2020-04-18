@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Kanban ITSM</title>
-</head>
-<body>
-	<form action="quadro.do" method="GET">
-		<button type="submit" name="acao" value="page-quadro-adm">Quadro de Administrador</button>
-	</form>
-</body>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+		
+		<title>Login</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+		<script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/index.css">
+
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card">
+					<div class="card-header">
+						<h5>Fazer login no CTE</h>
+					</div>
+					<div class="card-body">
+						<form action="manter_filmes.do" method="GET">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input type="email" class="form-control" placeholder="Email" required>
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" class="form-control" placeholder="Senha" required>
+							</div>
+							<div class="row align-items-center remember">
+								<input type="checkbox" class="mr-1">Lembra senha
+							</div>
+							<div class="form-group">
+								<button type="submit" name="acao" value="page-adm" class="btn float-right btn btn btn-danger">Entrar</button>
+							</div>
+						</form>
+					</div>
+					<div class="card-footer">
+						<div class="d-flex justify-content-center links">
+							Ainda não tem cadastro?<a href="#">Clique aqui</a>
+						</div>
+						<div class="d-flex justify-content-center">
+							<a href="#">Esqueceu a senha?</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
 </html>
