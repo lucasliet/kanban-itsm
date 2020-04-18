@@ -75,7 +75,7 @@ public class TicketDAO {
 		return ticket;
 	}
 	
-	public TicketEntity deletarTicket(int id) throws IOException {
+	public int  deletarTicket(int id) throws IOException {
 		int feedback = -1;
 		TicketEntity ticket = new TicketEntity();
 		String sql = "DELETE FROM tickets WHERE id = ? ";
@@ -98,7 +98,7 @@ public class TicketDAO {
         return feedback;
 	}
 	
-	public TicketEntity inserirTicket(TicketEntity ticket) throws IOException {
+	public int inserirTicket(TicketEntity ticket) throws IOException {
 		int id = -1;
 		String sql = "INSERT INTO tickets (titulo, descricao, foto, id_coluna)"
 				+ " VALUES = ?, ?, ?, ? ";
