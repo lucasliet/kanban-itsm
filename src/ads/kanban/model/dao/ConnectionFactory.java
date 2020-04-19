@@ -17,7 +17,7 @@ public class ConnectionFactory {
 
 	public static Connection getConnection() throws IOException {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/kanbanitsm?"
+			return DriverManager.getConnection("jdbc:mysql://52.205.131.244:3306/kanbanitsm?"
 					+ "useTimezone=true&serverTimezone=UTC&user=Alunos&password=alunos");
 		} catch (SQLException e) {
 			e.printStackTrace();
