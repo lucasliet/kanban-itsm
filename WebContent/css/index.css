@@ -13,6 +13,8 @@ a {
 }
 
 .card{ 
+	position: absolute;
+	z-index: 2;
 	width: 380px;
     height: 400px;
     border: 1px solid #F1EBEB;
@@ -27,10 +29,19 @@ a {
     box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
 }
 
-.rodape {
+.rodapeleft {
     position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
     width: 400px;
 }
-
+.rodaperight {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right:0;
+    width: 400px;
+}
 
 
