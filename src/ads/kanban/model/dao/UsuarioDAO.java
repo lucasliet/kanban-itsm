@@ -116,7 +116,7 @@ public class UsuarioDAO {
     }
 	
 	 public ArrayList<UsuarioEntity> listarUsuarios() throws IOException {
-			String sql ="SELECT id, nome, ultimo_nome, endereco, telefone, email  FROM quadros ORDER BY nome";
+			String sql ="SELECT id, nome, ultimo_nome, endereco, telefone, email, senha  FROM usuarios ORDER BY nome";
 			ArrayList<UsuarioEntity> usuarios = new ArrayList<>();
 			
 			try (Connection conn = ConnectionFactory.getConnection(); 
@@ -131,6 +131,7 @@ public class UsuarioDAO {
 						usuario.setEndereco(rs.getString("endereco"));;
 						usuario.setTelefone(rs.getString("telefone"));
 						usuario.setEmail(rs.getString("email"));
+						usuario.setSenha(rs.getString("senha"));
 						usuarios.add(usuario);
 					}
 					

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,36 +22,38 @@
 </head>
 
 <body>
+	<fmt:setLocale value="pt_BR"/>
     <div class="container">
         <div class="text-center">
             <img class="col-sm-5 col-md-3 img-fluid mt-4" src="img/logoEmpresa.png">
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-4 h-100 mt-5">
+            <div class="col-md-4 mt-5">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="text-center">Fazer login no CTE</h>
+                        <h5 class="text-center">Fazer login no CTE</h5>
                     </div>
                     <div class="card-body">
-                        <form action="quadro.do" method="GET">
+                        <form action="usuario.do" method="POST">
+                        <div>${msgerror}</div>
                             <div class="input-group form-group mt-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="email" class="form-control" placeholder="Email" required>
+                                <input type="email" class="form-control" placeholder="Email" name="email" required>
                             </div>
                             <div class="input-group form-group ">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control " placeholder="Senha" required>
+                                <input type="password" class="form-control " placeholder="Senha" name="senha" required>
                             </div>
 
                             <div class="row align-items-center remember ml-1">
                                 <input type="checkbox" class="mr-1">Lembra senha
                             </div>
                             <div class="form-group mt-4">
-                                <button type="submit" name="acao" value="page-quadro-adm"
+                                <button type="submit" name="acao" value="page-home"
                                     class="btn float-right btn btn btn-primary">Entrar</button>
                             </div>
                         </form>
