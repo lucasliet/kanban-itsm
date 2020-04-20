@@ -3,6 +3,7 @@ package ads.kanban.model.entity;
 public class ColunaEntity {
 	private int id_coluna;
 	private String titulo_coluna;
+	private QuadroEntity quadro;
 	
 	public int getId() {
 		return id_coluna;
