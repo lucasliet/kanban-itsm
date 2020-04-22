@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ads.kanban.model.entity.ComentarioEntity;
-
+import ads.kanban.model.service.ComentarioService;
+@WebServlet("/comentario.do")
 public class ComentarioController {
-	@WebServlet("/quadro.do")
 	public class QuadroController extends HttpServlet {
 		private static final long serialVersionUID = 1L;
 
@@ -22,18 +22,33 @@ public class ComentarioController {
 			String acao = request.getParameter("acao");
 			String saida = null;
 			
-			int id;
-			String titulo;
+			int id, feedback;
+			String corpo;
 			
-			ComentarioEntity quadro = new ComentarioEntity();
-			ArrayList<ComentarioEntity> quadros = new ArrayList<>();
-			ComentarioEntity qService = new ComentarioEntity();
+			
+			ComentarioEntity comentario = new ComentarioEntity();
+			ArrayList<ComentarioEntity> coment = new ArrayList<>();
+			ComentarioService cService = new ComentarioService();
 	        
 			switch (acao) {
-	            case "page-quadro-adm":
-	                quadros = qService.listarQuadros();
-	                request.setAttribute("quadros", quadros);
-	                saida = "AdmQuadro.jsp";
-	                break;
+			case "page-excluir":
+            	id = Integer.parseInt(request.getParameter("id_excluir"));
+            	comentario = cService.BuscarComentario(id)
+            	feedback = cService.excluirComentario(id);
+    			request.setAttribute("comentario", coment);
+    		    saida = "AdmQuadro.jsp";
+    			break;
+			
+			   
+				case "btn-inserir":
+	            	corpo = request.getParameter("corpo");
+	            	comentario = new ComentarioEntity();
+	            	comentario.setCorpo(corpo);
+	            	id = cService.inserirComentario(comentario);
+	            	request.setAttribute("comentario", comentario);
+	            	saida = "ExibirQuadro.jsp";
+	            	break;
 			}
 		}
+	}
+}

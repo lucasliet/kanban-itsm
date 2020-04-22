@@ -1,17 +1,17 @@
 package ads.kanban.model.entity;
 
 public class ComentarioEntity {
-	private int idComentario;
+	private int id;
 	private String corpo;
-	private int idUsuario;
-	private int idTicket;
+	private UsuarioEntity usuario;
+	private TicketEntity ticket;
 	
 	
-	public int getIdComentario() {
-		return idComentario;
+	public int getId() {
+		return id;
 	}
-	public void setIdComentario(int idComentario) {
-		this.idComentario = idComentario;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getCorpo() {
 		return corpo;
@@ -19,22 +19,22 @@ public class ComentarioEntity {
 	public void setCorpo(String corpo) {
 		this.corpo = corpo;
 	}
-	public int getIdUsuario() {
-		return idUsuario;
+	public int getUsuario() {
+		return usuario;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(int usuario) {
+		this.usuario = usuario;
 	}
-	public int getIdTicket() {
-		return idTicket;
+	public int getTicket() {
+		return ticket;
 	}
-	public void setIdTicket(int idTicket) {
-		this.idTicket = idTicket;
+	public void setTicket(int ticket) {
+		this.ticket = ticket;
 	}
 	@Override
 	public String toString() {
-		return "ComentarioEntity [idQuadro=" + idComentario + ", corpo=" + corpo + ", idUsuario=" + idUsuario
-				+ ", idTicket=" + idTicket + "]";
+		return "ComentarioEntity [idQuadro=" + id + ", corpo=" + corpo + ", idUsuario=" + usuario
+				+ ", idTicket=" + Ticket + "]";
 	}
 	
 }
