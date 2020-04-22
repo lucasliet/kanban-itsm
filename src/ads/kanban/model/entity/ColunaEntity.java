@@ -1,8 +1,8 @@
 package ads.kanban.model.entity;
 
 public class ColunaEntity {
-	private int id_coluna;
-	private String titulo_coluna;
+	private int id;
+	private String titulo;
 	private QuadroEntity quadro;
 	
 	public QuadroEntity getQuadro() {
@@ -12,20 +12,19 @@ public class ColunaEntity {
 		this.quadro = quadro;
 	}
 	public int getId() {
-		return id_coluna;
+		return id;
 	}
 	public void setId(int id) {
-		this.id_coluna = id;
+		this.id = id;
 	}
 	public String getTitulo() {
-		return titulo_coluna;
+		return titulo;
 	}
 	public void setTitulo(String titulo) {
-		this.titulo_coluna = titulo;
+		this.titulo = titulo;
 	}
 	@Override
 	public String toString() {
-		return "ColunaEntity [id_coluna=" + id_coluna + ", titulo_coluna=" + titulo_coluna + ", quadro=" + quadro + "]";
+		return "ColunaEntity [id_coluna=" + id + ", titulo_coluna=" + titulo + ", quadro=" + quadro + "]";
 	}
-	
 }

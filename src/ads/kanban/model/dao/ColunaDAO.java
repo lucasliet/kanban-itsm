@@ -7,12 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ads.kanban.model.entity.ColunaEntity;
+import ads.kanban.model.entity.QuadroEntity;
 
 public class ColunaDAO {
 	
 	public ColunaEntity buscarColuna(int id) throws IOException {
         ColunaEntity coluna = new ColunaEntity();
-        String sql = "SELECT id, titulo FROM colunas WHERE id = ?";
+        String sql = "SELECT id, titulo, id_quadro FROM colunas c, quadros q"
+        		+ "WHERE c.id_quadro = q.id AND c.id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);){
@@ -23,6 +25,10 @@ public class ColunaDAO {
                 while (rs.next()) {
                     coluna.setId(id);
                     coluna.setTitulo(rs.getString("titulo"));
+                    QuadroEntity quadro = new QuadroEntity();
+                    quadro.setId(rs.getInt("id"));
+                    quadro.setTitulo(rs.getString("titulo"));
+                    coluna.setQuadro(quadro);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -42,7 +48,8 @@ public class ColunaDAO {
         
         try(Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pst = conn.prepareStatement(sql);){
-                pst.setInt(1, id);
+                coluna = buscarColuna(id);
+        		pst.setInt(1, id);
                 pst.execute();
                 feedback = 1;
         }catch (SQLException e) {
@@ -50,7 +57,7 @@ public class ColunaDAO {
             throw new IOException(e);
         }
         if (feedback == -1){
-            System.out.println("Operação falhou");
+            System.out.println("Operacao falhou");
         }else{
             System.out.println("Coluna " + coluna.getTitulo() + coluna.getId() + " foi removida com sucesso");
         }
@@ -59,12 +66,13 @@ public class ColunaDAO {
 	}
         public int inserirColuna(ColunaEntity coluna) throws IOException {
             int id = -1;
-            String sql = "INSERT INTO colunas (titulo) VALUES (?)";
+            String sql = "INSERT INTO colunas (titulo , id_quadro) VALUES = (?,?)";
 
             try (Connection conn = ConnectionFactory.getConnection(); 
             		PreparedStatement pst = conn.prepareStatement(sql);) {
 
                 pst.setString(1, coluna.getTitulo());
+                pst.setInt(2, coluna.getQuadro().getId());
                 pst.execute();
 
                 // obter o id criado
@@ -86,11 +94,11 @@ public class ColunaDAO {
         }
 	
         public ColunaEntity atualizarColuna(ColunaEntity coluna) throws IOException {
-            String sql = "UPDATE colunas SET titulo = ? WHERE id = ?";
+            String sql = "UPDATE colunas SET titulo = ?, quadro_id = ? WHERE id = ?";
             try (Connection conn = ConnectionFactory.getConnection(); 
             		PreparedStatement pst = conn.prepareStatement(sql);) {
                 pst.setString(1, coluna.getTitulo());
-                pst.setInt(2, coluna.getId());
+                pst.setInt(2, coluna.getQuadro().getId());
                 pst.execute();
 
             } catch (SQLException e) {
