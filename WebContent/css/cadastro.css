@@ -11,11 +11,17 @@ body {
     border-radius: 10px;
 }
 
-.btn-primary {
+.btn-geral{
     top: 350px;
+    color: white;
+    font-family: roboto;
     background: #741596;
-    border: 1px solid rgb(165, 22, 165);
-    box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 2px rgb(153, 136, 167);
+}
+
+.btn-geral:hover {
+    color: white;
+    background: #a01ccf;
 }
 
 p {
@@ -40,7 +46,7 @@ input {
 }
 
 .coluna {
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 a {
@@ -51,3 +57,6 @@ a:link {
     text-decoration: none;
 }
 
+.barraMenu{
+    background-color: #07315A !important;
+}

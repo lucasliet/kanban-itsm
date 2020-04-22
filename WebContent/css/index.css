@@ -21,11 +21,17 @@ a {
     box-shadow: 0px 4px 8px rgba(187, 178, 178, 0.25);
 }
 
-.btn-primary {
+.btn-geral{
     top: 350px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
     background: #741596;
-    border: 1px solid #CFCFCF;
-    box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 2px rgb(153, 136, 167);
+}
+
+.btn-geral:hover {
+    color: white;
+    background: #a01ccf;
 }
 
 .rodapeleft {

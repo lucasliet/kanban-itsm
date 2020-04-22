@@ -18,7 +18,15 @@
         <link rel="stylesheet" href="css/cadastro.css">
     </head>
     <body>
-        <div class="container mt-4">
+        <!-- Image and text -->
+        
+        <header>
+            <nav class="navbar barraMenu navbar-light bg-light ">
+                <img src="img/favicon.ico" alt="">
+            </nav>
+        </header>
+        
+        <div class="container mt-3">
             <div class="row coluna">
                 <div class="col-md-5">
                     <div class="imagem d-flex justify-content-center">
@@ -42,28 +50,28 @@
                             </div>
                              -->
                             <div class="form-group col-md-6">
+                                <input type="tel" class="form-control" name="telefone" placeholder="Telefone">
+                            </div>
+                            <div class="form-group col-md-6">
                                 <input type="password" class="form-control" name="senha" placeholder="Senha" required>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-12">
                                 <input type="text" class="form-control" name="endereco" placeholder="Endereço">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input type="tel" class="form-control" name="telefone" placeholder="Telefone">
                             </div>
                         </div>
                         
-                        <button type="submit" class="btn float-right btn-primary mt-3" name="acao" value="btn-cadastrar">Cadastrar</button>
+                        <button type="submit" class="btn float-right btn-geral mt-3" name="acao" value="btn-cadastrar">Cadastrar</button>
                     </form>
                 </div>
             </div>
-            <div class="row"> 
-                <div class="col-md-5 ml-5 mb-5">
+            <div class="row mt-3"> 
+                <div class="col-md-5 ml-5 mb-5 ">
                     <section class="col-md-10">
-                        <h5 class="titulo mt-5"><strong>Cadastro</strong></h5>
+                        <h5 class="titulo mt-3"><strong>Cadastro</strong></h5>
                         <p>Faça seu cadastro, entre na plataforma e ajude na melhoria dos projetos da sua empresa.</p>
-                        <a href="index.html"><i class="fas fa-arrow-left"></i> Já tenho cadastro</a> 
+                        <a href="index.jsp"><i class="fas fa-arrow-left"></i> Já tenho cadastro</a> 
                     </section> 
                 </div>
             </div>

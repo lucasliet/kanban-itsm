@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group mt-4">
                                 <button type="submit" name="acao" value="page-home"
-                                    class="btn float-right btn btn btn-primary">Entrar</button>
+                                    class="btn float-right btn-geral ">Entrar</button>
                             </div>
                         </form>
                     </div>
