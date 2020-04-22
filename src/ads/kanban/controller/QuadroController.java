@@ -18,7 +18,7 @@ import ads.kanban.model.service.QuadroService;
 public class QuadroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+		protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String acao = request.getParameter("acao");
