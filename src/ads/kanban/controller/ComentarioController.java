@@ -33,7 +33,7 @@ public class ComentarioController {
 			switch (acao) {
 			case "page-excluir":
             	id = Integer.parseInt(request.getParameter("id_excluir"));
-            	comentario = cService.BuscarComentario(id)
+            	comentario = cService.BuscarComentario(id);
             	feedback = cService.excluirComentario(id);
     			request.setAttribute("comentario", coment);
     		    saida = "AdmQuadro.jsp";
