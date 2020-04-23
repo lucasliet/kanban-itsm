@@ -44,6 +44,7 @@ public class UsuarioController extends HttpServlet {
             	usuario.setSenha(senha);
             	usuario.setEndereco(endereco);
             	usuario.setTelefone(telefone);
+				usuario.setFoto("img/FotoPadrao.png");
             	
             	id = uService.inserirUsuario(usuario);
             	usuario.setId(id);

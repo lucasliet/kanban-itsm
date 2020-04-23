@@ -12,7 +12,7 @@ import ads.kanban.model.entity.UsuarioEntity;
 public class UsuarioDAO {
 	public UsuarioEntity buscarUsuario(int id) throws IOException {
 		UsuarioEntity usuario = new UsuarioEntity();
-		String sql = "SELECT nome, ultimo_nome, endereco, telefone, email FROM usuarios WHERE id = ?";
+		String sql = "SELECT nome, ultimo_nome, endereco, telefone, email, foto FROM usuarios WHERE id = ?";
 		
 		try (Connection conn = ConnectionFactory.getConnection();
 	             PreparedStatement pst = conn.prepareStatement(sql);){
@@ -27,6 +27,7 @@ public class UsuarioDAO {
 	                    usuario.setEndereco(rs.getString("endereco"));
 	                    usuario.setTelefone(rs.getString("telefone"));
 	                    usuario.setEmail(rs.getString("email"));
+                        usuario.setFoto(rs.getString("foto"));
 	                }
 	            } catch (SQLException e) {
 	                e.printStackTrace();
@@ -41,7 +42,7 @@ public class UsuarioDAO {
 	
 	public int inserirUsuario(UsuarioEntity usuario) throws IOException {
         int id = -1;
-        String sql = "INSERT INTO usuarios (nome, ultimo_nome, endereco, telefone, email, senha ) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuarios ( nome, ultimo_nome, endereco, telefone, email, senha, foto ) VALUES (?,?,?,?,?,?)";
 
         try (Connection conn = ConnectionFactory.getConnection(); 
         		PreparedStatement pst = conn.prepareStatement(sql);) {
@@ -52,6 +53,7 @@ public class UsuarioDAO {
             pst.setString(4, usuario.getTelefone());
             pst.setString(5, usuario.getEmail());
             pst.setString(6, usuario.getSenha());
+            pst.setString(7, usuario.getFoto());
             pst.execute();
 
             // obter o id criado
@@ -95,7 +97,7 @@ public class UsuarioDAO {
     }
 
 	public UsuarioEntity atualizarUsuario(UsuarioEntity usuario) throws IOException {
-        String sql = "UPDATE usuarios SET nome = ?, ultimo_nome = ?, endereco = ?, telefone = ?, email = ?, senha = ? WHERE id = ?";
+        String sql = "UPDATE usuarios SET nome = ?, ultimo_nome = ?, endereco = ?, telefone = ?, email = ?, senha = ?, foto = ? WHERE id = ?";
         try (Connection conn = ConnectionFactory.getConnection(); 
         		PreparedStatement pst = conn.prepareStatement(sql);) {
             pst.setString(1, usuario.getNome());
@@ -104,7 +106,8 @@ public class UsuarioDAO {
             pst.setString(4, usuario.getTelefone());
             pst.setString(5, usuario.getEmail());
             pst.setString(6, usuario.getSenha());
-            pst.setInt(7, usuario.getId());
+            pst.setString(7, usuario.getFoto());
+            pst.setInt(8, usuario.getId());
             pst.execute();
 
         } catch (SQLException e) {

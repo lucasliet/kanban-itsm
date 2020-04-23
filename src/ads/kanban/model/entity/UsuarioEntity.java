@@ -8,7 +8,14 @@ public class UsuarioEntity {
 	private String telefone;
 	private String email;
 	private String senha;
-	
+	private String foto;
+
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 	public int getId() {
 		return id;
 	}
