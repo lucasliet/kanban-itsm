@@ -10,31 +10,38 @@ public class ComentarioEntity {
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getCorpo() {
 		return corpo;
 	}
+
 	public void setCorpo(String corpo) {
 		this.corpo = corpo;
 	}
-	public int getUsuario() {
+
+	public UsuarioEntity getUsuario() {
 		return usuario;
 	}
-	public void setUsuario(int usuario) {
+
+	public void setUsuario(UsuarioEntity usuario) {
 		this.usuario = usuario;
 	}
-	public int getTicket() {
+
+	public TicketEntity getTicket() {
 		return ticket;
 	}
-	public void setTicket(int ticket) {
+
+	public void setTicket(TicketEntity ticket) {
 		this.ticket = ticket;
 	}
+
 	@Override
 	public String toString() {
-		return "ComentarioEntity [idQuadro=" + id + ", corpo=" + corpo + ", idUsuario=" + usuario
-				+ ", idTicket=" + Ticket + "]";
+		return "ComentarioEntity [id=" + id + ", corpo=" + corpo + ", usuario=" + usuario + ", ticket=" + ticket + "]";
 	}
 	
 }

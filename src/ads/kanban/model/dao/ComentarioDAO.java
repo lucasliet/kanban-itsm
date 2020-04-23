@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ads.kanban.model.entity.ComentarioEntity;
+import ads.kanban.model.entity.TicketEntity;
+import ads.kanban.model.entity.UsuarioEntity;
 
 public class ComentarioDAO {
 	 public ComentarioEntity buscarComentario(int id) throws IOException {
@@ -35,8 +37,8 @@ public class ComentarioDAO {
 	                    usuario.setEndereco(rs.getString("endereco"));
 	                    usuario.setTelefone(rs.getString("telefone"));
 	                    usuario.setEmail(rs.getString("email"));
-	                    comentario.setTicketEntity(ticket);
-	                    comentario.setUsuarioEntity(usuario);
+	                    comentario.setTicket(ticket);
+	                    comentario.setUsuario(usuario);
 	                
 	                }
 	            } catch (SQLException e) {
@@ -66,7 +68,7 @@ public class ComentarioDAO {
             throw new IOException(e);
         }
         if (feedback == -1){
-            System.out.println("Operação falhou");
+            System.out.println("Operaï¿½ï¿½o falhou");
         }else{
             System.out.println("Corpo " + coment.getCorpo() + " de ID " + coment.getId()+ " foi removido com sucesso");
         }
@@ -81,8 +83,8 @@ public class ComentarioDAO {
         		PreparedStatement pst = conn.prepareStatement(sql);) {
 
             pst.setString(1, coment.getCorpo());
-            pst.setString(2, coment.getUsuario().getId());
-            pst.setString(3, coment.getTicket().getId());
+            pst.setInt(2, coment.getUsuario().getId());
+            pst.setInt(3, coment.getTicket().getId());
             pst.execute();
 
             String query = "SELECT LAST_INSERT_ID()";

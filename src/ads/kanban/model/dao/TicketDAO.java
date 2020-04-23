@@ -28,9 +28,9 @@ public class TicketDAO {
 				ticket.setDescricao(rs.getString("descricao"));
 				ticket.setFoto(rs.getString("foto"));
 				ColunaEntity coluna = new ColunaEntity();
-				coluna.setInt(rs.getInt("id"));
-				coluna.setString(rs.getString("titulo"));
-				ticket.setColunaEntity(coluna);
+				coluna.setId(rs.getInt("id"));
+				coluna.setTitulo(rs.getString("titulo"));
+				ticket.setColuna(coluna);
 				tickets.add(ticket);
 			}
 			
@@ -61,8 +61,8 @@ public class TicketDAO {
 	                ticket.setFoto(rs.getString("foto"));
 	                ColunaEntity coluna = new ColunaEntity();
 	                coluna.setId(rs.getInt("id"));
-	                coluna.setString(rs.getString("titulo"));
-	                ticket.setColunaEntity(coluna);
+	                coluna.setTitulo(rs.getString("titulo"));
+	                ticket.setColuna(coluna);
 				}
 			} catch (SQLException e) {
 	            e.printStackTrace();
@@ -91,7 +91,7 @@ public class TicketDAO {
             throw new IOException(e);
         }
         if (feedback == -1){
-            System.out.println("Operação falhou");
+            System.out.println("Operaï¿½ï¿½o falhou");
         }else{
             System.out.println("Ticket " + ticket.getTitulo()+" de ID " + ticket.getId()+" foi removido com sucesso");
         }

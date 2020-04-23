@@ -3,6 +3,7 @@ package ads.kanban.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,7 @@ public class ComentarioController {
 			String acao = request.getParameter("acao");
 			String saida = null;
 			
-			int id, feedback;
+			int id;
 			String corpo;
 			
 			
@@ -33,8 +34,8 @@ public class ComentarioController {
 			switch (acao) {
 			case "page-excluir":
             	id = Integer.parseInt(request.getParameter("id_excluir"));
-            	comentario = cService.BuscarComentario(id)
-            	feedback = cService.excluirComentario(id);
+            	//TODO comentario = cService.buscarComentario(id);
+            	cService.excluirComentario(id);
     			request.setAttribute("comentario", coment);
     		    saida = "AdmQuadro.jsp";
     			break;
@@ -49,6 +50,8 @@ public class ComentarioController {
 	            	saida = "ExibirQuadro.jsp";
 	            	break;
 			}
+			RequestDispatcher view = request.getRequestDispatcher(saida);
+			view.forward(request, response);
 		}
 	}
 }
