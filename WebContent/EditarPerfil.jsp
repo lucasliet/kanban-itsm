@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -60,11 +64,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <input type="text" class="form-control" name="nome" placeholder="Nome"
-                                        value=${usuario.nome} required>
+                                        value="${usuario.nome}" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <input type="text" class="form-control" name="sobrenome" placeholder="Último nome"
-                                        value=${usuario.ultimoNome} required>
+                                        value="${usuario.ultimoNome}" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -73,7 +77,7 @@
                                         placeholder="Senha antiga" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="password" class="form-control" name="senha" placeholder="Nova senha"
+                                    <input type="password" class="form-control" name="senhaNova" placeholder="Nova senha"
                                         required>
                                 </div>
                             </div>
@@ -91,7 +95,7 @@
 
                         <div class="col-md-2">
                             <div class="row">
-                                <img src="img/exemplo.png" alt="Foto de Perfil" />
+                                <img src="${usuario.foto}" alt="Foto de Perfil" />
                             </div>
                             
                             <button type="submit" class="btn float-right btn-geral mt-5" name="acao"

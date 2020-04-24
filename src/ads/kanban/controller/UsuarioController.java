@@ -22,10 +22,8 @@ public class UsuarioController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String acao = request.getParameter("acao");
 		
-		int id = 0;
 		String nome = null, ultimoNome = null, endereco = null, telefone = null, email = null, senha = null, saida = null;
-		
-		UsuarioEntity usuario = new UsuarioEntity();
+		UsuarioEntity usuario;
 		UsuarioService uService = new UsuarioService();
 		ArrayList<UsuarioEntity> usuarios = new ArrayList<>();
 		
@@ -38,16 +36,16 @@ public class UsuarioController extends HttpServlet {
             	endereco = request.getParameter("endereco");
             	telefone = request.getParameter("telefone");
             	
+            	usuario = new UsuarioEntity();
             	usuario.setNome(nome);
             	usuario.setUltimoNome(ultimoNome);
             	usuario.setEmail(email);
             	usuario.setSenha(senha);
             	usuario.setEndereco(endereco);
             	usuario.setTelefone(telefone);
-				usuario.setFoto("img/FotoPadrao.png");
+				usuario.setFoto("img/fotoPadrao.png");
             	
-            	id = uService.inserirUsuario(usuario);
-            	usuario.setId(id);
+            	uService.inserirUsuario(usuario);
             	
             	saida = "index.jsp";
             	break;
@@ -59,7 +57,6 @@ public class UsuarioController extends HttpServlet {
             	
             	for (UsuarioEntity item : usuarios) {
             		if (item.getEmail().equals(email) && item.getSenha().equals(senha)) {
-            			System.out.println(item);
             			saida = "ExibirQuadro.jsp"; 
             			//TODO mudar pra pagina home real
             			break;
@@ -69,6 +66,10 @@ public class UsuarioController extends HttpServlet {
                     	saida = "index.jsp";
             		}
             	}
+            	break;
+            case "page-perfil":
+            	request.setAttribute("usuario", usuario); //TODO salvar o usuário logado pra exibir aqui
+            	saida = "EditarPerfil.jsp";
             	break;
 
 		}

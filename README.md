@@ -8,7 +8,7 @@ Este projeto implementa um sistema de **gerenciamento de chamados** em formato *
 - Eclipse como IDE
 - Banco de dados com MySQL
 
-## Para reproduzir esse projeto em seu PC, você precisa baixa-los:
+### Para reproduzir esse projeto localmente, você precisa instalar:
 - [Java 8+](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
 - um navegador atualizado como [Firefox](https://firefox.com) ou [Chrome](https://www.google.com/chrome/)
 - [Apache Tomcat 9](https://tomcat.apache.org/download-90.cgi)
