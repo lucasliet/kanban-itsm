@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Home</title>
+
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/home.css">
+        <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logoHeader.png" width="150" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" href="#">
+                                <i class="fas fa-home mr-1"></i>Home <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <i class="far fa-file-alt mr-1"></i>Meus quadros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <i class="fas fa-plus mr-1"></i>Novo processo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8 mr-5">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p><strong>Título</strong></p>
+                        </div>
+                        <div class="card-body">
+                            <img class="card-img-top" src="img/logoHeader.png" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                          <p><strong>Descrição</strong></p>
+                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Comentário</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 c-col-right">
+                    <h6 class="text-center mt-3">
+                        <i class="fas fa-star mr-1" style="color: gold;"></i>Últimos quadros
+                    </h6>
+                    <div class="card text-white bg-primary mb-3 mt-4" style="max-width: 18rem;">
+                        <p class="card-header">Titulo</p>
+                        <div class="card-body">
+                          <p class="card-text">Descrição do quadro 1.</p>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                        <p class="card-header">Titulo</p>
+                        <div class="card-body">
+                          <p class="card-text">Descrição do quadro 2.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
