@@ -23,3 +23,9 @@ body {
     box-sizing: border-box;
     border-radius: 8px;
 }
+
+.c-imgLogin {
+    width: 50px;
+    height: 50px;
+    border-radius: 35px;    
+}
