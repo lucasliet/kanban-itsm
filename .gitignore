@@ -1,2 +1,12 @@
+# Pasta Build do Eclipse
 /build/
+
+# Caches das SO
 .DS_Store
+thumbs.db
+desktop.ini
+
+# Arquivos de projeto do IntelliJ 
+/.idea/
+*.iml
+
