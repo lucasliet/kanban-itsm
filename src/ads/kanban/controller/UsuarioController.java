@@ -57,7 +57,8 @@ public class UsuarioController extends HttpServlet {
             	
             	for (UsuarioEntity item : usuarios) {
             		if (item.getEmail().equals(email) && item.getSenha().equals(senha)) {
-            			saida = "ExibirQuadro.jsp"; 
+            			request.setAttribute("usuario",item);
+            			saida = "EditarPerfil.jsp";
             			//TODO mudar pra pagina home real
             			break;
             		} else {
@@ -68,6 +69,7 @@ public class UsuarioController extends HttpServlet {
             	}
             	break;
             case "page-perfil":
+            	usuario = uService.buscarUsuario(1);
             	request.setAttribute("usuario", usuario); //TODO salvar o usuário logado pra exibir aqui
             	saida = "EditarPerfil.jsp";
             	break;

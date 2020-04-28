@@ -42,7 +42,7 @@ public class UsuarioDAO {
 	
 	public int inserirUsuario(UsuarioEntity usuario) throws IOException {
         int id = -1;
-        String sql = "INSERT INTO usuarios ( nome, ultimo_nome, endereco, telefone, email, senha, foto ) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuarios ( nome, ultimo_nome, endereco, telefone, email, senha, foto ) VALUES (?,?,?,?,?,?,?)";
 
         try (Connection conn = ConnectionFactory.getConnection(); 
         		PreparedStatement pst = conn.prepareStatement(sql);) {

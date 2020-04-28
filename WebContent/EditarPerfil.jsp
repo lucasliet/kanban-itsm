@@ -102,7 +102,7 @@
                             </div>
                             
                             <button type="submit" class="btn float-right btn-geral " name="acao"
-                                value="btn-cadastrar">Salvar</button>
+                                value="btn-atualizar">Salvar</button>
                             
                         </div>
                     </div>
