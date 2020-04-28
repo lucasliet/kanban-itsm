@@ -23,7 +23,8 @@
 
 <body>
 	<fmt:setLocale value="pt_BR"/>
-    <div class="container-fluid">
+    <div class="container
+">
         <div class="text-center">
             <img class="col-sm-5 col-md-3 img-fluid mt-4" src="img/logoEmpresa.png">
         </div>

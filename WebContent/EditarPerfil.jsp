@@ -23,35 +23,7 @@
 
 <body>
     <header>
-        <nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <img src="img/logo-light.svg" width="80" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link text-white" href="#">
-                            <i class="fas fa-home mr-1"></i>Home <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
-                            <i class="far fa-file-alt mr-1"></i>Meus quadros
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
-                            <i class="fas fa-plus mr-1"></i>Novo processo
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+       <c:import url="Menu.jsp"/>
     </header>
     <div class="container mt-3">
         <div class="row coluna">
@@ -114,7 +86,7 @@
                 <section class="col-md-10">
                     <h5 class="titulo mt-3"><strong>Alterar dados Cadastrais</strong></h5>
                     <p>Insira os novos dados para atualizar seu cadastro.</p>
-                    <a href="#"><i class="fas fa-arrow-left"></i> Voltar à home</a>
+                    <a href="home.jsp"><i class="fas fa-arrow-left"></i> Voltar à home</a>
                 </section>
             </div>
         </div>
@@ -132,6 +104,13 @@
             })
         })
     </script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>
