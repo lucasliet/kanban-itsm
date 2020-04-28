@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="css/home.css">
     </head>
     <body>
+        <header>
+            <c:import url="Menu.jsp"/>
+        </header>
 
         <div class="container mt-5">
             <div class="row">
