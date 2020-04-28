@@ -72,11 +72,11 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="password" class="form-control" name="senhaAntiga"
+                                    <input type="password" class="form-control" name="senha_antiga"
                                         placeholder="Senha antiga" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="password" class="form-control" name="senhaNova" placeholder="Nova senha"
+                                    <input type="password" class="form-control" name="senha_nova" placeholder="Nova senha"
                                         required>
                                 </div>
                             </div>

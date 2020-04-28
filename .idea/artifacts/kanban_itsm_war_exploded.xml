@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="kanban-itsm:war exploded">
+    <output-path>$PROJECT_DIR$/build/artifacts/kanban_itsm_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="kanban-itsm/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="kanban-itsm" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

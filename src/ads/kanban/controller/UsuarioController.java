@@ -49,6 +49,31 @@ public class UsuarioController extends HttpServlet {
             	
             	saida = "index.jsp";
             	break;
+//			case "btn-atualizar":
+//				usuarios = uService.listarUsuarios();
+//				String senhaAntiga = request.getParameter("senha_antiga");
+//
+//				for (UsuarioEntity item : usuarios) {
+//					if (item.getSenha().equals(senhaAntiga)){
+//						nome = request.getParameter("nome");
+//						ultimoNome = request.getParameter("sobrenome");
+//						senha = request.getParameter("senha_nova");
+//						endereco = request.getParameter("endereco");
+//						telefone = request.getParameter("telefone");
+//
+//						usuario = new UsuarioEntity();
+//						usuario.setNome(nome);
+//						usuario.setUltimoNome(ultimoNome);
+//                        usuario.setEndereco(endereco);
+//                        usuario.setTelefone(telefone);
+//                        usuario.setEmail(item.getEmail());
+//						usuario.setSenha(senha);
+//						usuario.setFoto("img/fotoPadrao.png"); //TODO substituir foto padrão pelo que o usuário enviou
+//						uService.atualizarUsuario(usuario);
+//					}
+//				}
+//				saida = "EditarPerfil.jsp";
+//				break;
             case "page-home": //Login
             	email = request.getParameter("email");
             	senha = request.getParameter("senha");
@@ -62,7 +87,7 @@ public class UsuarioController extends HttpServlet {
             			//TODO mudar pra pagina home real
             			break;
             		} else {
-                    	String nlogou = "<div class=\"bg-light rounded shadow p-2 m-2\"><p>Usuário não encontrado</p></div>";
+                    	String nlogou = "<div class=\"bg-danger text-white rounded shadow p-2 m-2\"><p>Usuário não encontrado</p></div>";
                     	request.setAttribute("msgerror", nlogou);
                     	saida = "index.jsp";
             		}
