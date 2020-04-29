@@ -23,8 +23,7 @@
 
 <body>
 	<fmt:setLocale value="pt_BR"/>
-    <div class="container
-">
+    <div class="container">
         <div class="text-center">
             <img class="col-sm-5 col-md-3 img-fluid mt-4" src="img/logoEmpresa.png">
         </div>
@@ -61,7 +60,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
-                            Ainda não tem cadastro?<a href="Cadastro.html">Clique aqui</a>
+                            Ainda não tem cadastro?<a href="cadastro.html">Clique aqui</a>
                         </div>
                         <div class="d-flex justify-content-center">
                             <a href="#">Esqueceu a senha?</a>

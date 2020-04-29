@@ -19,12 +19,12 @@
     </head>
     <body>
         <header>
-            <c:import url="Menu.jsp"/>
+            <c:import url="menu.jsp"/>
         </header>
 
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-8 mr-5">
+                <div class="col-md-8">
                     <div class="card c-col-left mb-3">
                         <div class="card-body">
                             <p><strong>Título</strong></p>
@@ -44,26 +44,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 c-col-right">
-                    <h6 class="text-center mt-3">
-                        <i class="fas fa-star mr-1" style="color: gold;"></i>Últimos quadros
-                    </h6>
-                    <div class="card text-white bg-primary mb-3 mt-4" style="max-width: 18rem;">
-                        <p class="card-header">Titulo</p>
-                        <div class="card-body">
-                          <p class="card-text">Descrição do quadro 1.</p>
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <div class="card c-col-right">
+                        <h6 class="text-center mt-3 mb-4">
+                            <i class="fas fa-star mr-1" style="color: gold;"></i>Últimos quadros
+                        </h6>
+                        <div class="card text-white bg-primary m-2" style="max-width: 18rem;">
+                            <p class="card-header">Titulo</p>
+                            <div class="card-body">
+                                <p class="card-text">Descrição do quadro 1.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                        <p class="card-header">Titulo</p>
-                        <div class="card-body">
-                          <p class="card-text">Descrição do quadro 2.</p>
+                        <div class="card text-white bg-secondary m-2" style="max-width: 18rem;">
+                            <p class="card-header">Titulo</p>
+                            <div class="card-body">
+                                <p class="card-text">Descrição do quadro 2.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                        <p class="card-header">Titulo</p>
-                        <div class="card-body">
-                          <p class="card-text">Descrição do quadro 3.</p>
+                        <div class="card text-white bg-secondary m-2" style="max-width: 18rem;">
+                            <p class="card-header">Titulo</p>
+                            <div class="card-body">
+                                <p class="card-text">Descrição do quadro 3.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

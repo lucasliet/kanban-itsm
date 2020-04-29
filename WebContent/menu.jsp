@@ -18,7 +18,7 @@
 				href="home.jsp"> <i class="fas fa-home mr-1"></i>Home <span
 					class="sr-only">(current)</span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link text-white" href="#">
+			<li class="nav-item"><a class="nav-link text-white" href="meusQuadros.jsp">
 					<i class="far fa-file-alt mr-1"></i>Meus quadros
 			</a></li>
 			<li class="nav-item"><a class="nav-link text-white" href="#">
@@ -32,7 +32,7 @@
 					aria-expanded="false">
 				<div class="dropdown-menu c-menu m-2"
 					aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item text-white" href="EditarPerfil.jsp"> <i
+					<a class="dropdown-item text-white" href="editarPerfil.jsp"> <i
 						class="fas fa-user mr-1"></i>Editar perfil
 					</a> <a class="dropdown-item text-white" href="index.jsp"> <i
 						class="fas fa-power-off mr-1"></i>Sair

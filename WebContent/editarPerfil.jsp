@@ -23,12 +23,12 @@
 
 <body>
     <header>
-       <c:import url="Menu.jsp"/>
+       <c:import url="menu.jsp"/>
     </header>
     <div class="container mt-3">
         <div class="row coluna">
-
-            <div class="col-md-10 justify-content-center ml-5">
+            <div class="col-md-1"></div>
+            <div class="col-md-9">
                 <form action="usuario.do" method="POST">
                     <div class="row">
                         <div class="col-md-9">

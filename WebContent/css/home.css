@@ -7,10 +7,14 @@ body {
     background-color: #07315A !important;
 }
 
+.col-md-3 {
+    height: 100%;
+}
+
 .c-col-right {
     border: 1px solid #D9D6D6;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    height: 100%;
+    background-color: #F1F2F9;
 }
 
 .c-col-left {
