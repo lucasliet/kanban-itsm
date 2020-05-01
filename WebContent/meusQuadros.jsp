@@ -18,13 +18,109 @@
 
         <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="css/cadastro.css">
+        <link rel="stylesheet" href="css/home.css">
     </head>
 	<body>
 	    <header>
             <c:import url="menu.jsp"/>
         </header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card mt-4 c-cards">
+                        <div class="card-header c-header">
+                            <div class="row">
+                                <p>Titulo</p>
+                                <div class="dropdown">
+                                    <p
+                                    alt="avatar" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">...</p>
+                                    <div class="dropdown-menu m-2"
+                                        aria-labelledby="dropdownMenuButton">
+                                        
+                                        <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                            Excluir
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body mb-5">
+                            <p class="card-text">Descrição do quadro 1.</p>
+                        </div>
+                        <hr>
+                        <div class="card-link">
+                            <a href="#" class="card-link">Aqui vai alguma coisa</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mt-4 c-cards">
+                        <div class="card-header c-header">
+                            <p>Titulo</p>
+                        </div>
+                        <div class="card-body mb-5">
+                            <p class="card-text">Descrição do quadro 1.</p>
+                        </div>
+                        <hr>
+                        <div>
+                            Aqui vai alguma coisa
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mt-4 c-cards">
+                        <div class="card-header c-header">
+                            <p>Titulo</p>
+                        </div>
+                        <div class="card-body mb-5">
+                            <p class="card-text">Descrição do quadro 1.</p>
+                        </div>
+                        <hr>
+                        <div class="card-link">
+                            <a href="#" class="card-link">Aqui vai alguma coisa</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mt-4 c-cards">
+                        <div class="card-header c-header">
+                            <p>Titulo</p>
+                        </div>
+                        <div class="card-body mb-5">
+                            <p class="card-text">Descrição do quadro 1.</p>
+                        </div>
+                        <hr>
+                        <div class="card-link">
+                            <a href="#" class="card-link">Aqui vai alguma coisa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!--Modal-->
+            <!-- Button trigger modal -->
+        
+            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
