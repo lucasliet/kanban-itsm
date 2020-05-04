@@ -17,4 +17,6 @@
 
 .c-header {
     background-color: #027178 !important;
+    display: flex;
+    justify-content: space-between;
 }

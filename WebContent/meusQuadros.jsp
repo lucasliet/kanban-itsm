@@ -29,16 +29,11 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="card mt-4 c-cards">
-                        
                         <div class="card-header c-header">
-                            <div class="row">
-                            <div>
-                                <p>Titulo</p>
-                            </div>
-                            <div class="dropdown" >
-                                <img src="img/favicon.ico" alt="avatar" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"
-                                >
+                            <p>Titulo</p>
+                            <div class="dropleft">
+                                <img src="img/61140.svg" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" width="10" alt="icon">
                                 <div class="dropdown-menu m-2"
                                     aria-labelledby="dropdownMenuButton">
                                     
@@ -46,16 +41,16 @@
                                         Excluir
                                     </a>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
-                        </div>
-                        
                         <div class="card-body mb-5">
                             <p class="card-text">Descrição do quadro 1.</p>
                         </div>
                         <hr>
-                        <div class="card-link">
-                            <a href="#" class="card-link">Aqui vai alguma coisa</a>
+                        <div class="card-link m-2">
+                            <a href="#" class="card-link">
+                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -65,11 +60,13 @@
                             <p>Titulo</p>
                         </div>
                         <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 1.</p>
+                            <p class="card-text">Descrição do quadro 2.</p>
                         </div>
                         <hr>
-                        <div>
-                            Aqui vai alguma coisa
+                        <div class="card-link m-2">
+                            <a href="#" class="card-link">
+                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -79,11 +76,13 @@
                             <p>Titulo</p>
                         </div>
                         <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 1.</p>
+                            <p class="card-text">Descrição do quadro 3.</p>
                         </div>
                         <hr>
-                        <div class="card-link">
-                            <a href="#" class="card-link">Aqui vai alguma coisa</a>
+                        <div class="card-link m-2">
+                            <a href="#" class="card-link">
+                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -93,11 +92,13 @@
                             <p>Titulo</p>
                         </div>
                         <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 1.</p>
+                            <p class="card-text">Descrição do quadro 4.</p>
                         </div>
                         <hr>
-                        <div class="card-link">
-                            <a href="#" class="card-link">Aqui vai alguma coisa</a>
+                        <div class="card-link m-2">
+                            <a href="#" class="card-link">
+                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +118,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                          <button type="button" class="btn btn-primary">Sim</button>
+                          <button type="button" class="btn btn-geral">Sim</button>
                         </div>
                     </div>
                 </div>
