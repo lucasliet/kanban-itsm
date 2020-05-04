@@ -25,7 +25,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white" href="#">
+				<a class="nav-link text-white" href="novoQuadro.jsp">
 					<i class="fas fa-plus mr-1"></i>Novo quadro
 				</a>
 			</li>

@@ -19,7 +19,7 @@
         <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="css/global.css">
-        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/meusQuadros.css">
     </head>
 	<body>
 	    <header>
@@ -32,12 +32,12 @@
                         <div class="card-header c-header">
                             <p>Titulo</p>
                             <div class="dropleft">
-                                <img src="img/61140.svg" data-toggle="dropdown" aria-haspopup="true"
+                                <img src="img/option.svg" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" width="10" alt="icon">
                                 <div class="dropdown-menu m-2"
                                     aria-labelledby="dropdownMenuButton">
                                     
-                                    <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
                                         Excluir
                                     </a>
                                 </div>
@@ -58,9 +58,20 @@
                     <div class="card mt-4 c-cards">
                         <div class="card-header c-header">
                             <p>Titulo</p>
+                            <div class="dropleft">
+                                <img src="img/option.svg" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" width="10" alt="icon">
+                                <div class="dropdown-menu m-2"
+                                    aria-labelledby="dropdownMenuButton">
+                                    
+                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                        Excluir
+                                    </a>
+                                </div>
+                            </div> 
                         </div>
                         <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 2.</p>
+                            <p class="card-text">Descrição do quadro 1.</p>
                         </div>
                         <hr>
                         <div class="card-link m-2">
@@ -74,9 +85,20 @@
                     <div class="card mt-4 c-cards">
                         <div class="card-header c-header">
                             <p>Titulo</p>
+                            <div class="dropleft">
+                                <img src="img/option.svg" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" width="10" alt="icon">
+                                <div class="dropdown-menu m-2"
+                                    aria-labelledby="dropdownMenuButton">
+                                    
+                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                        Excluir
+                                    </a>
+                                </div>
+                            </div> 
                         </div>
                         <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 3.</p>
+                            <p class="card-text">Descrição do quadro 1.</p>
                         </div>
                         <hr>
                         <div class="card-link m-2">
@@ -90,9 +112,20 @@
                     <div class="card mt-4 c-cards">
                         <div class="card-header c-header">
                             <p>Titulo</p>
+                            <div class="dropleft">
+                                <img src="img/option.svg" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" width="10" alt="icon">
+                                <div class="dropdown-menu m-2"
+                                    aria-labelledby="dropdownMenuButton">
+                                    
+                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                        Excluir
+                                    </a>
+                                </div>
+                            </div> 
                         </div>
                         <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 4.</p>
+                            <p class="card-text">Descrição do quadro 1.</p>
                         </div>
                         <hr>
                         <div class="card-link m-2">
@@ -118,7 +151,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                          <button type="button" class="btn btn-geral">Sim</button>
+                          <button type="submit" name="#" value="#" class="btn btn-geral">Sim</button>
                         </div>
                     </div>
                 </div>
