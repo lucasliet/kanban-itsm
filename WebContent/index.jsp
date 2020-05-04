@@ -17,6 +17,7 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
     <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
 
 </head>

@@ -18,6 +18,7 @@
 
     <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/cadastro.css">
 </head>
 

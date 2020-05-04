@@ -18,6 +18,7 @@
 
         <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/home.css">
     </head>
 	<body>
@@ -28,23 +29,27 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="card mt-4 c-cards">
+                        
                         <div class="card-header c-header">
                             <div class="row">
+                            <div>
                                 <p>Titulo</p>
-                                <div class="dropdown">
-                                    <p
-                                    alt="avatar" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">...</p>
-                                    <div class="dropdown-menu m-2"
-                                        aria-labelledby="dropdownMenuButton">
-                                        
-                                        <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">
-                                            Excluir
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="dropdown" >
+                                <img src="img/favicon.ico" alt="avatar" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"
+                                >
+                                <div class="dropdown-menu m-2"
+                                    aria-labelledby="dropdownMenuButton">
+                                    
+                                    <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                        Excluir
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        
                         <div class="card-body mb-5">
                             <p class="card-text">Descrição do quadro 1.</p>
                         </div>
@@ -105,17 +110,14 @@
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Deseja excluir o quadro?</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="modal-body">
-                          ...
-                        </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                          <button type="button" class="btn btn-primary">Sim</button>
                         </div>
                     </div>
                 </div>
