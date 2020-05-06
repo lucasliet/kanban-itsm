@@ -46,8 +46,9 @@
                                         <button type="submit" class="btn btn-geral bt-sm"  data-toggle="collapse" href="#coluna" 
                                             role="button" aria-expanded="false" aria-controls="coluna">Adicionar</button>
                                         <div>
-                                            <img src="img/btnClose.png" class="btnClose ml-3 mt-2" data-toggle="collapse" href="#collapseTitulo" 
-                                                role="button" aria-expanded="false" aria-controls="collapseTitulo" alt="" width="25">
+                                            <i class="fas fa-times mt-2 ml-4" data-toggle="collapse" href="#collapseTitulo" 
+                                                role="button" aria-expanded="false" aria-controls="collapseTitulo">
+                                            </i>
                                         </div>
                                     </div>   
                                 </div>
@@ -61,19 +62,25 @@
                                 <div class="dropleft">
                                     <img src="img/option.svg" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false" width="10" alt="icon">
-                                    <div class="dropdown-menu m-2"
-                                        aria-labelledby="dropdownMenuButton">
-                                        
-                                        <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
-                                            Excluir
-                                        </a>
+                                    <div class="dropdown-menu m-2" aria-labelledby="dropdownMenuButton">
+                                        <div class="header c-header">
+                                            <span class="dropdown-item-text">Ações da lista</span>
+                                            <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna" 
+                                                role="button" aria-expanded="false" aria-controls="coluna">
+                                            </i>
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item c-item"><i class="fas fa-plus mr-2"></i>Adicionar Ticket</a>
+                                        <a class="dropdown-item c-item"><i class="fas fa-edit mr-1"></i>Editar Lista</a>
+                                        <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover Lista</a>
+                                        <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar Lista</a>
                                     </div>
                                 </div> 
                             </div>
-
                         </div>
                     </div>
                 </div>  
+                
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 

@@ -24,3 +24,6 @@ body {
     color: white;
     background: #a01ccf;
 }
+.c-item {
+    cursor: pointer;
+}
