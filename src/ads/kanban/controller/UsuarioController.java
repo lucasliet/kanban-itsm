@@ -96,7 +96,7 @@ public class UsuarioController extends HttpServlet {
             case "page-perfil":
             	usuario = uService.buscarUsuario(1);
             	request.setAttribute("usuario", usuario); //TODO salvar o usuário logado pra exibir aqui
-            	saida = "editarPerfil.jsp";
+            	saida = "EditarPerfil.jsp";
             	break;
 
 		}

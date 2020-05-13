@@ -23,7 +23,7 @@
     </head>
     <body>
         <header>
-            <c:import url="menu.jsp"/>
+            <c:import url="Menu.jsp"/>
         </header>
         <div class="container-fluid">
             <div class="row">
