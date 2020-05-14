@@ -60,8 +60,15 @@ public class UsuarioEntity {
 	}
 	@Override
 	public String toString() {
-		return "Usuário: [id=" + id + ", nome=" + nome + ", ultimoNome=" + ultimoNome + ", endereco=" + endereco
-				+ ", telefone=" + telefone + ", email=" + email + ", senha=" + senha + "]";
+		return "UsuarioEntity{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", ultimoNome='" + ultimoNome + '\'' +
+				", endereco='" + endereco + '\'' +
+				", telefone='" + telefone + '\'' +
+				", email='" + email + '\'' +
+				", senha='" + senha + '\'' +
+				", foto='" + foto + '\'' +
+				'}';
 	}
-	
 }

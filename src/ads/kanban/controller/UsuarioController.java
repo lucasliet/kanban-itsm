@@ -53,21 +53,37 @@ public class UsuarioController extends HttpServlet {
             	break;
 			case "btn-atualizar": //Atualizar Perfil
 				usuario = new UsuarioEntity();
+				//Mensagem de feedback se o usuário foi atualizado ou não
+				//Ela vai ser alimentada nos ifs
+				String authFeedback = "";
 
 				Object aux = session.getAttribute("usuario");
 				if (aux != null && aux instanceof UsuarioEntity) {
 					usuario = (UsuarioEntity)aux;
 				}
-				
-				usuario.setNome(request.getParameter("nome"));
-				usuario.setUltimoNome(request.getParameter("sobrenome"));
-                usuario.setEndereco(request.getParameter("endereco"));
-                usuario.setTelefone(request.getParameter("telefone"));
-				usuario.setSenha(request.getParameter("senha_nova"));
-				usuario.setFoto("img/fotoPadrao.png"); //TODO substituir foto padrão pelo que o usuário enviou
-				uService.atualizarUsuario(usuario);
-				
-				session.setAttribute("usuario", usuario);
+				// Checa se a senha que o usuário digitou é igual a senha do banco
+				if (request.getParameter("senha_antiga").equals(usuario.getSenha())){
+					//Se for igual, atualiza os dados
+					usuario.setNome(request.getParameter("nome"));
+					usuario.setUltimoNome(request.getParameter("sobrenome"));
+					usuario.setEndereco(request.getParameter("endereco"));
+					usuario.setTelefone(request.getParameter("telefone"));
+					usuario.setSenha(request.getParameter("senha_nova"));
+					usuario.setFoto("img/fotoPadrao.png"); //TODO substituir foto padrão pelo que o usuário enviou
+					uService.atualizarUsuario(usuario);
+					//troca o usuário da sessão pro usuário com os dados novos
+					session.setAttribute("usuario", usuario);
+					authFeedback = "<div class='bg-success text-white rounded shadow px-3 py-2 m-3'>" +
+                            			"<i class='fas fa-check'></i>&nbsp Perfil Atualizado" +
+								   "</div>";
+				} else {
+					//Se a senha estiver errada, só retorna mensagem de erro
+					authFeedback = "<div class='bg-danger text-white rounded shadow px-3 py-2 m-3'>" +
+										"<i class='fas fa-times'></i>&nbsp Senha Incorreta" +
+								   "</div>";
+				}
+
+				request.setAttribute("authFeedback", authFeedback);
 				saida = "EditarPerfil.jsp";
 				break;
             case "page-home": //Login
@@ -88,7 +104,10 @@ public class UsuarioController extends HttpServlet {
             		} else {
             			//Caso não encontre nenhum usuario com esse e-mail e senha
             			//Cria um card com aviso de "usuário não encontrado" e manda pro index.jsp
-                    	String nlogou = "<div class=\"bg-danger text-white rounded shadow p-2 m-2\"><p>Usuário não encontrado</p></div>";
+                    	String nlogou = "<div class='bg-danger text-white rounded shadow p-2 m-2'>" +
+											"<i class='fas fa-times'></i>&nbsp Usuário não encontrado" +
+										"</div>";
+
                     	request.setAttribute("msgerror", nlogou);
                     	saida = "index.jsp";
             		}
