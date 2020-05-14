@@ -36,7 +36,7 @@
                     </div>
                     <div class="card-body">
                         <form action="usuario.do" method="POST">
-                        <div>${msgerror}</div>
+                        <div id="msgerror">${msgerror}</div>
                             <div class="input-group form-group mt-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
