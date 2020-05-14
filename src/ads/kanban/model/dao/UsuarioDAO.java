@@ -10,6 +10,36 @@ import java.util.ArrayList;
 import ads.kanban.model.entity.UsuarioEntity;
 
 public class UsuarioDAO {
+    public UsuarioEntity login(String email, String senha) throws IOException {
+        UsuarioEntity usuario = new UsuarioEntity();
+        String sql = "SELECT id, nome, ultimo_nome, endereco, telefone, foto FROM usuarios WHERE email = ? AND senha = ?";
+
+        try(Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql);){
+            pst.setString(1, email);
+            pst.setString(2, senha);
+            try (ResultSet rs = pst.executeQuery();) {
+                while (rs.next()) {
+                    usuario.setId(rs.getInt("id"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setUltimoNome(rs.getString("ultimo_nome"));
+                    usuario.setEndereco(rs.getString("endereco"));
+                    usuario.setTelefone(rs.getString("telefone"));
+                    usuario.setFoto(rs.getString("foto"));
+                    usuario.setEmail(email);
+                    usuario.setSenha(senha);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new IOException(e);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+        return usuario;
+    }
+
 	public UsuarioEntity buscarUsuario(int id) throws IOException {
 		UsuarioEntity usuario = new UsuarioEntity();
 		String sql = "SELECT nome, ultimo_nome, endereco, telefone, email, foto FROM usuarios WHERE id = ?";

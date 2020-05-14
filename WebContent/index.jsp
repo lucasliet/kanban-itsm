@@ -54,7 +54,7 @@
                                 <input type="checkbox" class="mr-1">Lembra senha
                             </div>
                             <div class="form-group mt-4">
-                                <button type="submit" name="acao" value="page-home"
+                                <button type="submit" name="acao" value="login"
                                     class="btn float-right btn-geral ">Entrar</button>
                             </div>
                         </form>
