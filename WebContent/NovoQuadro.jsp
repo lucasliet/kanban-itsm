@@ -71,7 +71,9 @@
                                         </div>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item c-item"><i class="fas fa-plus mr-2"></i>Adicionar Ticket</a>
-                                        <a class="dropdown-item c-item"><i class="fas fa-edit mr-1"></i>Editar Lista</a>
+                                        <a class="dropdown-item c-item" data-toggle="modal" data-target="#modalTicket">
+                                            <i class="fas fa-edit mr-1"></i>Editar Lista
+                                        </a>
                                         <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover Lista</a>
                                         <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar Lista</a>
                                     </div>
@@ -79,8 +81,40 @@
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div> 
+                <!-- Modal de editar ticket-->
+                <!-- Button trigger modal -->
                 
+                
+                <!-- Modal -->
+                <div class="modal fade" id="modalTicket" tabindex="-1" role="dialog" aria-labelledby="modalTicketTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="modalTicketTitle">Titulo do Ticket</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-10">
+                                   
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-primary btn-sm mb-2">Salvar</button>
+                                    <button type="button" class="btn btn-primary btn-sm mb-2">Salvar</button>
+                                    <button type="button" class="btn btn-primary btn-sm mb-2">Salvar</button>
+                                    <button type="button" class="btn btn-primary btn-sm mb-2">Salvar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-geral btn-sm">Salvar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 

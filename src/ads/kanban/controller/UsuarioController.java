@@ -101,7 +101,7 @@ public class UsuarioController extends HttpServlet {
                     //Caso não encontre nenhum usuario com esse e-mail e senha, ele terá id = 0
                     //Cria um card com aviso de "usuário não encontrado" e manda pro index.jsp
                     String nlogou = "<div class='bg-danger text-white rounded px-3 py-2 my-2'>" +
-                                        "<i class='fas fa-times'></i>&nbsp Usuário não encontrado" +
+                                        "<i class='fas fa-times'></i>&nbsp Usuario n�o encontrado" +
                                     "</div>";
 
                     request.setAttribute("msgerror", nlogou);
