@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
 
         <title>Novo quadro</title>
 
@@ -18,12 +18,12 @@
 
         <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="css/global.css">
-        <link rel="stylesheet" href="css/novoQuadro.css">
+        <link rel="stylesheet" href="../../css/global.css">
+        <link rel="stylesheet" href="../../css/novoQuadro.css">
     </head>
     <body>
         <header>
-            <c:import url="Menu.jsp"/>
+            <c:import url="../Menu.jsp"/>
         </header>
         <div class="container-fluid">
             <div class="row">
@@ -60,8 +60,8 @@
                             <div class="header c-header">
                                 <p>Titulo</p>
                                 <div class="dropleft">
-                                    <img src="img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" width="10" alt="icon">
+                                    <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
+                                         aria-expanded="false" width="10" alt="icon">
                                     <div class="dropdown-menu m-2" aria-labelledby="dropdownMenuButton">
                                         <div class="header c-header">
                                             <span class="dropdown-item-text">Ações da lista</span>

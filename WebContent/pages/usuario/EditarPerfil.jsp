@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
 
     <title>Editar Perfil</title>
 
@@ -18,20 +18,20 @@
 
     <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/cadastro.css">
 </head>
 
 <body>
 <header>
-    <c:import url="Menu.jsp"/>
+    <c:import url="../Menu.jsp"/>
 </header>
 <div class="container">
     <div class="row my-3 justify-content-center">
         <div class="bg-grey">
             <div class="row coluna justify-content-center">
                 <div class="col-md-11">
-                    <form action="usuario.do" method="POST">
+                    <form action="/usuario.do" method="POST">
                         <div id="auth_feedback">${authFeedback}</div>
                         <div class="row px-3">
                             <div class="col">
@@ -75,7 +75,7 @@
                                 <div class="row">
                                     <div class="text-center">
                                         <!--TODO Substituir pro foto do usuário-->
-                                        <img id="img" src="img/fotoPadrao.png"
+                                        <img id="img" src="../../img/fotoPadrao.png"
                                              class="avatar img-circle col"
                                              alt="avatar"/>
                                         <input type="file" id="upload" class="custom-file-input">
@@ -96,7 +96,7 @@
                     <section class="col-md-10">
                         <h5 class="titulo mt-3"><strong>Alterar dados Cadastrais</strong></h5>
                         <p>Insira os novos dados para atualizar seu cadastro.</p>
-                        <a href="Home.jsp"><i class="fas fa-arrow-left"></i> Voltar à home</a>
+                        <a href="../Home.jsp"><i class="fas fa-arrow-left"></i> Voltar à home</a>
                     </section>
                 </div>
             </div>

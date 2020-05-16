@@ -23,7 +23,7 @@ public class UsuarioController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String acao = request.getParameter("acao");
 
-        String saida = "index.jsp";
+        String saida = "/index.jsp";
         UsuarioEntity usuario = null;
         UsuarioService uService = new UsuarioService();
         ArrayList<UsuarioEntity> usuarios = new ArrayList<>();
@@ -44,7 +44,7 @@ public class UsuarioController extends HttpServlet {
                 usuario.setSenha(request.getParameter("senha"));
                 usuario.setEndereco(request.getParameter("endereco"));
                 usuario.setTelefone(request.getParameter("telefone"));
-                usuario.setFoto("img/fotoPadrao.png");
+                usuario.setFoto("/img/fotoPadrao.png");
 
                 uService.inserirUsuario(usuario);
 
@@ -68,7 +68,7 @@ public class UsuarioController extends HttpServlet {
                     usuario.setEndereco(request.getParameter("endereco"));
                     usuario.setTelefone(request.getParameter("telefone"));
                     usuario.setSenha(request.getParameter("senha_nova"));
-                    usuario.setFoto("img/fotoPadrao.png"); //TODO substituir foto padrão pelo que o usuário enviou
+                    usuario.setFoto("/img/fotoPadrao.png"); //TODO substituir foto padrão pelo que o usuário enviou
                     uService.atualizarUsuario(usuario);
                     //troca o usuário da sessão pro usuário com os dados novos
                     session.setAttribute("usuario", usuario);
@@ -83,7 +83,7 @@ public class UsuarioController extends HttpServlet {
                 }
 
                 request.setAttribute("authFeedback", authFeedback);
-                saida = "EditarPerfil.jsp";
+                saida = "/pages/usuario/EditarPerfil.jsp";
                 break;
             case "login":
                 String email = request.getParameter("email");
@@ -96,16 +96,16 @@ public class UsuarioController extends HttpServlet {
                 // ai ele manda pra sessão e loga
                 if (usuario.getId() != 0) {
                     session.setAttribute("usuario", usuario);
-                    saida = "Home.jsp";
+                    saida = "/pages/Home.jsp";
                 } else {
                     //Caso não encontre nenhum usuario com esse e-mail e senha, ele terá id = 0
                     //Cria um card com aviso de "usuário não encontrado" e manda pro index.jsp
                     String nlogou = "<div class='bg-danger text-white rounded px-3 py-2 my-2'>" +
-                                        "<i class='fas fa-times'></i>&nbsp Usuario n�o encontrado" +
+                                        "<i class='fas fa-times'></i>&nbsp Usuario não encontrado" +
                                     "</div>";
 
                     request.setAttribute("msgerror", nlogou);
-                    saida = "index.jsp";
+                    saida = "/index.jsp";
                 }
                 break;
         }

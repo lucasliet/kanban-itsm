@@ -10,13 +10,13 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Home</title>
 
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         
         <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/global.css">
-        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="../css/global.css">
+        <link rel="stylesheet" href="../css/home.css">
     </head>
     <body>
         <header>
@@ -31,7 +31,7 @@
                             <p><strong>Título</strong></p>
                         </div>
                         <div class="card-body c-cards m-2">
-                            <img class="card-img-top" src="img/logoHeader.png" alt="">
+                            <img class="card-img-top" src="../img/logoHeader.png" alt="">
                         </div>
                         <div class="card-body c-cards m-2">
                           <p><strong>Descrição</strong></p>

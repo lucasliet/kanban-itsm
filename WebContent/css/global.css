@@ -7,6 +7,7 @@ body {
     background-color: #07315A !important;
 }
 .c-imgLogin {
+    cursor: pointer;
     width: 40px;
     height: 40px;
     border-radius: 35px;    
@@ -19,11 +20,8 @@ body {
     background: #741596;
     box-shadow: 0px 4px 2px rgb(153, 136, 167);
 }
+.btn-geral:hover {background: #a01ccf;}
 
-.btn-geral:hover {
-    color: white;
-    background: #a01ccf;
-}
 .c-item {
     cursor: pointer;
 }
