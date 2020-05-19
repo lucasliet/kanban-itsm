@@ -6,6 +6,11 @@ body {
 .c-menu {
     background-color: #07315A !important;
 }
+
+.dropdown-item:hover {
+    background-color:  #027178 ;
+}
+
 .c-imgLogin {
     cursor: pointer;
     width: 40px;
@@ -20,7 +25,10 @@ body {
     background: #741596;
     box-shadow: 0px 4px 2px rgb(153, 136, 167);
 }
-.btn-geral:hover {background: #a01ccf;}
+.btn-geral:hover {
+    background: #a01ccf;
+    color: white;
+}
 
 .c-item {
     cursor: pointer;
