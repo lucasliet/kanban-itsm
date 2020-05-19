@@ -56,6 +56,8 @@ public class UsuarioController extends HttpServlet {
                 //Ela vai ser alimentada nos ifs
                 String authFeedback = "";
 
+                //checa se tem algum usuário logado na sessão
+                //se tiver, coloca dentro do objeto 'usuario'
                 Object aux = session.getAttribute("usuario");
                 if (aux != null && aux instanceof UsuarioEntity) {
                     usuario = (UsuarioEntity) aux;
@@ -72,6 +74,7 @@ public class UsuarioController extends HttpServlet {
                     uService.atualizarUsuario(usuario);
                     //troca o usuário da sessão pro usuário com os dados novos
                     session.setAttribute("usuario", usuario);
+                    //mensagem de feedback que o perfil foi atualizado com sucesso
                     authFeedback = "<div class='bg-success text-white rounded shadow px-3 py-2 m-3'>" +
                                          "<i class='fas fa-check'></i>&nbsp Perfil Atualizado" +
                                    "</div>";
