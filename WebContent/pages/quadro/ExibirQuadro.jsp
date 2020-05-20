@@ -27,35 +27,13 @@
         </header>
         <div class="container-fluid">
             <div class="row">
+                <div class="bg-dark c-bg-dark col-md-12">
+                    <p>Nome do quadro</p>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-3">
-                    
-                    <button type="button" class="btn btn-collapse mt-3 col-md-10" data-toggle="collapse" href="#collapseTitulo" 
-                        role="button" aria-expanded="false" aria-controls="collapseTitulo">
-                        <i class="fas fa-plus mr-2"></i>Adionar nova lista
-                    </button>
-                    <form action="">
-                        <div class="form-group">
-                            <div class="collapse" id="collapseTitulo">
-                                <div class="card card-body c-card-body">
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <input type="text" class="form-control" name="3" placeholder="Insira o título da lista" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <button type="submit" class="btn btn-geral bt-sm"  data-toggle="collapse" href="#coluna" 
-                                            role="button" aria-expanded="false" aria-controls="coluna">Adicionar</button>
-                                        <div>
-                                            <i class="fas fa-times mt-2 ml-4" data-toggle="collapse" href="#collapseTitulo" 
-                                                role="button" aria-expanded="false" aria-controls="collapseTitulo">
-                                            </i>
-                                        </div>
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="collapse" id="coluna">
+                    <div class="c-coluna c-rolagem">
                         <div class="card card-body c-card-body">
                             <div class="header c-header">
                                 <p>Titulo</p>
@@ -65,8 +43,8 @@
                                     <div class="dropdown-menu m-2" aria-labelledby="dropdownMenuButton">
                                         <div class="header c-header">
                                             <span class="dropdown-item-text">Ações da lista</span>
-                                            <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna" 
-                                                role="button" aria-expanded="false" aria-controls="coluna">
+                                            <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna"
+                                               role="button" aria-expanded="false" aria-controls="coluna">
                                             </i>
                                         </div>
                                         <div class="dropdown-divider"></div>
@@ -77,16 +55,67 @@
                                         <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover Lista</a>
                                         <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar Lista</a>
                                     </div>
-                                </div> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ticket" class="card m-2">
+                            <div onclick="abreModal()" class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div onclick="abreModal()" class="card m-2">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div onclick="abreModal()" class="card m-2">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div onclick="abreModal()" class="card m-2">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-collapse mt-3 col-md-10" data-toggle="collapse" href="#collapseTitulo" 
+                        role="button" aria-expanded="false" aria-controls="collapseTitulo">
+                        <i class="fas fa-plus mr-2"></i>Adionar nova lista
+                    </button>
+                    <form action="">
+                        <div class="form-group">
+                            <div class="collapse" id="collapseTitulo">
+                                <div class="card card-body c-card-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <input id="titulo" type="text" class="form-control" name="3" placeholder="Insira o título da lista" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <button type="submit" class="btn btn-geral bt-sm" onclick="validaTitulo()">Adicionar
+                                        </button>
+                                        <div>
+                                            <i class="fas fa-times mt-2 ml-4" data-toggle="collapse" href="#collapseTitulo" 
+                                                role="button" aria-expanded="false" aria-controls="collapseTitulo">
+                                            </i>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 <!-- Modal de editar ticket-->
-                <!-- Button trigger modal -->
-                
-                
-                <!-- Modal -->
+
                 <div class="modal fade" id="modalTicket" tabindex="-1" role="dialog" aria-labelledby="modalTicketTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -117,6 +146,13 @@
                 </div>
             </div>
         </div>
+        <script>
+            function abreModal() {
+                $("#modalTicket").modal({
+                    show: true
+                });
+            }
+        </script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 

@@ -2,6 +2,10 @@
     background-color: rgb(226, 225, 231);
 }
 
+body {
+    overflow: hidden;
+}
+
 .btn-collapse {
     background-color: rgb(214, 212, 212);
     opacity: 0.4;
@@ -12,3 +16,17 @@
     display: flex;
     justify-content: space-between;
 }
+.c-card-body {
+    background-color: #F1F2F9;
+    border-color: #F1F2F9;
+    height: 10%;
+}
+.c-bg-dark {
+    background-color: #F1F2F9 !important;
+}
+.c-rolagem {
+    overflow: auto;
+    height: 75%;
+}
+
+

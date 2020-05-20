@@ -26,7 +26,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="card c-col-left mb-3">
+                    <div class="card c-coluna mb-3">
                         <div class="card-body">
                             <p><strong>Título</strong></p>
                         </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-3">
-                    <div class="card c-col-right">
+                    <div class="card c-coluna">
                         <h6 class="text-center mt-3 mb-4">
                             <i class="fas fa-star mr-1" style="color: gold;"></i>Últimos quadros
                         </h6>
