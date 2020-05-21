@@ -29,4 +29,12 @@ body {
     height: 75%;
 }
 
+.card {
+    cursor: pointer;
+}
+
+.btn-modal {
+    background-color: #07315A !important;
+}
+
 
