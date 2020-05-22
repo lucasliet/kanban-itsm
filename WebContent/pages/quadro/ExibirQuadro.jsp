@@ -9,80 +9,70 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 
-        <title>Novo quadro</title>
+        <title>Quadro</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
         <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="../../css/global.css">
-        <link rel="stylesheet" href="../../css/novoQuadro.css">
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/novoQuadro.css">
     </head>
     <body>
         <header>
-            <c:import url="../Menu.jsp"/>
+            <c:import url="/pages/Menu.jsp"/>
         </header>
         <div class="container-fluid">
             <div class="row">
                 <div class="bg-dark c-bg-dark col-md-12">
-                    <p>Nome do quadro</p>
+                    <p>${quadro.titulo}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="c-coluna c-rolagem">
-                        <div class="card card-body c-card-body fixed">
-                            <div class="header c-header">
-                                <p>Titulo</p>
-                                <div class="dropleft">
-                                    <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                         aria-expanded="false" width="10" alt="icon">
-                                    <div class="dropdown-menu m-2" aria-labelledby="dropdownMenuButton">
-                                        <div class="header c-header">
-                                            <span class="dropdown-item-text">Ações da coluna</span>
-                                            <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna"
-                                               role="button" aria-expanded="false" aria-controls="coluna">
-                                            </i>
+                <c:forEach var="coluna" items="${colunas}">
+                    <div class="col-md-3">
+                        <div class="c-coluna c-rolagem">
+                            <div class="card card-body c-card-body fixed">
+                                <div class="header c-header">
+                                    <p>${coluna.titulo}</p>
+                                    <div class="dropleft">
+                                        <img src="/img/option.svg" data-toggle="dropdown" aria-haspopup="true"
+                                             aria-expanded="false" width="10" alt="icon">
+                                        <div class="dropdown-menu m-2" aria-labelledby="dropdownMenuButton">
+                                            <div class="header c-header">
+                                                <span class="dropdown-item-text">Ações da coluna</span>
+                                                <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna"
+                                                   role="button" aria-expanded="false" aria-controls="coluna">
+                                                </i>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item c-item"><i class="fas fa-plus mr-2"></i>Adicionar
+                                                Ticket</a>
+                                            <a class="dropdown-item c-item"><i class="fas fa-edit mr-1"></i>Editar
+                                                Coluna</a>
+                                            <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover
+                                                Coluna</a>
+                                            <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar
+                                                Coluna</a>
                                         </div>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item c-item"><i class="fas fa-plus mr-2"></i>Adicionar Ticket</a>
-                                        <a class="dropdown-item c-item"><i class="fas fa-edit mr-1"></i>Editar Coluna</a>
-                                        <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover Coluna</a>
-                                        <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar Coluna</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="ticket" class="card m-2">
-                            <div onclick="abreModal()" class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div onclick="abreModal()" class="card m-2">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div onclick="abreModal()" class="card m-2">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div onclick="abreModal()" class="card m-2">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
+                            <c:forEach var="ticket" items="${tickets}">
+                                <div class="card m-2">'
+                                    <div onclick="abreModal()" class="card-body">
+                                        <h5 class="card-title">${ticket.titulo}}</h5>
+                                        <p class="card-text">${ticket.descricao}}</p>
+                                    </div>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
-                </div>
-                <div id="coluna" class="col-md-3">
+                </c:forEach>
+                <div class="col-md-3">
                     <button id="btn-coluna" class="btn btn-primary col-md-12" onclick="abreModalColuna()">
                         <i class="fas fa-plus mr-1"></i>Adicionar outra coluna
                     </button>
@@ -90,7 +80,7 @@
 
                 <!-- Modal adicionar coluna-->
                 <div id="ModalColuna" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <form action="" method="POST">
+                    <form action="/coluna.do" method="POST">
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -104,12 +94,13 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-id-card"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name="acao" value="titulo" placeholder="Nome do quadro" aria-label="Username" aria-describedby="basic-addon1" required>
+                                        <input type="hidden" name="id_quadro" value="${quadro.id}">
+                                        <input type="text" class="form-control" name="titulo" placeholder="Nome da Coluna" aria-label="Username" aria-describedby="basic-addon1" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <button type="submit" class="btn btn-geral" name="acao" value="">Salvar</button>
+                                    <button type="submit" class="btn btn-geral" name="acao" value="btn-inserir">Salvar</button>
                                 </div>
                             </div>
                         </div>

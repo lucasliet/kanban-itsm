@@ -5,9 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import ads.kanban.model.entity.ColunaEntity;
 import ads.kanban.model.entity.QuadroEntity;
+import ads.kanban.model.service.QuadroService;
 
 public class ColunaDAO {
 	
@@ -64,48 +66,86 @@ public class ColunaDAO {
         return feedback;
     
 	}
-        public int inserirColuna(ColunaEntity coluna) throws IOException {
-            int id = -1;
-            String sql = "INSERT INTO colunas (titulo , id_quadro) VALUES = (?,?)";
 
-            try (Connection conn = ConnectionFactory.getConnection(); 
-            		PreparedStatement pst = conn.prepareStatement(sql);) {
+    public int inserirColuna(ColunaEntity coluna) throws IOException {
+        int id = -1;
+        String sql = "INSERT INTO colunas (titulo , id_quadro) VALUES (?,?)";
 
-                pst.setString(1, coluna.getTitulo());
-                pst.setInt(2, coluna.getQuadro().getId());
-                pst.execute();
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql);) {
 
-                // obter o id criado
-                String query = "SELECT LAST_INSERT_ID()";
-                try (PreparedStatement pst1 = conn.prepareStatement(query); 
-                		ResultSet rs = pst1.executeQuery();) {
+            pst.setString(1, coluna.getTitulo());
+            pst.setInt(2, coluna.getQuadro().getId());
+            pst.execute();
 
-                    if (rs.next()) {
-                        id = rs.getInt(1);
-                        coluna.setId(id);
-                    }
+            // obter o id criado
+            String query = "SELECT LAST_INSERT_ID()";
+            try (PreparedStatement pst1 = conn.prepareStatement(query);
+                    ResultSet rs = pst1.executeQuery();) {
+
+                if (rs.next()) {
+                    id = rs.getInt(1);
+                    coluna.setId(id);
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                throw new IOException(e);
             }
-            System.out.println("Coluna " + coluna.getTitulo() + " de ID " + coluna.getId() + " gerado no banco com sucesso");
-            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
         }
-	
-        public ColunaEntity atualizarColuna(ColunaEntity coluna) throws IOException {
-            String sql = "UPDATE colunas SET titulo = ?, quadro_id = ? WHERE id = ?";
-            try (Connection conn = ConnectionFactory.getConnection(); 
-            		PreparedStatement pst = conn.prepareStatement(sql);) {
-                pst.setString(1, coluna.getTitulo());
-                pst.setInt(2, coluna.getQuadro().getId());
-                pst.execute();
+        System.out.println("Coluna " + coluna.getTitulo() + " de ID " + coluna.getId() + " gerado no banco com sucesso");
+        return id;
+    }
+
+    public ColunaEntity atualizarColuna(ColunaEntity coluna) throws IOException {
+        String sql = "UPDATE colunas SET titulo = ?, quadro_id = ? WHERE id = ?";
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql);) {
+            pst.setString(1, coluna.getTitulo());
+            pst.setInt(2, coluna.getQuadro().getId());
+            pst.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+            ColunaEntity colunaAlterada = buscarColuna(coluna.getId());
+        return colunaAlterada;
+    }
+
+    public ArrayList<ColunaEntity> listarColunas(int quadroId) throws IOException {
+        String sql ="SELECT c.id, c.titulo, c.id_quadro FROM colunas c" +
+                " JOIN quadros q ON q.id = c.id_quadro" +
+                " WHERE q.id = ?" +
+                " ORDER BY c.titulo";
+        ArrayList<ColunaEntity> colunas = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql)){
+
+            pst.setInt(1, quadroId);
+            pst.execute();
+
+            try (ResultSet rs = pst.executeQuery();){
+
+                while(rs.next()) {
+                    ColunaEntity coluna = new ColunaEntity();
+                    coluna.setId(rs.getInt("id"));
+                    coluna.setTitulo(rs.getString("titulo"));
+                    QuadroDAO qDAO = new QuadroDAO();
+                    QuadroEntity quadro = qDAO.buscarQuadro(rs.getInt("id_quadro"));
+                    coluna.setQuadro(quadro);
+                    colunas.add(coluna);
+                }
 
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new IOException(e);
             }
-                ColunaEntity colunaAlterada = buscarColuna(coluna.getId());
-            return colunaAlterada;
-	}	
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+
+        return colunas;
+    }
 }
