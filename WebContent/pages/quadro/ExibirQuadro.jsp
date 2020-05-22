@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="c-coluna c-rolagem">
-                        <div class="card card-body c-card-body">
+                        <div class="card card-body c-card-body fixed">
                             <div class="header c-header">
                                 <p>Titulo</p>
                                 <div class="dropleft">
@@ -42,16 +42,16 @@
                                          aria-expanded="false" width="10" alt="icon">
                                     <div class="dropdown-menu m-2" aria-labelledby="dropdownMenuButton">
                                         <div class="header c-header">
-                                            <span class="dropdown-item-text">Ações da lista</span>
+                                            <span class="dropdown-item-text">Ações da coluna</span>
                                             <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna"
                                                role="button" aria-expanded="false" aria-controls="coluna">
                                             </i>
                                         </div>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item c-item"><i class="fas fa-plus mr-2"></i>Adicionar Ticket</a>
-                                        <a class="dropdown-item c-item"><i class="fas fa-edit mr-1"></i>Editar Lista</a>
-                                        <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover Lista</a>
-                                        <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar Lista</a>
+                                        <a class="dropdown-item c-item"><i class="fas fa-edit mr-1"></i>Editar Coluna</a>
+                                        <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover Coluna</a>
+                                        <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar Coluna</a>
                                     </div>
                                 </div>
                             </div>
@@ -82,29 +82,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-collapse mt-3 col-md-10" data-toggle="collapse" href="#collapseTitulo" 
-                        role="button" aria-expanded="false" aria-controls="collapseTitulo">
-                        <i class="fas fa-plus mr-2"></i>Adionar nova lista
+                <div id="coluna" class="col-md-3">
+                    <button id="btn-coluna" class="btn btn-primary col-md-12" onclick="abreModalColuna()">
+                        <i class="fas fa-plus mr-1"></i>Adicionar outra coluna
                     </button>
-                    <form action="">
-                        <div class="form-group">
-                            <div class="collapse" id="collapseTitulo">
-                                <div class="card card-body c-card-body">
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <input id="titulo" type="text" class="form-control" name="3" placeholder="Insira o título da lista" required>
+                </div>
+
+                <!-- Modal adicionar coluna-->
+                <div id="ModalColuna" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <form action="" method="POST">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Digite o nome da coluna</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-id-card"></i></span>
                                         </div>
+                                        <input type="text" class="form-control" name="acao" value="titulo" placeholder="Nome do quadro" aria-label="Username" aria-describedby="basic-addon1" required>
                                     </div>
-                                    <div class="row">
-                                        <button type="submit" class="btn btn-geral bt-sm" onclick="validaTitulo()">Adicionar
-                                        </button>
-                                        <div>
-                                            <i class="fas fa-times mt-2 ml-4" data-toggle="collapse" href="#collapseTitulo" 
-                                                role="button" aria-expanded="false" aria-controls="collapseTitulo">
-                                            </i>
-                                        </div>
-                                    </div>   
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-geral" name="acao" value="">Salvar</button>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +149,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-group mt-5">
-                                                <label><i class="far fa-comment-alt mr-2"></i></i>Descrição</label>
+                                                <label><i class="far fa-comment-alt mr-2"></i></i>Comentário</label>
                                             </div>
                                             <div class="input-group">
                                                 <input class="form-control" value="" placeholder="Faça um comentário">
@@ -155,7 +160,6 @@
                                         <button type="submit" class="btn btn-modal text-white mt-2"><i class="fas fa-paperclip mr-2"></i>Anexo</button>
                                         <button type="submit" class="btn btn-modal text-white mt-2"><i class="fas fa-arrow-right mr-2"></i>Mover</button>
                                         <button type="submit" class="btn btn-modal text-white mt-2"><i class="far fa-edit mr-2"></i>Editar</button>
-                                        <button type="submit" class="btn btn-modal text-white mt-2"><i class="fas fa-users mr-2 pr-1"></i>Time </button>
                                         <button type="submit" class="btn btn-modal text-white mt-2"><i class="fas fa-trash mr-2"></i>Excluir</button>
                                     </div>
                                 </div>
@@ -175,6 +179,12 @@
                     show: true
                 });
             }
+            function abreModalColuna() {
+                $("#ModalColuna").modal({
+                    show: true
+                });
+            }
+
         </script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

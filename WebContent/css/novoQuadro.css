@@ -1,5 +1,7 @@
 .c-card-body {
-    background-color: rgb(226, 225, 231);
+    background-color: #F1F2F9;
+    border-color: #F1F2F9;
+    height: 10%;
 }
 
 body {
@@ -15,12 +17,9 @@ body {
 .c-header {
     display: flex;
     justify-content: space-between;
-}
-.c-card-body {
     background-color: #F1F2F9;
-    border-color: #F1F2F9;
-    height: 10%;
 }
+
 .c-bg-dark {
     background-color: #F1F2F9 !important;
 }

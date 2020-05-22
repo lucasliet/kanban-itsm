@@ -26,7 +26,7 @@
 <header>
     <c:import url="../Menu.jsp"/>
 </header>
-<div class="container">
+<div class="container mt-4 mb-4">
     <div class="row my-3 justify-content-center">
         <div class="bg-grey">
             <div class="row coluna justify-content-center">
@@ -91,7 +91,7 @@
                     </form>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row">
                 <div class="col-md-5 ml-5 mb-5 ">
                     <section class="col-md-10">
                         <h5 class="titulo mt-3"><strong>Alterar dados Cadastrais</strong></h5>

@@ -24,8 +24,8 @@
 					<i class="far fa-file-alt mr-1"></i>Meus quadros
 				</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link text-white" href="/pages/quadro/ExibirQuadro.jsp">
+			<li class="nav-item" onclick="QuadroModal()">
+				<a class="nav-link text-white">
 					<i class="fas fa-plus mr-1"></i>Novo quadro
 				</a>
 			</li>
@@ -45,5 +45,42 @@
 				</div>
 			</div>
 		</ul>
+		<!--Modal -->
+
+		<div id="NewQuadro" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<form action="/quadro.do" method="POST">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Digite o nome do quadro</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1"><i class="fas fa-id-card"></i></span>
+								</div>
+								<input type="text" class="form-control" name="acao" value="titulo" placeholder="Nome do quadro" aria-label="Username" aria-describedby="basic-addon1" required>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+							<button type="submit" class="btn btn-geral" name="acao" value="btn-inserir">Salvar</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+		<script>
+			function QuadroModal() {
+				$("#NewQuadro").modal({
+					show: true
+				});
+			}
+		</script>
 	</div>
 </nav>
