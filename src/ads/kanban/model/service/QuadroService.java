@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import ads.kanban.model.dao.QuadroDAO;
 import ads.kanban.model.entity.QuadroEntity;
+import ads.kanban.model.entity.UsuarioEntity;
 
 public class QuadroService {
 
@@ -18,9 +19,9 @@ public class QuadroService {
     	return dao.deletarQuadro(id);
     }
     
-    public int inserirQuadro(QuadroEntity quadro) throws IOException {
+    public int inserirQuadro(QuadroEntity quadro, UsuarioEntity usuario) throws IOException {
     	QuadroDAO dao = new QuadroDAO();
-    	return dao.inserirQuadro(quadro);
+    	return dao.inserirQuadro(quadro, usuario);
     }
     
     public QuadroEntity atualizarQuadro(QuadroEntity quadro) throws IOException {

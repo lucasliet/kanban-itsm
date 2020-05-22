@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import ads.kanban.model.entity.QuadroEntity;
+import ads.kanban.model.entity.UsuarioEntity;
 
 public class QuadroDAO {
     public QuadroEntity buscarQuadro(int id) throws IOException {
@@ -57,7 +58,7 @@ public class QuadroDAO {
         return feedback;
     }
 
-    public int inserirQuadro(QuadroEntity quadro) throws IOException {
+    public int inserirQuadro(QuadroEntity quadro, UsuarioEntity usuario) throws IOException {
         int id = -1;
         String sql = "INSERT INTO quadros (titulo) VALUES (?)";
 
@@ -75,6 +76,12 @@ public class QuadroDAO {
                 if (rs.next()) {
                     id = rs.getInt(1);
                     quadro.setId(id);
+                }
+                String sqlUser = "INSERT INTO quadros_usuarios (id_usuario, id_quadro) VALUES(?,?);";
+                try (PreparedStatement pst2 = conn.prepareStatement(sqlUser);){
+                    pst2.setInt(1, usuario.getId());
+                    pst2.setInt(2, quadro.getId());
+                    pst2.execute();
                 }
             }
         } catch (SQLException e) {

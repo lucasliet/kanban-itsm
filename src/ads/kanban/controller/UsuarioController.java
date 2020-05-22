@@ -48,7 +48,7 @@ public class UsuarioController extends HttpServlet {
 
                 uService.inserirUsuario(usuario);
 
-                saida = "index.jsp";
+                saida = "/index.jsp";
                 break;
             case "btn-atualizar": //Atualizar Perfil
                 usuario = new UsuarioEntity();

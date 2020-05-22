@@ -62,7 +62,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><i class="fas fa-id-card"></i></span>
 								</div>
-								<input type="text" class="form-control" name="acao" value="titulo" placeholder="Nome do quadro" aria-label="Username" aria-describedby="basic-addon1" required>
+								<input type="text" class="form-control" name="titulo" placeholder="Nome do quadro" aria-label="Username" aria-describedby="basic-addon1" required>
 							</div>
 						</div>
 						<div class="modal-footer">

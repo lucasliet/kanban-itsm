@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ads.kanban.model.entity.QuadroEntity;
+import ads.kanban.model.entity.UsuarioEntity;
 import ads.kanban.model.service.QuadroService;
 
 
@@ -30,8 +32,11 @@ public class QuadroController extends HttpServlet {
 		QuadroEntity quadro = new QuadroEntity();
 		ArrayList<QuadroEntity> quadros = new ArrayList<>();
         QuadroService qService = new QuadroService();
-        
-		switch (acao) {
+
+        HttpSession session = request.getSession();
+        UsuarioEntity usuario = null;
+
+        switch (acao) {
             case "page-quadro-adm":
                 quadros = qService.listarQuadros();
                 request.setAttribute("quadros", quadros);
@@ -90,7 +95,15 @@ public class QuadroController extends HttpServlet {
 				titulo = request.getParameter("titulo");
 				quadro = new QuadroEntity();
 				quadro.setTitulo(titulo);
-				id = qService.inserirQuadro(quadro);
+
+				Object aux = session.getAttribute("usuario");
+				if (aux != null && aux instanceof UsuarioEntity) {
+					usuario = (UsuarioEntity) aux;
+				}
+				System.out.print(usuario);
+
+				id = qService.inserirQuadro(quadro, usuario);
+				quadro.setId(id);
 				request.setAttribute("quadro", quadro);
 				saida = "/pages/quadro/ExibirQuadro.jsp";
 				break;
