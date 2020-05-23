@@ -31,10 +31,11 @@
                     <p>${quadro.titulo}</p>
                 </div>
             </div>
-            <div class="row">
+
+            <div class="scrolling-wrapper">
                 <c:forEach var="coluna" items="${colunas}">
                     <div class="col-md-3">
-                        <div class="c-coluna c-rolagem">
+                        <div id="#coluna-scroll" class="c-coluna c-rolagem">
                             <div class="card card-body c-card-body fixed">
                                 <div class="header c-header">
                                     <p>${coluna.titulo}</p>
@@ -73,7 +74,7 @@
                     </div>
                 </c:forEach>
                 <div class="col-md-3">
-                    <button id="btn-coluna" class="btn btn-primary col-md-12" onclick="abreModalColuna()">
+                    <button id="btn-coluna" class="btn btn-outline-primary col-md-12" onclick="abreModalColuna()">
                         <i class="fas fa-plus mr-1"></i>Adicionar outra coluna
                     </button>
                 </div>
