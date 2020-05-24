@@ -19,7 +19,7 @@
         <script src="https://kit.fontawesome.com/da77f520d1.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="/css/global.css">
-        <link rel="stylesheet" href="/css/novoQuadro.css">
+        <link rel="stylesheet" href="/css/exibirQuadro.css">
     </head>
     <body>
         <header>
@@ -34,7 +34,7 @@
 
             <div class="scrolling-wrapper">
                 <c:forEach var="coluna" items="${colunas}">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-12">
                         <div id="#coluna-scroll" class="c-coluna c-rolagem">
                             <div class="card card-body c-card-body fixed">
                                 <div class="header c-header">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </c:forEach>
-                <div class="col-md-3">
+                <div class="col-md-3 col-12">
                     <button id="btn-coluna" class="btn btn-outline-primary col-md-12" onclick="abreModalColuna()">
                         <i class="fas fa-plus mr-1"></i>Adicionar outra coluna
                     </button>

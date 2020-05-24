@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light">
+<nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light top-fixed">
 	<a class="navbar-brand" href="Home.jsp"> <img src="/img/logo-light.svg"
 												  width="80" alt="">
 	</a>
