@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS `kanbanitsm`.`quadros` (
 CREATE TABLE IF NOT EXISTS `kanbanitsm`.`quadros_usuarios` (
     id_quadro INT NOT NULL,
     id_usuario INT NOT NULL,
-    FOREIGN KEY (id_quadro)  REFERENCES quadros(id),
+    FOREIGN KEY (id_quadro)  REFERENCES quadros(id)
+    ON DELETE CASCADE,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     PRIMARY KEY (id_quadro, id_usuario)
 );
@@ -33,7 +34,9 @@ CREATE TABLE IF NOT EXISTS `kanbanitsm`.`colunas` (
     id INT NOT NULL AUTO_INCREMENT,
     titulo VARCHAR(20) NOT NULL,
     id_quadro INT NOT NULL,
-    FOREIGN KEY (id_quadro) REFERENCES quadros(id),
+    posicao INT NOT NULL,
+    FOREIGN KEY (id_quadro) REFERENCES quadros(id)
+	ON DELETE CASCADE,
 	PRIMARY KEY (id)
   
 );
