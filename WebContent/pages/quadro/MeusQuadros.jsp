@@ -26,135 +26,66 @@
             <c:import url="../Menu.jsp"/>
         </header>
         <div class="container-fluid">
+            <c:if test = "${empty quadros}">
+                <h1>Puta irmão, ce não tem quadro ainda :(((( que triste.</h1> <!-- TODO estilizar mensagem de não ter quadros -->
+            </c:if>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card mt-4 c-cards">
-                        <div class="card-header c-header">
-                            <p>Titulo</p>
-                            <div class="dropleft">
-                                <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                     aria-expanded="false" width="10" alt="icon">
-                                <div class="dropdown-menu m-2"
-                                    aria-labelledby="dropdownMenuButton">
-                                    
-                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
-                                        Excluir
-                                    </a>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 1.</p>
-                        </div>
-                        <hr>
-                        <div class="card-link m-2">
-                            <a href="#" class="card-link">
-                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mt-4 c-cards">
-                        <div class="card-header c-header">
-                            <p>Titulo</p>
-                            <div class="dropleft">
-                                <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                     aria-expanded="false" width="10" alt="icon">
-                                <div class="dropdown-menu m-2"
-                                    aria-labelledby="dropdownMenuButton">
-                                    
-                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
-                                        Excluir
-                                    </a>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 1.</p>
-                        </div>
-                        <hr>
-                        <div class="card-link m-2">
-                            <a href="#" class="card-link">
-                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mt-4 c-cards">
-                        <div class="card-header c-header">
-                            <p>Titulo</p>
-                            <div class="dropleft">
-                                <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                     aria-expanded="false" width="10" alt="icon">
-                                <div class="dropdown-menu m-2"
-                                    aria-labelledby="dropdownMenuButton">
-                                    
-                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
-                                        Excluir
-                                    </a>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 1.</p>
-                        </div>
-                        <hr>
-                        <div class="card-link m-2">
-                            <a href="#" class="card-link">
-                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mt-4 c-cards">
-                        <div class="card-header c-header">
-                            <p>Titulo</p>
-                            <div class="dropleft">
-                                <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                     aria-expanded="false" width="10" alt="icon">
-                                <div class="dropdown-menu m-2"
-                                    aria-labelledby="dropdownMenuButton">
-                                    
-                                    <a class="dropdown-item c-item" data-toggle="modal" data-target=".bd-example-modal-sm">
-                                        Excluir
-                                    </a>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="card-body mb-5">
-                            <p class="card-text">Descrição do quadro 1.</p>
-                        </div>
-                        <hr>
-                        <div class="card-link m-2">
-                            <a href="#" class="card-link">
-                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <c:forEach var="quadro" items="${quadros}">
+                    <div class="col-md-3">
+                        <div class="card mt-4 c-cards">
+                            <div class="card-header c-header">
+                                <p class="text-white">${quadro.titulo}</p>
+                                <div class="dropleft">
+                                    <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
+                                         aria-expanded="false" width="10" alt="icon">
+                                    <div class="dropdown-menu m-2"
+                                         aria-labelledby="dropdownMenuButton">
 
-            <!--Modal-->
-            <!-- Button trigger modal -->
-        
-            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalCenterTitle">Deseja excluir o quadro?</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                          <button type="submit" name="#" value="#" class="btn btn-geral">Sim</button>
+                                        <!-- Modal Button Trigger-->
+
+                                        <a class="dropdown-item c-item" data-toggle="modal"
+                                           data-target="#ExcluirQuadroModal">
+                                            Excluir
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background-color: #027178;">
+                                <form action="/quadro.do" method="post" class="m-2">
+                                    <input type="hidden" name="id_exibir" value="${quadro.id}">
+                                    <button type="submit" class="btn btn-geral py-3" style="width: 100%;" name="acao" value="page-exibir">
+                                        <i class="far fa-file-alt mr-1"></i>Ir para o quadro
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <!--Modal-->
+
+                    <div id="ExcluirQuadroModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Deseja excluir o quadro?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                    <form action="/quadro.do" method="post" class="m-2">
+                                        <input type="hidden" name="id_excluir" value="${quadro.id}">
+                                        <button type="submit" class="btn btn-geral" style="width: 100%;"
+                                                name="acao" value="btn-excluir">
+                                            Sim
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
 

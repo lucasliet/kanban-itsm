@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ads.kanban.model.entity.ColunaEntity;
 import ads.kanban.model.entity.QuadroEntity;
 import ads.kanban.model.entity.UsuarioEntity;
+import ads.kanban.model.service.ColunaService;
 import ads.kanban.model.service.QuadroService;
 
 
@@ -24,23 +26,28 @@ public class QuadroController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String acao = request.getParameter("acao");
-		String saida = null;
+		String saida = "/index.jsp";
 		
 		int id;
 		String titulo;
 		
 		QuadroEntity quadro = new QuadroEntity();
 		ArrayList<QuadroEntity> quadros = new ArrayList<>();
+		ArrayList<ColunaEntity> colunas = new ArrayList<>();
         QuadroService qService = new QuadroService();
+		ColunaService cService = new ColunaService();
 
         HttpSession session = request.getSession();
         UsuarioEntity usuario = null;
 
         switch (acao) {
-            case "page-quadro-adm":
+			case "btn-excluir":
+				id = Integer.parseInt(request.getParameter("id_excluir"));
+				qService.deletarQuadro(id);
+            case "page-meus-quadros":
                 quadros = qService.listarQuadros();
                 request.setAttribute("quadros", quadros);
-                saida = "AdmQuadro.jsp";
+                saida = "/pages/quadro/MeusQuadros.jsp";
                 break;
                 
             case "page-todos":
@@ -48,12 +55,14 @@ public class QuadroController extends HttpServlet {
             	request.setAttribute("quadros", quadros);
             	saida = "TodosQuadros.jsp";
             	break;
-            	
+
             case "page-exibir":
             	id = Integer.parseInt(request.getParameter("id_exibir"));
             	quadro = qService.buscarQuadro(id);
+				colunas = cService.listarColunas(id);
             	request.setAttribute("quadro", quadro);
-            	saida = "ExibirQuadro.jsp";
+            	request.setAttribute("colunas", colunas);
+            	saida = "/pages/quadro/ExibirQuadro.jsp";
             	break;
             	
             case "page-atualizar":
@@ -62,16 +71,6 @@ public class QuadroController extends HttpServlet {
             	request.setAttribute("quadro", quadro);
             	saida = "AtualizarQuadro.jsp";
             	break;
-            	
-            case "page-excluir":
-            	id = Integer.parseInt(request.getParameter("id_excluir"));
-    			quadro = qService.buscarQuadro(id);
-    			request.setAttribute("quadro", quadro);
-    			request.setAttribute("btn", "<button type=\"button\" class=\"btn btn-danger text-uppercase\" data-toggle=\"modal\" data-target=\"#modalExcluir\">Excluir </button>");
-    		    saida = "ExibirQuadro.jsp";
-    			break;
-            
-
 
             case "btn-atualizar":
     			id = Integer.parseInt(request.getParameter("id_atualizar"));
@@ -80,14 +79,6 @@ public class QuadroController extends HttpServlet {
     			quadro.setTitulo(titulo);
     			QuadroEntity quadroNovo = qService.atualizarQuadro(quadro);
     			request.setAttribute("quadro", quadroNovo);
-    			saida = "ExibirQuadro.jsp";
-    			break;
-    			
-            case "btn-excluir":
-    			id = Integer.parseInt(request.getParameter("id_excluir"));
-    			quadro = qService.buscarQuadro(id);
-    			qService.deletarQuadro(id);
-    			request.setAttribute("quadro", quadro);
     			saida = "ExibirQuadro.jsp";
     			break;
 

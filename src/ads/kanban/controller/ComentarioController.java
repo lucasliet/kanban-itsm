@@ -32,14 +32,13 @@ public class ComentarioController {
 			ComentarioService cService = new ComentarioService();
 	        
 			switch (acao) {
-			case "page-excluir":
-            	id = Integer.parseInt(request.getParameter("id_excluir"));
-            	//TODO comentario = cService.buscarComentario(id);
-            	cService.excluirComentario(id);
-    			request.setAttribute("comentario", coment);
-    		    saida = "AdmQuadro.jsp";
-    			break;
-			
+				case "page-excluir":
+					id = Integer.parseInt(request.getParameter("id_excluir"));
+					//TODO comentario = cService.buscarComentario(id);
+					cService.excluirComentario(id);
+					request.setAttribute("comentario", coment);
+					saida = "AdmQuadro.jsp";
+					break;
 			   
 				case "btn-inserir":
 	            	corpo = request.getParameter("corpo");

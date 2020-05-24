@@ -20,7 +20,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white" href="/pages/quadro/MeusQuadros.jsp">
+				<a class="nav-link text-white" href="/quadro.do?acao=page-meus-quadros">
 					<i class="far fa-file-alt mr-1"></i>Meus quadros
 				</a>
 			</li>

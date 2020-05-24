@@ -69,13 +69,14 @@ public class ColunaDAO {
 
     public int inserirColuna(ColunaEntity coluna) throws IOException {
         int id = -1;
-        String sql = "INSERT INTO colunas (titulo , id_quadro) VALUES (?,?)";
+        String sql = "INSERT INTO colunas (titulo , id_quadro, posicao) VALUES (?,?,?)";
 
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement pst = conn.prepareStatement(sql);) {
 
             pst.setString(1, coluna.getTitulo());
             pst.setInt(2, coluna.getQuadro().getId());
+            pst.setInt(3,1); //TODO ajustar posição real
             pst.execute();
 
             // obter o id criado
@@ -116,7 +117,7 @@ public class ColunaDAO {
         String sql ="SELECT c.id, c.titulo, c.id_quadro FROM colunas c" +
                 " JOIN quadros q ON q.id = c.id_quadro" +
                 " WHERE q.id = ?" +
-                " ORDER BY c.titulo";
+                " ORDER BY c.titulo"; //TODO order by posicao
         ArrayList<ColunaEntity> colunas = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.getConnection();
