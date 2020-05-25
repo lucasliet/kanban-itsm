@@ -27,7 +27,20 @@
         </header>
         <div class="container-fluid">
             <c:if test = "${empty quadros}">
-                <h1>Puta irmão, ce não tem quadro ainda :(((( que triste.</h1> <!-- TODO estilizar mensagem de não ter quadros -->
+                 <div class="container mt-5">
+                     <div class="row justify-content-center">
+                         <div class="col-md-7">
+                             <div class="row justify-content-center">
+                                 <div class="img-triste">
+                                    <img src="/img/logoTriste.png" width=300>
+                                 </div>
+                             </div>
+                             <div class="alert alert-danger mt-5" role="alert">
+                                 <h5>Poxa você não tem nenhum quadro, fico triste com isso 😐</h5>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
             </c:if>
             <div class="row">
                 <c:forEach var="quadro" items="${quadros}">
@@ -38,22 +51,20 @@
                                 <div class="dropleft">
                                     <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
                                          aria-expanded="false" width="10" alt="icon">
-                                    <div class="dropdown-menu m-2"
+                                    <div class="dropdown-menu c-menu m-2"
                                          aria-labelledby="dropdownMenuButton">
-
                                         <!-- Modal Button Trigger-->
-
-                                        <a class="dropdown-item c-item" data-toggle="modal"
+                                        <a class="dropdown-item c-item text-white" data-toggle="modal"
                                            data-target="#ExcluirQuadroModal">
                                             Excluir
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div style="background-color: #027178;">
+                            <div>
                                 <form action="/quadro.do" method="post" class="m-2">
                                     <input type="hidden" name="id_exibir" value="${quadro.id}">
-                                    <button type="submit" class="btn btn-geral py-3" style="width: 100%;" name="acao" value="page-exibir">
+                                    <button type="submit" class="btn btn-quadro float-right m-2" name="acao" value="page-exibir">
                                         <i class="far fa-file-alt mr-1"></i>Ir para o quadro
                                     </button>
                                 </form>
