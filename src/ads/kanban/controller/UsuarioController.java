@@ -104,7 +104,7 @@ public class UsuarioController extends HttpServlet {
                     session.setAttribute("usuario", usuario);
                     //Puxa a lista de quadros pra por na timeline da home
                     QuadroService qService = new QuadroService();
-                    request.setAttribute("quadros", qService.listarQuadros(3));
+                    request.setAttribute("quadros", qService.listarQuadros(usuario.getId(), 3));
 
                     saida = "/pages/Home.jsp";
                 } else {
@@ -117,9 +117,7 @@ public class UsuarioController extends HttpServlet {
                     request.setAttribute("msgerror", nlogou);
                 }
                 break;
-            case "logout":
-                session.invalidate();
-                break;
+            case "logout": session.invalidate();
         }
     RequestDispatcher view = request.getRequestDispatcher(saida);
 		view.forward(request,response);

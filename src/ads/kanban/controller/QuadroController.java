@@ -39,13 +39,19 @@ public class QuadroController extends HttpServlet {
 
         HttpSession session = request.getSession();
         UsuarioEntity usuario = null;
+        Object aux = null;
 
         switch (acao) {
 			case "btn-excluir":
 				id = Integer.parseInt(request.getParameter("id_excluir"));
 				qService.deletarQuadro(id);
             case "page-meus-quadros":
-                quadros = qService.listarQuadros();
+            	aux = session.getAttribute("usuario");
+				if (aux != null && aux instanceof UsuarioEntity) {
+					usuario = (UsuarioEntity) aux;
+				}
+
+                quadros = qService.listarQuadros(usuario.getId());
                 request.setAttribute("quadros", quadros);
                 saida = "/pages/quadro/MeusQuadros.jsp";
                 break;
@@ -74,11 +80,10 @@ public class QuadroController extends HttpServlet {
 				quadro = new QuadroEntity();
 				quadro.setTitulo(titulo);
 
-				Object aux = session.getAttribute("usuario");
+				aux = session.getAttribute("usuario");
 				if (aux != null && aux instanceof UsuarioEntity) {
 					usuario = (UsuarioEntity) aux;
 				}
-				System.out.print(usuario);
 
 				id = qService.inserirQuadro(quadro, usuario);
 				quadro.setId(id);

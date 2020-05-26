@@ -108,12 +108,18 @@ public class QuadroDAO {
         return quadroAlterado;
     }
     
-    public ArrayList<QuadroEntity> listarQuadros() throws IOException {
-		String sql ="SELECT id, titulo FROM quadros ORDER BY titulo";
+    public ArrayList<QuadroEntity> listarQuadros(int usuarioId) throws IOException {
+		String sql ="SELECT q.id, q.titulo FROM quadros q " +
+                        "JOIN quadros_usuarios qu ON q.id = qu.id_quadro " +
+                        "JOIN usuarios u ON u.id = qu.id_usuario " +
+                        "WHERE u.id = ? " +
+                        "ORDER BY titulo";
 		ArrayList<QuadroEntity> quadros = new ArrayList<>();
 		
 		try (Connection conn = ConnectionFactory.getConnection(); 
 				PreparedStatement pst = conn.prepareStatement(sql)){
+		    pst.setInt(1, usuarioId);
+
 			try (ResultSet rs = pst.executeQuery();){
 				
 				while(rs.next()) {
@@ -136,14 +142,18 @@ public class QuadroDAO {
     	
     }
     //Mesma lista de cima mas setando um limite de resultados pra tela Home
-    public ArrayList<QuadroEntity> listarQuadros(int limit) throws IOException {
-        String sql ="SELECT id, titulo FROM quadros ORDER BY id DESC LIMIT ?";
+    public ArrayList<QuadroEntity> listarQuadros(int usuarioId, int limit) throws IOException {
+        String sql ="SELECT q.id, q.titulo FROM quadros q " +
+                        "JOIN quadros_usuarios qu ON q.id = qu.id_quadro " +
+                        "JOIN usuarios u ON u.id = qu.id_usuario " +
+                        "WHERE u.id = ? " +
+                        "ORDER BY id DESC LIMIT ?";
         ArrayList<QuadroEntity> quadros = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement pst = conn.prepareStatement(sql)){
-            pst.setInt(1,limit);
-            pst.execute();
+            pst.setInt(1, usuarioId);
+            pst.setInt(2,limit);
 
             try (ResultSet rs = pst.executeQuery();){
 

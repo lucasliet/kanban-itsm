@@ -30,11 +30,11 @@ public class QuadroService {
     	return dao.atualizarQuadro(quadro);
     }
     
-    public ArrayList<QuadroEntity> listarQuadros() throws IOException{
-    	return dao.listarQuadros();
+    public ArrayList<QuadroEntity> listarQuadros(int usuarioId) throws IOException{
+    	return dao.listarQuadros(usuarioId);
     }
 
-    public ArrayList<QuadroEntity> listarQuadros(int limit) throws IOException{
-        return dao.listarQuadros(limit);
+    public ArrayList<QuadroEntity> listarQuadros(int usuarioId, int limit) throws IOException{
+        return dao.listarQuadros(usuarioId ,limit);
     }
 }
