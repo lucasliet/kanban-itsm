@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ads.kanban.model.entity.UsuarioEntity;
+import ads.kanban.model.service.QuadroService;
 import ads.kanban.model.service.UsuarioService;
 
 @WebServlet("/usuario.do")
@@ -103,6 +104,10 @@ public class UsuarioController extends HttpServlet {
                 // ai ele manda pra sessão e loga
                 if (usuario.getId() != 0) {
                     session.setAttribute("usuario", usuario);
+                    //Puxa a lista de quadros pra por na timeline da home
+                    QuadroService qService = new QuadroService();
+                    request.setAttribute("quadros", qService.listarQuadros(3));
+
                     saida = "/pages/Home.jsp";
                 } else {
                     //Caso não encontre nenhum usuario com esse e-mail e senha, ele terá id = 0

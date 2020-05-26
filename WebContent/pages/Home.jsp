@@ -54,19 +54,22 @@
                             <h6 class="text-center mt-3 mb-4">
                                 <i class="fas fa-star mr-2" style="color: gold"></i>Últimos quadros
                             </h6>
-                            <div class="card c-cards m-3">
-                                <div class="card-header c-header-blue">
-                                    <p class="text-white">Titulo</p>
+                            <c:forEach var="quadro" items="${quadros}">
+                                <div class="card c-cards m-3">
+                                    <div class="card-header c-header-blue">
+                                        <p class="text-white">${quadro.titulo}</p>
+                                    </div>
+                                    <div>
+                                        <form action="/quadro.do" method="post" class="m-2">
+                                            <input type="hidden" name="id_exibir" value="${quadro.id}">
+                                            <button type="submit" class="btn btn-quadro btn-sm float-right m-2"
+                                                    name="acao" value="page-exibir">
+                                                <i class="far fa-file-alt mr-1"></i>Ir para o quadro
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div>
-                                    <form action="/quadro.do" method="post" class="m-2">
-                                        <input type="hidden" name="id_exibir" value="${quadro.id}">
-                                        <button type="submit" class="btn btn-quadro btn-sm float-right m-2" name="acao" value="page-exibir">
-                                            <i class="far fa-file-alt mr-1"></i>Ir para o quadro
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
             </div>

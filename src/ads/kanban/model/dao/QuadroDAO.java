@@ -135,4 +135,35 @@ public class QuadroDAO {
     	return quadros;
     	
     }
+    //Mesma lista de cima mas setando um limite de resultados pra tela Home
+    public ArrayList<QuadroEntity> listarQuadros(int limit) throws IOException {
+        String sql ="SELECT id, titulo FROM quadros ORDER BY id DESC LIMIT ?";
+        ArrayList<QuadroEntity> quadros = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)){
+            pst.setInt(1,limit);
+            pst.execute();
+
+            try (ResultSet rs = pst.executeQuery();){
+
+                while(rs.next()) {
+                    QuadroEntity quadro = new QuadroEntity();
+                    quadro.setId(rs.getInt("id"));
+                    quadro.setTitulo(rs.getString("titulo"));
+                    quadros.add(quadro);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new IOException(e);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+
+        return quadros;
+
+    }
 }
