@@ -40,7 +40,11 @@ public class UsuarioController extends HttpServlet {
                 usuario = new UsuarioEntity();
                 usuario.setNome(nome);
                 usuario.setUltimoNome(ultimoNome);
-                usuario.setEmail(nome.toLowerCase() + ultimoNome.toLowerCase() + "@cte.com");
+                usuario.setEmail(
+                        nome.toLowerCase().replaceAll("\\s+","") +  //esse replaceAll remove todos os espaços da string
+                        ultimoNome.toLowerCase().replaceAll("\\s+","") +
+                        "@cte.com"
+                );
                 usuario.setSenha(request.getParameter("senha"));
                 usuario.setEndereco(request.getParameter("endereco"));
                 usuario.setTelefone(request.getParameter("telefone"));
