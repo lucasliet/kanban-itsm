@@ -40,9 +40,11 @@
                                 <div class="header c-header">
                                     <p>${coluna.titulo}</p>
                                     <div class="dropleft">
-                                        <img src="/img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                             aria-expanded="false" width="10" alt="icon">
-                                        <div class="dropdown-menu m-2" aria-labelledby="dropdownMenuButton">
+                                        <svg class="bi bi-filter-right" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                             id="dropdown${coluna.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <path fill-rule="evenodd" d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z"/>
+                                        </svg>
+                                        <div class="dropdown-menu m-2" aria-labelledby="dropdown${coluna.id}">
                                             <div class="header c-header">
                                                 <span class="dropdown-item-text">Ações da coluna</span>
                                                 <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna"
@@ -50,13 +52,13 @@
                                                 </i>
                                             </div>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item c-item"><i class="fas fa-plus mr-2"></i>Adicionar
+                                            <a class="dropdown-item "><i class="fas fa-plus mr-2"></i>Adicionar
                                                 Ticket</a>
-                                            <a class="dropdown-item c-item"><i class="fas fa-edit mr-1"></i>Editar
+                                            <a class="dropdown-item "><i class="fas fa-edit mr-1"></i>Editar
                                                 Coluna</a>
-                                            <a class="dropdown-item c-item"><i class="fas fa-arrow-right mr-2"></i>Mover
+                                            <a class="dropdown-item "><i class="fas fa-arrow-right mr-2"></i>Mover
                                                 Coluna</a>
-                                            <a class="dropdown-item c-item"><i class="far fa-trash-alt mr-2"></i>Deletar
+                                            <a class="dropdown-item "><i class="far fa-trash-alt mr-2"></i>Deletar
                                                 Coluna</a>
                                         </div>
                                     </div>
@@ -74,7 +76,7 @@
                     </div>
                 </c:forEach>
                 <div class="col-md-3 col-12">
-                    <button id="btn-coluna" class="btn btn-outline-primary col-md-12" onclick="abreModalColuna()">
+                    <button id="btn-coluna" class="btn btn-outline-geral col-md-12" onclick="abreModalColuna()">
                         <i class="fas fa-plus mr-1"></i>Adicionar outra coluna
                     </button>
                 </div>

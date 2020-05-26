@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 	
 <nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light top-fixed">
-	<a class="navbar-brand" href="Home.jsp"> <img src="/img/logo-light.svg"
+	<a class="navbar-brand" href="/pages/Home.jsp"> <img src="/img/logo-light.svg"
 												  width="80" alt="">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -14,17 +14,17 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
+			<li class="nav-item  active">
 				<a class="nav-link text-white" href="/pages/Home.jsp">
 					<i class="fas fa-home mr-1"></i>Home <span class="sr-only">(current)</span>
 				</a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item ">
 				<a class="nav-link text-white" href="/quadro.do?acao=page-meus-quadros">
 					<i class="far fa-file-alt mr-1"></i>Meus quadros
 				</a>
 			</li>
-			<li class="nav-item" onclick="QuadroModal()">
+			<li class="nav-item " onclick="QuadroModal()">
 				<a class="nav-link text-white">
 					<i class="fas fa-plus mr-1"></i>Novo quadro
 				</a>

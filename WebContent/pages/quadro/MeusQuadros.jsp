@@ -35,9 +35,9 @@
                                     <img src="/img/logoTriste.png" width=300>
                                  </div>
                              </div>
-                             <div class="alert alert-danger mt-5" role="alert">
-                                 <h5>Poxa você não tem nenhum quadro, fico triste com isso 😐</h5>
-                             </div>
+                             <button class="alert btn-info mt-5" role="alert">
+                                <h5> Poxa você não tem nenhum quadro, clique aqui para criar um novo</h5>
+                             </button>
                          </div>
                      </div>
                  </div>
@@ -49,12 +49,15 @@
                             <div class="card-header c-header-blue">
                                 <p class="text-white">${quadro.titulo}</p>
                                 <div class="dropleft">
-                                    <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"
-                                         aria-expanded="false" width="10" alt="icon">
+                                    <svg class="bi bi-filter-right text-white" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <path fill-rule="evenodd" d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z"/>
+                                    </svg>
+
                                     <div class="dropdown-menu c-menu m-2"
                                          aria-labelledby="dropdownMenuButton">
                                         <!-- Modal Button Trigger-->
-                                        <a class="dropdown-item c-item text-white" data-toggle="modal"
+                                        <a class="dropdown-item text-white" data-toggle="modal"
                                            data-target="#ExcluirQuadroModal">
                                             Excluir
                                         </a>
@@ -64,7 +67,7 @@
                             <div>
                                 <form action="/quadro.do" method="post" class="m-2">
                                     <input type="hidden" name="id_exibir" value="${quadro.id}">
-                                    <button type="submit" class="btn btn-quadro float-right m-2" name="acao" value="page-exibir">
+                                    <button type="submit" class="btn btn-geral float-right m-2" name="acao" value="page-exibir">
                                         <i class="far fa-file-alt mr-1"></i>Ir para o quadro
                                     </button>
                                 </form>
