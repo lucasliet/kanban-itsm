@@ -96,7 +96,7 @@
                     <section class="col-md-10">
                         <h5 class="titulo mt-3"><strong>Alterar dados Cadastrais</strong></h5>
                         <p>Insira os novos dados para atualizar seu cadastro.</p>
-                        <a href="../Home.jsp"><i class="fas fa-arrow-left"></i> Voltar à home</a>
+                        <a href="/pages/Home.jsp"><i class="fas fa-arrow-left"></i> Voltar à home</a>
                     </section>
                 </div>
             </div>

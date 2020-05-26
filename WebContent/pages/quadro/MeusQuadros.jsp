@@ -46,7 +46,7 @@
                 <c:forEach var="quadro" items="${quadros}">
                     <div class="col-md-3">
                         <div class="card mt-4 c-cards">
-                            <div class="card-header c-header">
+                            <div class="card-header c-header-blue">
                                 <p class="text-white">${quadro.titulo}</p>
                                 <div class="dropleft">
                                     <img src="../../img/option.svg" data-toggle="dropdown" aria-haspopup="true"

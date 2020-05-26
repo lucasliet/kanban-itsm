@@ -25,52 +25,50 @@
 
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="card c-coluna mb-3">
-                        <div class="card-body">
-                            <p><strong>Título</strong></p>
+                        <div class="card-header">
+                            <p>Título</p>
                         </div>
-                        <div class="card-body c-cards m-2">
+                        <div class="card-body">
                             <img class="card-img-top" src="../img/logoHeader.png" alt="">
                         </div>
-                        <div class="card-body c-cards m-2">
-                          <p><strong>Descrição</strong></p>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                        <div class="card-body c-cards m-2">
-                            <p>
-                                <strong><i class="far fa-comments mr-1"></i>Comentário</strong>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-3">
-                    <div class="card c-coluna">
-                        <h6 class="text-center mt-3 mb-4">
-                            <i class="fas fa-star mr-1" style="color: gold;"></i>Últimos quadros
-                        </h6>
-                        <div class="card text-white bg-primary m-2" style="max-width: 18rem;">
-                            <p class="card-header">Titulo</p>
-                            <div class="card-body">
-                                <p class="card-text">Descrição do quadro 1.</p>
-                            </div>
-                        </div>
-                        <div class="card text-white bg-secondary m-2" style="max-width: 18rem;">
-                            <p class="card-header">Titulo</p>
-                            <div class="card-body">
-                                <p class="card-text">Descrição do quadro 2.</p>
-                            </div>
-                        </div>
-                        <div class="card text-white bg-secondary m-2" style="max-width: 18rem;">
-                            <p class="card-header">Titulo</p>
-                            <div class="card-body">
-                                <p class="card-text">Descrição do quadro 3.</p>
+                        <div class="card-footer">
+                            <label><i class="far fa-comment-alt mr-2"></i>Comente</label>
+                            <div class="row">
+                                <div class="col-md-10">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control text-input col-12" name="" value="" placeholder="Faça um comentário">
+                                </div>
+                                </div>
+                                <div class="2">
+                                    <button type="submit" class="btn btn-geral ml-3" name="" value="">Enviar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <div class="card c-coluna">
+                            <h6 class="text-center mt-3 mb-4">
+                                <i class="fas fa-star mr-2" style="color: gold"></i>Últimos quadros
+                            </h6>
+                            <div class="card c-cards m-3">
+                                <div class="card-header c-header-blue">
+                                    <p class="text-white">Titulo</p>
+                                </div>
+                                <div>
+                                    <form action="/quadro.do" method="post" class="m-2">
+                                        <input type="hidden" name="id_exibir" value="${quadro.id}">
+                                        <button type="submit" class="btn btn-quadro btn-sm float-right m-2" name="acao" value="page-exibir">
+                                            <i class="far fa-file-alt mr-1"></i>Ir para o quadro
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
 
