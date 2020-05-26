@@ -39,7 +39,7 @@
 					<a class="dropdown-item text-white" href="/pages/usuario/EditarPerfil.jsp">
 						<i class="fas fa-user mr-1"></i>Editar perfil
 					</a> 
-					<a class="dropdown-item text-white" href="/index.jsp">
+					<a class="dropdown-item text-white" href="/usuario.do?acao=logout">
 						<i class="fas fa-power-off mr-1"></i>Sair
 					</a>
 				</div>

@@ -52,8 +52,6 @@ public class UsuarioController extends HttpServlet {
                 usuario.setFoto("/img/fotoPadrao.png");
 
                 uService.inserirUsuario(usuario);
-
-                saida = "/index.jsp";
                 break;
             case "btn-atualizar": //Atualizar Perfil
                 usuario = new UsuarioEntity();
@@ -117,8 +115,10 @@ public class UsuarioController extends HttpServlet {
                                     "</div>";
 
                     request.setAttribute("msgerror", nlogou);
-                    saida = "/index.jsp";
                 }
+                break;
+            case "logout":
+                session.invalidate();
                 break;
         }
     RequestDispatcher view = request.getRequestDispatcher(saida);
