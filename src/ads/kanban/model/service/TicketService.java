@@ -7,28 +7,29 @@ import ads.kanban.model.dao.TicketDAO;
 import ads.kanban.model.entity.TicketEntity;
 
 public class TicketService {
-	public ArrayList<TicketEntity> listarTickets() throws IOException {
-        TicketDAO dao = new TicketDAO();
-        return dao.listarTickets();
+    private TicketDAO dao;
+
+    public TicketService() {
+        this.dao = new TicketDAO();
+    }
+
+    public ArrayList<TicketEntity> listarTickets(int colunaId) throws IOException {
+        return dao.listarTickets(colunaId);
     }
 
     public TicketEntity buscarTicket(int id) throws IOException {
-        TicketDAO dao = new TicketDAO();
         return dao.buscarTicket(id);
     }
 
     public int deletarTicket(int id) throws IOException {
-        TicketDAO dao = new TicketDAO();
         return dao.deletarTicket(id);
     }
     
     public int inserirTicket(TicketEntity ticket) throws IOException {
-        TicketDAO dao = new TicketDAO();
         return dao.inserirTicket(ticket);
     }
 
     public TicketEntity atualizarFilme(TicketEntity ticket) throws IOException {
-        TicketDAO dao = new TicketDAO();
         return dao.atualizarTicket(ticket);
     }
 }

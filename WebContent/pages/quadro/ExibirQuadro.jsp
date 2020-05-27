@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <c:forEach var="ticket" items="${tickets}">
+                            <c:forEach var="ticket" items="${coluna.tickets}">
                                 <div class="card m-2">'
                                     <div onclick="abreModal()" class="card-body">
                                         <h5 class="card-title">${ticket.titulo}}</h5>
