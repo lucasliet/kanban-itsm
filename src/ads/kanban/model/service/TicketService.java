@@ -13,6 +13,10 @@ public class TicketService {
         this.dao = new TicketDAO();
     }
 
+    public ArrayList<TicketEntity> ultimosTickets(int usuarioId, int limit) throws  IOException {
+      return dao.ultimosTickets(usuarioId, limit);
+    }
+
     public ArrayList<TicketEntity> listarTickets(int colunaId) throws IOException {
         return dao.listarTickets(colunaId);
     }

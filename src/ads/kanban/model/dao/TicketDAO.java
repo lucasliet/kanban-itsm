@@ -12,6 +12,42 @@ import ads.kanban.model.entity.TicketEntity;
 
 
 public class TicketDAO {
+
+	public ArrayList<TicketEntity> ultimosTickets(int usuarioId, int limit) throws IOException {
+		ArrayList<TicketEntity> tickets = new ArrayList<>();
+		String sql = "SELECT  t.id, t.titulo, t.descricao, t.foto FROM tickets t " +
+						"JOIN usuarios_tickets ut ON ut.id_ticket = t.id " +
+						"JOIN usuarios u ON ut.id_usuario = u.id "+
+						"WHERE u.id = ? " +
+						"ORDER BY t.id DESC LIMIT ?";
+
+		try (Connection conn = ConnectionFactory.getConnection();
+				 PreparedStatement pst = conn.prepareStatement(sql)){
+			pst.setInt(1, usuarioId);
+			pst.setInt(2, limit);
+			pst.execute();
+
+			try (ResultSet rs = pst.executeQuery();){
+
+				while(rs.next()) {
+					TicketEntity ticket = new TicketEntity();
+					ticket.setId(rs.getInt("id"));
+					ticket.setTitulo(rs.getString("titulo"));
+					ticket.setDescricao(rs.getString("descricao"));
+					ticket.setFoto(rs.getString("foto"));
+					tickets.add(ticket);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new IOException(e);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new IOException(e);
+		}
+		return tickets;
+	}
+
 	public ArrayList<TicketEntity> listarTickets(int colunaId) throws IOException {
 		ArrayList<TicketEntity> tickets = new ArrayList<>();
 		String sql = "SELECT  t.id, t.titulo, t.descricao, t.foto FROM tickets t " +

@@ -1,6 +1,7 @@
 package ads.kanban.controller;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,10 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ads.kanban.model.entity.ColunaEntity;
-import ads.kanban.model.entity.ComentarioEntity;
-import ads.kanban.model.entity.QuadroEntity;
-import ads.kanban.model.entity.TicketEntity;
+import ads.kanban.model.entity.*;
 import ads.kanban.model.service.ColunaService;
 import ads.kanban.model.service.ComentarioService;
 import ads.kanban.model.service.QuadroService;
@@ -34,6 +32,7 @@ public class TicketController extends HttpServlet {
 
         TicketService tService = new TicketService();
         TicketEntity ticket = null;
+
         switch (acao) {
             case "btn-inserir":
                 ticket = new TicketEntity();
@@ -49,6 +48,16 @@ public class TicketController extends HttpServlet {
                 tService.inserirTicket(ticket);
                 vaiPraQuadro(request, response);
                 break;
+            case "page-home":
+                UsuarioLogado usuarioLogado = new UsuarioLogado(request);
+                UsuarioEntity usuario =  usuarioLogado.getUsuario();
+
+                QuadroService qService = new QuadroService();
+
+                request.setAttribute("tickets", tService.ultimosTickets(usuario.getId(), 3));
+                request.setAttribute("quadros", qService.listarQuadros(usuario.getId(), 3));
+                RequestDispatcher view = request.getRequestDispatcher("/pages/Home.jsp");
+                view.forward(request, response);
         }
 
     }
