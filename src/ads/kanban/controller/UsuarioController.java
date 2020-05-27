@@ -27,7 +27,6 @@ public class UsuarioController extends HttpServlet {
         String saida = "/index.jsp";
         UsuarioEntity usuario = null;
         UsuarioService uService = new UsuarioService();
-        ArrayList<UsuarioEntity> usuarios = new ArrayList<>();
 
         HttpSession session = request.getSession();
 
@@ -54,17 +53,14 @@ public class UsuarioController extends HttpServlet {
                 uService.inserirUsuario(usuario);
                 break;
             case "btn-atualizar": //Atualizar Perfil
-                usuario = new UsuarioEntity();
                 //Mensagem de feedback se o usuário foi atualizado ou não
                 //Ela vai ser alimentada nos ifs
                 String authFeedback = "";
 
                 //checa se tem algum usuário logado na sessão
                 //se tiver, coloca dentro do objeto 'usuario'
-                Object aux = session.getAttribute("usuario");
-                if (aux != null && aux instanceof UsuarioEntity) {
-                    usuario = (UsuarioEntity) aux;
-                }
+                UsuarioLogado usuarioLogado = new UsuarioLogado(request);
+                usuario = usuarioLogado.getUsuario();
                 // Checa se a senha que o usuário digitou é igual a senha do banco
                 if (request.getParameter("senha_antiga").equals(usuario.getSenha())) {
                     //Se for igual, atualiza os dados
