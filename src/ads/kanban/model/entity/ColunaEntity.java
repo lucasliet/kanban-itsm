@@ -40,6 +40,11 @@ public class ColunaEntity {
 
 	@Override
 	public String toString() {
-		return "ColunaEntity [id_coluna=" + id + ", titulo_coluna=" + titulo + ", quadro=" + quadro + "]";
+		return "ColunaEntity{" +
+				"id=" + id +
+				", titulo='" + titulo + '\'' +
+				", quadro=" + quadro +
+				", tickets=" + tickets +
+				'}';
 	}
 }

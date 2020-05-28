@@ -52,8 +52,8 @@
                                                 </i>
                                             </div>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item">
-                                                <i class="fas fa-plus mr-2" data-toggle="modal" data-target="#ModalAdicionarTicket">Adicionar Ticket</i>
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#ModalAdicionarTicket${coluna.id}">
+                                                <i class="fas fa-plus mr-2"></i>Adicionar Ticket
                                             </a>
                                             <a class="dropdown-item ">
                                                 <i class="fas fa-edit mr-1"></i>Editar Coluna
@@ -69,14 +69,47 @@
                                 </div>
                             </div>
                             <c:forEach var="ticket" items="${coluna.tickets}">
-                                <div class="card m-2">'
+                                <div class="card m-2">
                                     <div class="card-body" data-toggle="modal" data-target="#modalTicket">
-                                        <h5 class="card-title">${ticket.titulo}}</h5>
-                                        <p class="card-text">${ticket.descricao}}</p>
+                                        <h5 class="card-title">${ticket.titulo}</h5>
                                     </div>
                                 </div>
                             </c:forEach>
                         </div>
+                    </div>
+
+                    <!-- modal adicionar ticket -->
+                    <div id="ModalAdicionarTicket${coluna.id}" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <form action="/ticket.do" method="POST">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="titleTicket">Digite o nome do ticket</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputTicket">
+                                                <i class="fas fa-id-card"></i>
+                                            </span>
+                                            </div>
+                                            <input type="hidden" name="id_quadro" value="${quadro.id}">
+                                            <input type="hidden" name="id_coluna" value="${coluna.id}">
+                                            <input type="text" class="form-control" name="titulo" placeholder="Nome do ticket"
+                                                   aria-label="Username" aria-describedby="inputTicket" required
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        <button type="submit" class="btn btn-geral" name="acao" value="btn-inserir">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </c:forEach>
                 <div class="col-md-3 col-12">
@@ -85,38 +118,6 @@
                     </button>
                 </div>
 
-                <!-- modal adicionar ticket -->
-                <div id="ModalAdicionarTicket" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <form action="/ticket.do" method="POST">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="titleTicket">Digite o nome do ticket</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputTicket">
-                                                <i class="fas fa-id-card"></i>
-                                            </span>
-                                        </div>
-                                        <input type="hidden" name="" value="">
-                                        <input type="text" class="form-control" name="titulo" placeholder="Nome do ticket"
-                                               aria-label="Username" aria-describedby="inputTicket" required
-                                        />
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <button type="submit" class="btn btn-geral" name="acao" value="">Salvar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
 
                 <!-- Modal adicionar coluna-->
                 <div id="ModalColuna" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">

@@ -145,7 +145,7 @@ public class TicketDAO {
         return feedback;
 	}
 	
-	public int inserirTicket(TicketEntity ticket) throws IOException {
+	public int inserirTicket(TicketEntity ticket, int usuarioId) throws IOException {
 		int id = -1;
 		String sql = "INSERT INTO tickets (titulo, descricao, foto, id_coluna)"
 				+ " VALUES (?, ?, ?, ?) ";
@@ -158,16 +158,25 @@ public class TicketDAO {
 			pst.setString(3, ticket.getFoto());
 			pst.setInt(4, ticket.getColuna().getId());
 			pst.execute();
-			
-			// obter o id criado
-            String query = "select LAST_INSERT_ID()";
-            try (PreparedStatement pst1 = conn.prepareStatement(query); ResultSet rs = pst1.executeQuery();) {
 
-                if (rs.next()) {
-                    id = rs.getInt(1);
-                    ticket.setId(id);
-                }
-            }
+			// obter o id criado
+			String query = "select LAST_INSERT_ID()";
+			try (PreparedStatement pst1 = conn.prepareStatement(query); ResultSet rs = pst1.executeQuery();) {
+
+				if (rs.next()) {
+					id = rs.getInt(1);
+					ticket.setId(id);
+				}
+			}
+
+			//insere na tabela usuarios_tickets, o ticket que acaba de ser criado, e o usuário que criou
+			String npran = "INSERT INTO usuarios_tickets (id_usuario, id_ticket) VALUES ( ? , ? )";
+			try(PreparedStatement pstn = conn.prepareStatement(npran);){
+				pstn.setInt(1,usuarioId);
+				pstn.setInt(2,ticket.getId());
+				pstn.execute();
+			}
+
 		} catch (SQLException e) {
             e.printStackTrace();
             throw new IOException(e);

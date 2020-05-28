@@ -28,7 +28,9 @@ public class TicketController extends HttpServlet {
         String acao = request.getParameter("acao");
         String saida = "/index.jsp";
 
-        int id = -1;
+        //pega o usuario logado
+        UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
+        UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
 
         TicketService tService = new TicketService();
         TicketEntity ticket = null;
@@ -37,29 +39,36 @@ public class TicketController extends HttpServlet {
             case "btn-inserir":
                 ticket = new TicketEntity();
                 ticket.setTitulo(request.getParameter("titulo"));
-                ticket.setDescricao(request.getParameter("descricao"));
-                ticket.setFoto(request.getParameter("foto"));
 
+                //pega id do usuário logado
+                int usuarioId = usuarioLogado.getId();
+
+                //pega id da coluna que o ticket vai ser criado
                 int colunaId = Integer.parseInt(request.getParameter("id_coluna"));
                 ColunaService cService = new ColunaService();
 
                 ticket.setColuna(cService.buscarColuna(colunaId));
 
-                tService.inserirTicket(ticket);
+
+
+                tService.inserirTicket(ticket,usuarioId);
                 vaiPraQuadro(request, response);
                 break;
             case "page-home":
-                UsuarioLogado usuarioLogado = new UsuarioLogado(request);
-                UsuarioEntity usuario =  usuarioLogado.getUsuario();
 
                 QuadroService qService = new QuadroService();
 
-                request.setAttribute("tickets", tService.ultimosTickets(usuario.getId(), 3));
-                request.setAttribute("quadros", qService.listarQuadros(usuario.getId(), 3));
+                request.setAttribute("tickets", tService.ultimosTickets(usuarioLogado.getId(), 3));
+                request.setAttribute("quadros", qService.listarQuadros(usuarioLogado.getId(), 3));
                 RequestDispatcher view = request.getRequestDispatcher("/pages/Home.jsp");
                 view.forward(request, response);
         }
 
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
     }
 
     protected void vaiPraQuadro(HttpServletRequest request, HttpServletResponse response)

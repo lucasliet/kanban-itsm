@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS `kanbanitsm`.`quadros_usuarios` (
     id_usuario INT NOT NULL,
     FOREIGN KEY (id_quadro)  REFERENCES quadros(id)
     ON DELETE CASCADE,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
     PRIMARY KEY (id_quadro, id_usuario)
 );
 
@@ -44,19 +45,22 @@ CREATE TABLE IF NOT EXISTS `kanbanitsm`.`colunas` (
 CREATE TABLE IF NOT EXISTS `kanbanitsm`.`tickets`(
     id INT NOT NULL AUTO_INCREMENT,
     titulo VARCHAR (50) NOT NULL,
-    descricao VARCHAR (200) NOT NULL,
+    descricao VARCHAR (200),
     foto VARCHAR(128),
     -- status_ticket VARCHAR (50) NOT NULL,
     id_coluna INT NOT NULL,
-    FOREIGN KEY (id_coluna)  REFERENCES colunas(id),
+    FOREIGN KEY (id_coluna)  REFERENCES colunas(id)
+    ON DELETE CASCADE,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS `kanbanitsm`.`usuarios_tickets`(
     id_usuario INT NOT NULL,
     id_ticket INT NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-    FOREIGN KEY (id_ticket)  REFERENCES tickets(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+	ON DELETE CASCADE,
+    FOREIGN KEY (id_ticket)  REFERENCES tickets(id)
+    ON DELETE CASCADE,
 	PRIMARY KEY (id_usuario, id_ticket)
 );
 
@@ -65,15 +69,19 @@ CREATE TABLE IF NOT EXISTS `kanbanitsm`.`comentarios` (
     corpo VARCHAR (200) NOT NULL,
     id_usuario INT NOT NULL,
     id_ticket INT NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-    FOREIGN KEY (id_ticket)  REFERENCES tickets(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+    FOREIGN KEY (id_ticket)  REFERENCES tickets(id)
+    ON DELETE CASCADE,
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS `kanbanitsm`.`curtidas` (
 	id_usuario INT NOT NULL,
     id_comentario INT NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-    FOREIGN KEY (id_comentario) REFERENCES comentarios(id),
+	FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+    FOREIGN KEY (id_comentario) REFERENCES comentarios(id)
+    ON DELETE CASCADE,
     PRIMARY KEY (id_usuario, id_comentario)
 );

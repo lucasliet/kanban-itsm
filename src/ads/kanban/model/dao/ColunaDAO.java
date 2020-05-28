@@ -15,8 +15,9 @@ public class ColunaDAO {
 	
 	public ColunaEntity buscarColuna(int id) throws IOException {
         ColunaEntity coluna = new ColunaEntity();
-        String sql = "SELECT id, titulo, id_quadro FROM colunas c, quadros q"
-        		+ "WHERE c.id_quadro = q.id AND c.id = ?";
+        String sql = "SELECT c.id, c.titulo, c.id_quadro FROM colunas c " +
+                     "JOIN quadros q ON c.id_quadro = q.id " +
+        		     "WHERE c.id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);){

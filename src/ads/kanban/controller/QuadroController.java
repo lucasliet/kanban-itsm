@@ -67,14 +67,20 @@ public class QuadroController extends HttpServlet {
 				quadro = qService.buscarQuadro(id);
 				colunas = cService.listarColunas(id);
 
+				ArrayList<ColunaEntity> colunasTickets = new ArrayList<>();
+
 				for (ColunaEntity item : colunas){
 					int colunaId = item.getId();
 					tickets = tService.listarTickets(colunaId);
 					item.setTickets(tickets);
+
+					colunasTickets.add(item);
+					System.out.println(tickets);
+					System.out.println(colunasTickets);
 				}
 
             	request.setAttribute("quadro", quadro);
-            	request.setAttribute("colunas", colunas);
+            	request.setAttribute("colunas", colunasTickets);
             	saida = "/pages/quadro/ExibirQuadro.jsp";
             	break;
 

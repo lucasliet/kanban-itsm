@@ -29,8 +29,8 @@ public class TicketService {
         return dao.deletarTicket(id);
     }
     
-    public int inserirTicket(TicketEntity ticket) throws IOException {
-        return dao.inserirTicket(ticket);
+    public int inserirTicket(TicketEntity ticket, int usuarioId) throws IOException {
+        return dao.inserirTicket(ticket, usuarioId);
     }
 
     public TicketEntity atualizarFilme(TicketEntity ticket) throws IOException {
