@@ -35,8 +35,8 @@
                                     <img src="/img/logoTriste.png" width=300>
                                  </div>
                              </div>
-                             <button class="alert btn-info mt-5" role="alert">
-                                <h5> Poxa você não tem nenhum quadro, clique aqui para criar um novo</h5>
+                             <button type="submit" class="alert btn-info mt-5" data-toggle="modal" data-target="#NewQuadro" role="alert">
+                                 <h5> Poxa você não tem nenhum quadro, clique aqui para criar um novo</h5>
                              </button>
                          </div>
                      </div>

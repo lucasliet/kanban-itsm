@@ -24,7 +24,7 @@
 					<i class="far fa-file-alt mr-1"></i>Meus quadros
 				</a>
 			</li>
-			<li class="nav-item " onclick="QuadroModal()">
+			<li class="nav-item " data-toggle="modal" data-target="#NewQuadro">
 				<a class="nav-link text-white">
 					<i class="fas fa-plus mr-1"></i>Novo quadro
 				</a>
@@ -73,14 +73,5 @@
 				</div>
 			</form>
 		</div>
-
-
-		<script>
-			function QuadroModal() {
-				$("#NewQuadro").modal({
-					show: true
-				});
-			}
-		</script>
 	</div>
 </nav>
