@@ -25,18 +25,13 @@
         <header>
             <c:import url="/pages/Menu.jsp"/>
         </header>
+        <div class="d-flex bg-info c-bg-info mb-2 py-3 col-12 text-white">
+            <svg class="bi bi-grid-1x2 mx-2" width="1.4em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+                <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
+            </svg>
+            <p style="margin: 0;">${quadro.titulo}</p>
+        </div>
         <div class="container-fluid">
-            <div class="row mt-1">
-                <div class="bg-info c-bg-info mb-2 col-md-12">
-                    <div class="row">
-                    <svg class="bi bi-grid-1x2 text-white m-2 ml-4" width="1.4em" height="1.4em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
-                        <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
-                    </svg>
-                    <p class="title mt-1 text-white" style="font-size: large">${quadro.titulo}</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="scrolling-wrapper">
                 <c:forEach var="coluna" items="${colunas}">
                     <div class="col-md-3 col-12">
