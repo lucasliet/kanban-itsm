@@ -20,12 +20,12 @@ body {
     background-color: #F1F2F9;
 }
 
-.c-bg-dark {
-    background-color: #F1F2F9 !important;
+.c-bg-info {
+    box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.25);
 }
 .c-rolagem {
     overflow: auto;
-    height: 82vh;
+    height: 80vh;
 }
 
 .scrolling-wrapper {

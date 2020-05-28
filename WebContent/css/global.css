@@ -7,6 +7,8 @@ body {
     background-color: #07315A !important;
 }
 
+.barraMenu ul li a{padding: 1rem .7rem !important}
+
 a:hover,
 li:hover{
     background-color:  #027178 !important;

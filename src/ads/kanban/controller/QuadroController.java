@@ -13,9 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import ads.kanban.model.entity.ColunaEntity;
 import ads.kanban.model.entity.QuadroEntity;
+import ads.kanban.model.entity.TicketEntity;
 import ads.kanban.model.entity.UsuarioEntity;
 import ads.kanban.model.service.ColunaService;
 import ads.kanban.model.service.QuadroService;
+import ads.kanban.model.service.TicketService;
+import sun.security.krb5.internal.Ticket;
 
 
 @WebServlet("/quadro.do")
@@ -34,8 +37,12 @@ public class QuadroController extends HttpServlet {
 		QuadroEntity quadro = new QuadroEntity();
 		ArrayList<QuadroEntity> quadros = new ArrayList<>();
 		ArrayList<ColunaEntity> colunas = new ArrayList<>();
+		ArrayList<TicketEntity> tickets = new ArrayList<>();
         QuadroService qService = new QuadroService();
 		ColunaService cService = new ColunaService();
+		TicketService tService = new TicketService();
+
+		UsuarioLogado usuarioLogado;
 
         HttpSession session = request.getSession();
         UsuarioEntity usuario = null;
@@ -46,10 +53,8 @@ public class QuadroController extends HttpServlet {
 				id = Integer.parseInt(request.getParameter("id_excluir"));
 				qService.deletarQuadro(id);
             case "page-meus-quadros":
-            	aux = session.getAttribute("usuario");
-				if (aux != null && aux instanceof UsuarioEntity) {
-					usuario = (UsuarioEntity) aux;
-				}
+				usuarioLogado = new UsuarioLogado(request);
+				usuario = usuarioLogado.getUsuario();
 
                 quadros = qService.listarQuadros(usuario.getId());
                 request.setAttribute("quadros", quadros);
@@ -58,8 +63,16 @@ public class QuadroController extends HttpServlet {
 
             case "page-exibir":
             	id = Integer.parseInt(request.getParameter("id_exibir"));
-            	quadro = qService.buscarQuadro(id);
+
+				quadro = qService.buscarQuadro(id);
 				colunas = cService.listarColunas(id);
+
+				for (ColunaEntity item : colunas){
+					int colunaId = item.getId();
+					tickets = tService.listarTickets(colunaId);
+					item.setTickets(tickets);
+				}
+
             	request.setAttribute("quadro", quadro);
             	request.setAttribute("colunas", colunas);
             	saida = "/pages/quadro/ExibirQuadro.jsp";
@@ -80,10 +93,8 @@ public class QuadroController extends HttpServlet {
 				quadro = new QuadroEntity();
 				quadro.setTitulo(titulo);
 
-				aux = session.getAttribute("usuario");
-				if (aux != null && aux instanceof UsuarioEntity) {
-					usuario = (UsuarioEntity) aux;
-				}
+				usuarioLogado = new UsuarioLogado(request);
+				usuario = usuarioLogado.getUsuario();
 
 				id = qService.inserirQuadro(quadro, usuario);
 				quadro.setId(id);

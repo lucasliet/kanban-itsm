@@ -26,27 +26,31 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-7">
-                    <div class="card c-coluna mb-3">
-                        <div class="card-header">
-                            <p>Título</p>
-                        </div>
-                        <div class="card-body">
-                            <img class="card-img-top" src="../img/logoHeader.png" alt="">
-                        </div>
-                        <div class="card-footer">
-                            <label><i class="far fa-comment-alt mr-2"></i>Comente</label>
-                            <div class="row">
-                                <div class="col-md-10">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control text-input col-12" name="" value="" placeholder="Faça um comentário">
-                                </div>
-                                </div>
-                                <div class="2">
-                                    <button type="submit" class="btn btn-geral ml-3" name="" value="">Enviar</button>
+                    <c:forEach var="ticket" items="${tickets}">
+                        <div class="card c-coluna mb-3">
+                            <div class="card-header">
+                                <p>${ticket.titulo}</p>
+                            </div>
+                            <div class="card-body">
+                                <img class="card-img-top" src="${ticket.foto}" alt="">
+                            </div>
+                            <div class="card-footer">
+                                <label><i class="far fa-comment-alt mr-2"></i>Comente</label>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control text-input col-12" name="" value=""
+                                                   placeholder="Faça um comentário">
+                                        </div>
+                                    </div>
+                                    <div class="2">
+                                        <button type="submit" class="btn btn-geral ml-3" name="" value="">Enviar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </c:forEach>
                 </div>
                 <div class="col-md-2"></div>
                     <div class="col-md-3">
@@ -62,7 +66,7 @@
                                     <div>
                                         <form action="/quadro.do" method="post" class="m-2">
                                             <input type="hidden" name="id_exibir" value="${quadro.id}">
-                                            <button type="submit" class="btn btn-quadro btn-sm float-right m-2"
+                                            <button type="submit" class="btn btn-geral btn-sm float-right m-2"
                                                     name="acao" value="page-exibir">
                                                 <i class="far fa-file-alt mr-1"></i>Ir para o quadro
                                             </button>

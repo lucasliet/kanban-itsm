@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light top-fixed">
+<nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light top-fixed" style="padding: 0 1.5rem">
 	<a class="navbar-brand" href="/pages/Home.jsp"> <img src="/img/logo-light.svg"
 												  width="80" alt="">
 	</a>
@@ -14,17 +14,17 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item  active">
-				<a class="nav-link text-white" href="/pages/Home.jsp">
+			<li class="nav-item active">
+				<a class="nav-link text-white" href="/ticket.do?acao=page-home">
 					<i class="fas fa-home mr-1"></i>Home <span class="sr-only">(current)</span>
 				</a>
 			</li>
-			<li class="nav-item ">
+			<li class="nav-item">
 				<a class="nav-link text-white" href="/quadro.do?acao=page-meus-quadros">
 					<i class="far fa-file-alt mr-1"></i>Meus quadros
 				</a>
 			</li>
-			<li class="nav-item " onclick="QuadroModal()">
+			<li class="nav-item" data-toggle="modal" data-target="#NewQuadro">
 				<a class="nav-link text-white">
 					<i class="fas fa-plus mr-1"></i>Novo quadro
 				</a>
@@ -73,14 +73,5 @@
 				</div>
 			</form>
 		</div>
-
-
-		<script>
-			function QuadroModal() {
-				$("#NewQuadro").modal({
-					show: true
-				});
-			}
-		</script>
 	</div>
 </nav>

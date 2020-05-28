@@ -1,7 +1,6 @@
 package ads.kanban.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import ads.kanban.model.entity.UsuarioEntity;
 import ads.kanban.model.service.QuadroService;
+import ads.kanban.model.service.TicketService;
 import ads.kanban.model.service.UsuarioService;
 
 @WebServlet("/usuario.do")
@@ -27,10 +27,14 @@ public class UsuarioController extends HttpServlet {
         String saida = "/index.jsp";
         UsuarioEntity usuario = null;
         UsuarioService uService = new UsuarioService();
-        ArrayList<UsuarioEntity> usuarios = new ArrayList<>();
 
         HttpSession session = request.getSession();
 
+        //puxa o usuário logado
+        UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
+        UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
+
+        Rotas rotas = new Rotas(request, response);
         switch (acao) {
             case "btn-cadastrar": //Cadastrar novo usuário
                 //passando nome e sobrenome em variáveis só pra
@@ -54,17 +58,13 @@ public class UsuarioController extends HttpServlet {
                 uService.inserirUsuario(usuario);
                 break;
             case "btn-atualizar": //Atualizar Perfil
-                usuario = new UsuarioEntity();
                 //Mensagem de feedback se o usuário foi atualizado ou não
                 //Ela vai ser alimentada nos ifs
                 String authFeedback = "";
 
                 //checa se tem algum usuário logado na sessão
                 //se tiver, coloca dentro do objeto 'usuario'
-                Object aux = session.getAttribute("usuario");
-                if (aux != null && aux instanceof UsuarioEntity) {
-                    usuario = (UsuarioEntity) aux;
-                }
+                usuario = usuarioLogado;
                 // Checa se a senha que o usuário digitou é igual a senha do banco
                 if (request.getParameter("senha_antiga").equals(usuario.getSenha())) {
                     //Se for igual, atualiza os dados
@@ -102,10 +102,8 @@ public class UsuarioController extends HttpServlet {
                 // ai ele manda pra sessão e loga
                 if (usuario.getId() != 0) {
                     session.setAttribute("usuario", usuario);
-                    //Puxa a lista de quadros pra por na timeline da home
-                    QuadroService qService = new QuadroService();
-                    request.setAttribute("quadros", qService.listarQuadros(usuario.getId(), 3));
 
+                    rotas.home(usuario.getId());
                     saida = "/pages/Home.jsp";
                 } else {
                     //Caso não encontre nenhum usuario com esse e-mail e senha, ele terá id = 0
