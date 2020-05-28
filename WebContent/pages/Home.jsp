@@ -62,7 +62,7 @@
                                     <div>
                                         <form action="/quadro.do" method="post" class="m-2">
                                             <input type="hidden" name="id_exibir" value="${quadro.id}">
-                                            <button type="submit" class="btn btn-quadro btn-sm float-right m-2"
+                                            <button type="submit" class="btn btn-geral btn-sm float-right m-2"
                                                     name="acao" value="page-exibir">
                                                 <i class="far fa-file-alt mr-1"></i>Ir para o quadro
                                             </button>
