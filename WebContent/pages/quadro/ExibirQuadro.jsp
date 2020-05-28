@@ -61,7 +61,7 @@
                                             <a class="dropdown-item ">
                                                 <i class="fas fa-arrow-right mr-2"></i>Mover Coluna
                                             </a>
-                                            <a class="dropdown-item ">
+                                            <a class="dropdown-item" href="coluna.do?id_excluir=${coluna.id}&acao=btn-excluir">
                                                 <i class="far fa-trash-alt mr-2"></i>Deletar Coluna
                                             </a>
                                         </div>

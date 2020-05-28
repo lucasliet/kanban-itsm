@@ -29,7 +29,7 @@ public class ColunaDAO {
                     coluna.setId(id);
                     coluna.setTitulo(rs.getString("titulo"));
                     QuadroEntity quadro = new QuadroEntity();
-                    quadro.setId(rs.getInt("id"));
+                    quadro.setId(rs.getInt("id_quadro"));
                     quadro.setTitulo(rs.getString("titulo"));
                     coluna.setQuadro(quadro);
                 }

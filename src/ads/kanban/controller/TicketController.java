@@ -1,8 +1,6 @@
 package ads.kanban.controller;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import ads.kanban.model.entity.*;
 import ads.kanban.model.service.ColunaService;
-import ads.kanban.model.service.ComentarioService;
 import ads.kanban.model.service.QuadroService;
 import ads.kanban.model.service.TicketService;
-import sun.security.krb5.internal.Ticket;
 
 @WebServlet("/ticket.do")
 public class TicketController extends HttpServlet {
@@ -35,6 +31,8 @@ public class TicketController extends HttpServlet {
         TicketService tService = new TicketService();
         TicketEntity ticket = null;
 
+        Rotas rotas = new Rotas(request,response);
+
         switch (acao) {
             case "btn-inserir":
                 ticket = new TicketEntity();
@@ -49,19 +47,13 @@ public class TicketController extends HttpServlet {
 
                 ticket.setColuna(cService.buscarColuna(colunaId));
 
-
-
                 tService.inserirTicket(ticket,usuarioId);
-                vaiPraQuadro(request, response);
+
+                int quadroId = Integer.parseInt(request.getParameter("id_quadro"));
+                rotas.exibirQuadro(quadroId);
                 break;
             case "page-home":
-
-                QuadroService qService = new QuadroService();
-
-                request.setAttribute("tickets", tService.ultimosTickets(usuarioLogado.getId(), 3));
-                request.setAttribute("quadros", qService.listarQuadros(usuarioLogado.getId(), 3));
-                RequestDispatcher view = request.getRequestDispatcher("/pages/Home.jsp");
-                view.forward(request, response);
+                rotas.home(usuarioLogado.getId());
         }
 
     }
@@ -71,26 +63,5 @@ public class TicketController extends HttpServlet {
         doGet(request, response);
     }
 
-    protected void vaiPraQuadro(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id_quadro"));
 
-        QuadroService qService = new QuadroService();
-        ColunaService cService = new ColunaService();
-        TicketService tService = new TicketService();
-
-        QuadroEntity quadro = qService.buscarQuadro(id);
-        ArrayList<ColunaEntity> colunas = cService.listarColunas(id);
-
-        for (ColunaEntity item : colunas){
-            int colunaId = item.getId();
-            ArrayList<TicketEntity>  tickets = tService.listarTickets(colunaId);
-            item.setTickets(tickets);
-        }
-
-        request.setAttribute("quadro", quadro);
-        request.setAttribute("colunas", colunas);
-        RequestDispatcher view = request.getRequestDispatcher("/pages/quadro/ExibirQuadro.jsp");
-        view.forward(request, response);
-    }
 }
