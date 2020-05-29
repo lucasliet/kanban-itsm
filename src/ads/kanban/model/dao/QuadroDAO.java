@@ -92,7 +92,7 @@ public class QuadroDAO {
         return id;
     }
 
-    public QuadroEntity atualizarQuadro(QuadroEntity quadro) throws IOException {
+    public void atualizarQuadro(QuadroEntity quadro) throws IOException {
         String sql = "UPDATE quadros SET titulo = ? WHERE id = ?";
         try (Connection conn = ConnectionFactory.getConnection(); 
         		PreparedStatement pst = conn.prepareStatement(sql);) {
@@ -104,8 +104,6 @@ public class QuadroDAO {
             e.printStackTrace();
             throw new IOException(e);
         }
-            QuadroEntity quadroAlterado = buscarQuadro(quadro.getId());
-        return quadroAlterado;
     }
     
     public ArrayList<QuadroEntity> listarQuadros(int usuarioId) throws IOException {

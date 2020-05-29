@@ -26,8 +26,8 @@ public class QuadroService {
     	return dao.inserirQuadro(quadro, usuario);
     }
     
-    public QuadroEntity atualizarQuadro(QuadroEntity quadro) throws IOException {
-    	return dao.atualizarQuadro(quadro);
+    public void atualizarQuadro(QuadroEntity quadro) throws IOException {
+    	dao.atualizarQuadro(quadro);
     }
     
     public ArrayList<QuadroEntity> listarQuadros(int usuarioId) throws IOException{

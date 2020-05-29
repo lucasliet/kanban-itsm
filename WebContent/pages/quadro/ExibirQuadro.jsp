@@ -97,7 +97,6 @@
                                                 <i class="fas fa-id-card"></i>
                                             </span>
                                             </div>
-                                            <input type="hidden" name="id_quadro" value="${quadro.id}">
                                             <input type="hidden" name="id_coluna" value="${coluna.id}">
                                             <input type="text" class="form-control" name="titulo" placeholder="Nome do ticket"
                                                    aria-label="Username" aria-describedby="inputTicket" required

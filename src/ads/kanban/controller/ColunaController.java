@@ -29,7 +29,7 @@ public class ColunaController extends HttpServlet {
 
         ArrayList<ColunaEntity> colunas = null;
 
-        Rotas rotas = new Rotas(request,response);
+        RenderHelper render = new RenderHelper(request,response);
 
         switch (acao) {
             case "btn-inserir":
@@ -41,13 +41,13 @@ public class ColunaController extends HttpServlet {
                         )
                 );
                 cService.inserirColuna(coluna);
-                rotas.exibirQuadro(coluna.getQuadro().getId());
+                render.exibirQuadro(coluna.getQuadro().getId());
                 break;
             case "btn-excluir":
                 id = Integer.parseInt(request.getParameter("id_excluir"));
                 coluna = cService.buscarColuna(id);
                 cService.deletarColuna(id);
-                rotas.exibirQuadro(coluna.getQuadro().getId());
+                render.exibirQuadro(coluna.getQuadro().getId());
                 break;
         }
     }

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ads.kanban.model.entity.UsuarioEntity;
-import ads.kanban.model.service.QuadroService;
-import ads.kanban.model.service.TicketService;
 import ads.kanban.model.service.UsuarioService;
 
 @WebServlet("/usuario.do")
@@ -34,7 +32,7 @@ public class UsuarioController extends HttpServlet {
         UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
         UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
 
-        Rotas rotas = new Rotas(request, response);
+        RenderHelper render = new RenderHelper(request, response);
         switch (acao) {
             case "btn-cadastrar": //Cadastrar novo usuário
                 //passando nome e sobrenome em variáveis só pra
@@ -58,10 +56,6 @@ public class UsuarioController extends HttpServlet {
                 uService.inserirUsuario(usuario);
                 break;
             case "btn-atualizar": //Atualizar Perfil
-                //Mensagem de feedback se o usuário foi atualizado ou não
-                //Ela vai ser alimentada nos ifs
-                String authFeedback = "";
-
                 //checa se tem algum usuário logado na sessão
                 //se tiver, coloca dentro do objeto 'usuario'
                 usuario = usuarioLogado;
@@ -78,17 +72,11 @@ public class UsuarioController extends HttpServlet {
                     //troca o usuário da sessão pro usuário com os dados novos
                     session.setAttribute("usuario", usuario);
                     //mensagem de feedback que o perfil foi atualizado com sucesso
-                    authFeedback = "<div class='bg-success text-white rounded shadow px-3 py-2 m-3'>" +
-                                         "<i class='fas fa-check'></i>&nbsp Perfil Atualizado" +
-                                   "</div>";
+                    render.editarPerfil(true);
                 } else {
                     //Se a senha estiver errada, só retorna mensagem de erro
-                    authFeedback = "<div class='bg-danger text-white rounded shadow px-3 py-2 m-3'>" +
-                                         "<i class='fas fa-times'></i>&nbsp Senha Incorreta" +
-                                   "</div>";
+                    render.editarPerfil(false);
                 }
-
-                request.setAttribute("authFeedback", authFeedback);
                 saida = "/pages/usuario/EditarPerfil.jsp";
                 break;
             case "login":
@@ -103,21 +91,17 @@ public class UsuarioController extends HttpServlet {
                 if (usuario.getId() != 0) {
                     session.setAttribute("usuario", usuario);
 
-                    rotas.home(usuario.getId());
+                    render.home(usuario.getId());
                     saida = "/pages/Home.jsp";
                 } else {
                     //Caso não encontre nenhum usuario com esse e-mail e senha, ele terá id = 0
-                    //Cria um card com aviso de "usuário não encontrado" e manda pro index.jsp
-                    String nlogou = "<div class='bg-danger text-white rounded px-3 py-2 my-2'>" +
-                                        "<i class='fas fa-times'></i>&nbsp Usuario não encontrado" +
-                                    "</div>";
-
-                    request.setAttribute("msgerror", nlogou);
+                    //Então ele manda de volta pra index com mensagem de erro
+                    render.loginError();
                 }
                 break;
             case "logout": session.invalidate();
         }
-    RequestDispatcher view = request.getRequestDispatcher(saida);
+        RequestDispatcher view = request.getRequestDispatcher(saida);
 		view.forward(request,response);
 
     }
