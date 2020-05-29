@@ -95,8 +95,7 @@
                                                             </div>
                                                             <div class="input-group">
                                                             <textarea class="form-control" name="" value=""
-                                                                aria-label="With textarea" placeholder="Digite a descrição do ticket">
-                                                            </textarea>
+                                                                aria-label="With textarea" placeholder="Digite a descrição do ticket"></textarea>
                                                             </div>
                                                             <div class="input-group mt-5">
                                                                 <label><i class="fas fa-paperclip mr-2"></i>Anexo</label>
