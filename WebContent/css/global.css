@@ -5,16 +5,20 @@ body { background: #e4e4ea; }
     background-color: #07315A !important;
 }
 
-.barraMenu ul li a, .barraMenu a {padding: 1rem .7rem !important}
+.barraMenu ul li a, .barraMenu .navbar-brand {padding: 1rem .7rem !important}
+
+.barraMenu a:hover,
+.barraMenu li:hover{
+    border-radius: 12px;
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
 
 a:hover,
 li:hover{
     background-color:  #027178 !important;
     color: #fff !important;
     transition: background-color 0.5s;
-    border-radius: 12px;
-    transform: scale(1.02);
-    filter: brightness(1.1);
 }
 
 .c-imgLogin {
