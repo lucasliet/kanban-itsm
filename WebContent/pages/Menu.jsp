@@ -51,10 +51,10 @@
 			<form action="/quadro.do" method="POST">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLongTitle">Digite o nome do quadro</h5>
+						<div class="modal-header bg-info">
+							<h5 class="modal-title text-white" id="exampleModalLongTitle">Digite o nome do quadro</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
+								<span class="text-white" aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body">

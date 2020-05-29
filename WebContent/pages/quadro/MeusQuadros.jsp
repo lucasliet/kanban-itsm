@@ -75,15 +75,14 @@
                         </div>
                     </div>
 
-                    <!--Modal-->
-
+                    <!--Modal excluir quadro-->
                     <div id="ExcluirQuadroModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Deseja excluir o quadro?</h5>
+                                <div class="modal-header bg-info">
+                                    <h5 class="modal-title text-white" id="exampleModalCenterTitle">Deseja excluir o quadro?</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                        <span class="text-white" aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-footer">
