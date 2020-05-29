@@ -61,7 +61,7 @@
                                             <a class="dropdown-item c-item">
                                                 <i class="fas fa-arrow-right mr-2"></i>Mover Coluna
                                             </a>
-                                            <a class="dropdown-item c-item" data-toggle="modal" data-target="#ModalExcluiColuna">
+                                            <a class="dropdown-item c-item" data-toggle="modal" data-target="#ModalExcluiColuna${coluna.id}">
                                                 <i class="far fa-trash-alt mr-2"></i>Deletar Coluna
                                             </a>
                                         </div>
@@ -73,6 +73,71 @@
                                     <div class="card-body d-flex" style="justify-content: space-between;" data-toggle="modal" data-target="#modalTicket">
                                         <p class="card-title">${ticket.titulo}</p>
                                         <i class="fas fa-pen fa-sm mt-1"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Modal de editar ticket-->
+                                <div id="modalTicket" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-info">
+                                                <h5 class="modal-title text-white" id="titleEditarTicket">Titulo do Ticket</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span class="text-white" aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <form action="">
+                                                            <div class="input-group">
+                                                                <label><i class="fas fa-align-left mr-2"></i>Descrição</label>
+                                                            </div>
+                                                            <div class="input-group">
+                                                            <textarea class="form-control" name="" value=""
+                                                                aria-label="With textarea" placeholder="Digite a descrição do ticket">
+                                                            </textarea>
+                                                            </div>
+                                                            <div class="input-group mt-5">
+                                                                <label><i class="fas fa-paperclip mr-2"></i>Anexo</label>
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <div class="col-md-8">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            Aqui vai os anexos.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-group mt-5">
+                                                                <label><i class="far fa-comment-alt mr-2"></i></i>Comentário</label>
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <input class="form-control" value="" placeholder="Faça um comentário">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
+                                                            <i class="fas fa-paperclip mr-2"></i>Anexo
+                                                        </button>
+                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
+                                                            <i class="fas fa-arrow-right mr-2"></i>Mover
+                                                        </button>
+                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
+                                                            <i class="far fa-edit mr-2"></i>Editar
+                                                        </button>
+                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket">
+                                                            <i class="fas fa-trash mr-2"></i>Excluir
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-geral" name="" value="">Salvar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -111,6 +176,28 @@
                             </div>
                         </form>
                     </div>
+
+                    <!-- Modal deletar coluna-->
+                    <div id="ModalExcluiColuna${coluna.id}" class="modal" tabindex="-1" role="dialog">
+                        <form action="/coluna.do" method="GET">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-info">
+                                        <h5 class="modal-title text-white" id="titleDeleteColuna">Tem certeza que deseja excluir a coluna?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span class="text-white" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        <input type="hidden" name="id_excluir" value="${coluna.id}">
+                                        <button type="submit" class="btn btn-geral" name="acao" value="btn-excluir">Excluir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </c:forEach>
 
                 <div class="col-md-3 col-12">
@@ -119,70 +206,6 @@
                     </button>
                 </div>
 
-                <!-- Modal de editar ticket-->
-                <div id="modalTicket" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-info">
-                                <h5 class="modal-title text-white" id="titleEditarTicket">Titulo do Ticket</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span class="text-white" aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <form action="">
-                                            <div class="input-group">
-                                                <label><i class="fas fa-align-left mr-2"></i>Descrição</label>
-                                            </div>
-                                            <div class="input-group">
-                                                <textarea class="form-control" name="" value=""
-                                                          aria-label="With textarea" placeholder="Digite a descrição do ticket">
-                                                </textarea>
-                                            </div>
-                                            <div class="input-group mt-5">
-                                                <label><i class="fas fa-paperclip mr-2"></i>Anexo</label>
-                                            </div>
-                                            <div class="input-group">
-                                                <div class="col-md-8">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            Aqui vai os anexos.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="input-group mt-5">
-                                                <label><i class="far fa-comment-alt mr-2"></i></i>Comentário</label>
-                                            </div>
-                                            <div class="input-group">
-                                                <input class="form-control" value="" placeholder="Faça um comentário">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
-                                            <i class="fas fa-paperclip mr-2"></i>Anexo
-                                        </button>
-                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
-                                            <i class="fas fa-arrow-right mr-2"></i>Mover
-                                        </button>
-                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
-                                            <i class="far fa-edit mr-2"></i>Editar
-                                        </button>
-                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket">
-                                            <i class="fas fa-trash mr-2"></i>Excluir
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-geral" name="" value="">Salvar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Modal deletar ticket-->
                 <div class="modal fade" id="ModalExcluirTicket"  tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
@@ -229,28 +252,6 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     <button type="submit" class="btn btn-geral" name="acao" value="btn-inserir">Salvar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal deletar coluna-->
-                <div id="ModalExcluiColuna" class="modal" tabindex="-1" role="dialog">
-                    <form action="/coluna.do" method="GET">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header bg-info">
-                                    <h5 class="modal-title text-white" id="titleDeleteColuna">Tem certeza que deseja excluir a coluna?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span class="text-white" aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <input type="hidden" name="id_excluir" value="${coluna.id}">
-                                    <button type="submit" class="btn btn-geral" name="acao" value="btn-excluir">Excluir</button>
                                 </div>
                             </div>
                         </div>

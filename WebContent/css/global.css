@@ -10,6 +10,7 @@ body { background: #e4e4ea; }
 a:hover,
 li:hover{
     background-color:  #027178 !important;
+    color: #fff !important;
     transition: background-color 0.5s;
 }
 
