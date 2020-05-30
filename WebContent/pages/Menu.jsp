@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 	
 <nav class="navbar barraMenu navbar-expand-lg navbar-light bg-light top-fixed" style="padding: 0 1.5rem">
-	<a class="navbar-brand" href="/pages/Home.jsp"> <img src="/img/logo-light.svg"
+	<a class="navbar-brand" href="/ticket.do?acao=page-home"> <img src="/img/logo-light.svg"
 												  width="80" alt="">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"

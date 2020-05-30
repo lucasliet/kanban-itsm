@@ -58,7 +58,7 @@
                                          aria-labelledby="dropdownMenuButton">
                                         <!-- Modal Button Trigger-->
                                         <a class="dropdown-item text-white" data-toggle="modal"
-                                           data-target="#ExcluirQuadroModal">
+                                           data-target="#ExcluirQuadroModal${quadro.id}">
                                             Excluir
                                         </a>
                                     </div>
@@ -76,7 +76,7 @@
                     </div>
 
                     <!--Modal excluir quadro-->
-                    <div id="ExcluirQuadroModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div id="ExcluirQuadroModal${quadro.id}" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
                                 <div class="modal-header bg-info">

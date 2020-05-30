@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import ads.kanban.model.entity.ColunaEntity;
+import ads.kanban.model.entity.QuadroEntity;
 import ads.kanban.model.entity.TicketEntity;
 
 
@@ -90,10 +91,10 @@ public class TicketDAO {
 	
 	public TicketEntity buscarTicket(int id) throws IOException {
 		TicketEntity  ticket = new TicketEntity();
-		String sql = "SELECT t.id, t.titulo, t.descricao, t.foto, c.id, c.titulo "
-				+ "FROM tickets t "
-				+ "JOIN colunas c ON t.id_coluna = c.id "
-				+ "WHERE t.id = ?";
+		String sql = "SELECT t.id, t.titulo, t.descricao, t.foto, c.id, c.titulo, q.id, q.titulo FROM tickets t " +
+				 		"JOIN colunas c ON t.id_coluna = c.id " +
+						"JOIN quadros q ON c.id_quadro = q.id " +
+				 		"WHERE t.id = ?";
 		
 		try (Connection conn = ConnectionFactory.getConnection();
 			PreparedStatement pst = conn.prepareStatement(sql);){
@@ -102,13 +103,17 @@ public class TicketDAO {
             try (ResultSet rs = pst.executeQuery();) {
 			
 				while (rs.next()) {
-	                ticket.setId(rs.getInt("id"));
-	                ticket.setTitulo(rs.getString("titulo"));
-	                ticket.setDescricao(rs.getString("descricao"));
-	                ticket.setFoto(rs.getString("foto"));
+	                ticket.setId(rs.getInt("t.id"));
+	                ticket.setTitulo(rs.getString("t.titulo"));
+	                ticket.setDescricao(rs.getString("t.descricao"));
+	                ticket.setFoto(rs.getString("t.foto"));
 	                ColunaEntity coluna = new ColunaEntity();
-	                coluna.setId(rs.getInt("id"));
-	                coluna.setTitulo(rs.getString("titulo"));
+	                coluna.setId(rs.getInt("c.id"));
+	                coluna.setTitulo(rs.getString("c.titulo"));
+					QuadroEntity quadro = new QuadroEntity();
+					quadro.setId(rs.getInt("q.id"));
+					quadro.setTitulo(rs.getString("q.titulo"));
+					coluna.setQuadro(quadro);
 	                ticket.setColuna(coluna);
 				}
 			} catch (SQLException e) {
@@ -122,8 +127,8 @@ public class TicketDAO {
 		return ticket;
 	}
 	
-	public int  deletarTicket(int id) throws IOException {
-		int feedback = -1;
+	public boolean deletarTicket(int id) throws IOException {
+		boolean deletou = false;
 		TicketEntity ticket = new TicketEntity();
 		String sql = "DELETE FROM tickets WHERE id = ? ";
 		
@@ -132,17 +137,17 @@ public class TicketDAO {
 				ticket = buscarTicket(id);
 				pst.setInt(1, id);
 				pst.execute();
-				feedback = 1;
+				deletou = true;
 		}catch (SQLException e) {
             e.printStackTrace();
             throw new IOException(e);
         }
-        if (feedback == -1){
-            System.out.println("Opera��o falhou");
-        }else{
+        if (deletou){
             System.out.println("Ticket " + ticket.getTitulo()+" de ID " + ticket.getId()+" foi removido com sucesso");
+        }else{
+            System.out.println("Operação falhou");
         }
-        return feedback;
+        return deletou;
 	}
 	
 	public int inserirTicket(TicketEntity ticket, int usuarioId) throws IOException {

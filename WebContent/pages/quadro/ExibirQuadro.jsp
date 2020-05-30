@@ -70,14 +70,14 @@
                             </div>
                             <c:forEach var="ticket" items="${coluna.tickets}">
                                 <div class="card c-ticket m-2">
-                                    <div class="card-body d-flex" style="justify-content: space-between;" data-toggle="modal" data-target="#modalTicket">
+                                    <div class="card-body d-flex" style="justify-content: space-between;" data-toggle="modal" data-target="#modalTicket${ticket.id}">
                                         <p class="card-title">${ticket.titulo}</p>
                                         <i class="fas fa-pen fa-sm mt-1"></i>
                                     </div>
                                 </div>
 
                                 <!-- Modal de editar ticket-->
-                                <div id="modalTicket" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div id="modalTicket${ticket.id}" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-info">
@@ -127,7 +127,7 @@
                                                         <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
                                                             <i class="far fa-edit mr-2"></i>Editar
                                                         </button>
-                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket">
+                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket${ticket.id}">
                                                             <i class="fas fa-trash mr-2"></i>Excluir
                                                         </button>
                                                     </div>
@@ -138,6 +138,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Modal deletar ticket-->
+                                <div class="modal fade" id="ModalExcluirTicket${ticket.id}"  tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+                                    <form action="/ticket.do" method="POST">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-info">
+                                                    <h5 class="modal-title text-white" id="titleDeleteTicket">Tem certeza que deseja excluir o ticket?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span class="text-white" aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                    <input type="hidden" name="id_excluir" value="${ticket.id}">
+                                                    <button type="submit" class="btn btn-geral" name="acao" value="btn-excluir">Excluir</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </c:forEach>
                         </div>
@@ -203,27 +224,6 @@
                     <button id="btn-coluna" class="btn btn-outline-geral col-md-12" data-toggle="modal" data-target="#ModalColuna">
                         <i class="fas fa-plus mr-1"></i>Adicionar outra coluna
                     </button>
-                </div>
-
-
-                <!-- Modal deletar ticket-->
-                <div class="modal fade" id="ModalExcluirTicket"  tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
-                    <form action="/ticket.do" method="GET">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header bg-info">
-                                    <h5 class="modal-title text-white" id="titleDeleteTicket">Tem certeza que deseja excluir o ticket?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span class="text-white" aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <button type="submit" class="btn btn-geral" name="acao" value="">Excluir</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
 
                 <!-- Modal adicionar coluna-->

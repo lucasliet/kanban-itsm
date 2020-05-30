@@ -28,13 +28,12 @@ public class TicketController extends HttpServlet {
         TicketService tService = new TicketService();
         ColunaService cService = new ColunaService();
 
-        TicketEntity ticket = null;
+        TicketEntity ticket = new TicketEntity();
 
         RenderHelper render = new RenderHelper(request,response);
 
         switch (acao) {
             case "btn-inserir":
-                ticket = new TicketEntity();
                 ticket.setTitulo(request.getParameter("titulo"));
 
                 //pega id do usuário logado
@@ -48,7 +47,20 @@ public class TicketController extends HttpServlet {
                 tService.inserirTicket(ticket,usuarioId);
 
                 int quadroId = ticket.getColuna().getQuadro().getId();
+                System.out.println(quadroId);
                 render.exibirQuadro(quadroId);
+                break;
+            case "btn-excluir":
+                int ticketId = Integer.parseInt(request.getParameter("id_excluir"));
+                ticket = tService.buscarTicket(ticketId);
+                tService.deletarTicket(ticketId);
+
+                //Cada ticket, possui uma coluna, e cada coluna, possui quadro
+                //logo, reflitam, posso puxar de ticket, o id de quadro pra chamar
+                //a renderização da página "ExibirQuadro.jsp"
+                render.exibirQuadro(
+                        ticket.getColuna().getQuadro().getId()
+                );
                 break;
             case "page-home":
                 render.home(usuarioLogado.getId());

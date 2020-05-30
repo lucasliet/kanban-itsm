@@ -25,7 +25,7 @@ public class TicketService {
         return dao.buscarTicket(id);
     }
 
-    public int deletarTicket(int id) throws IOException {
+    public boolean deletarTicket(int id) throws IOException {
         return dao.deletarTicket(id);
     }
     

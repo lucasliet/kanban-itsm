@@ -18,7 +18,7 @@ a:hover,
 li:hover{
     background-color:  #027178 !important;
     color: #fff !important;
-    transition: background-color 0.5s;
+    transition: ease-in-out 0.5s;
 }
 
 .c-imgLogin {
