@@ -49,6 +49,14 @@ public class ColunaController extends HttpServlet {
                 cService.deletarColuna(id);
                 render.exibirQuadro(coluna.getQuadro().getId());
                 break;
+            case "btn-editar":
+                id = Integer.parseInt(request.getParameter("id_editar"));
+                String titulo = request.getParameter("titulo_coluna");
+                coluna = cService.buscarColuna(id);
+                coluna.setTitulo(titulo);
+                cService.atualizarColuna(coluna);
+                render.exibirQuadro(coluna.getQuadro().getId());
+                break;
         }
     }
 

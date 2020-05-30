@@ -29,7 +29,7 @@
             <svg class="bi bi-grid-1x2 mx-2" width="1.4em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
                 <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
             </svg>
-            <p style="margin: 0;">${quadro.titulo}</p>
+            <p>${quadro.titulo}</p>
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper">
@@ -55,7 +55,7 @@
                                             <a class="dropdown-item c-item" data-toggle="modal" data-target="#ModalAdicionarTicket${coluna.id}">
                                                 <i class="fas fa-plus mr-2"></i>Adicionar Ticket
                                             </a>
-                                            <a class="dropdown-item c-item">
+                                            <a class="dropdown-item c-item" data-toggle="modal" data-target="#ModalEditarColuna${coluna.id}">
                                                 <i class="fas fa-edit mr-1"></i>Editar Coluna
                                             </a>
                                             <a class="dropdown-item c-item">
@@ -197,6 +197,35 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                         <button type="submit" class="btn btn-geral" name="acao" value="btn-inserir">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!--modal editar coluna -->
+                    <div id="ModalEditarColuna${coluna.id}" class="modal" tabindex="-1" role="dialog">
+                        <form action="/coluna.do" method="POST">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-info">
+                                        <h5 class="modal-title text-white" id="titleEditarColuna">Insira o novo título da coluna</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span class="text-white" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-id-card"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" name="titulo_coluna" value="${coluna.titulo}" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        <input type="hidden" name="id_editar" value="${coluna.id}">
+                                        <button type="submit" class="btn btn-geral" name="acao" value="btn-editar">Salvar</button>
                                     </div>
                                 </div>
                             </div>
