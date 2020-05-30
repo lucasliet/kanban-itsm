@@ -39,7 +39,6 @@ body {
     box-shadow: 0px 4px 2px rgb(153, 136, 167);
 }
 
-
 .c-ticket {
     cursor: pointer;
     border-radius: 8px;
@@ -47,4 +46,9 @@ body {
 }
 .c-ticket:hover {
     background-color: rgb(246, 244, 244);
+}
+
+.select-col{
+    border-color: #741596;
+    color: #741596;
 }
