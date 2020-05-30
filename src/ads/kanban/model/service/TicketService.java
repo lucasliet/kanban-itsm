@@ -33,7 +33,11 @@ public class TicketService {
         return dao.inserirTicket(ticket, usuarioId);
     }
 
-    public TicketEntity atualizarFilme(TicketEntity ticket) throws IOException {
+    public TicketEntity atualizarTicket(TicketEntity ticket) throws IOException {
         return dao.atualizarTicket(ticket);
+    }
+
+    public void moverTicket(int ticketId, int colunaId) throws IOException {
+        dao.moverTicket(ticketId, colunaId);
     }
 }

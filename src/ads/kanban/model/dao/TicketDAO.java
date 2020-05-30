@@ -189,7 +189,20 @@ public class TicketDAO {
         System.out.println("Ticket " + ticket.getTitulo()+" de ID " + ticket.getId()+" gerado no banco com sucesso");
         return id;
 	}
-	
+
+	public void moverTicket(int ticketId, int colunaId) throws  IOException {
+		String sql = "UPDATE tickets SET id_coluna = ? WHERE id = ?";
+
+		try (Connection conn = ConnectionFactory.getConnection();
+			 PreparedStatement pst = conn.prepareStatement(sql);){
+				pst.setInt(1, colunaId);
+				pst.setInt(2, ticketId);
+		} catch (SQLException e){
+			e.printStackTrace();
+			throw new IOException(e);
+		}
+	}
+
 	public TicketEntity atualizarTicket(TicketEntity ticket) throws IOException {
 		String sql = "UPDATE tickets SET titulo = ?, descricao = ?, foto = ?, "
 				+ "id_coluna = ? WHERE id = ?";

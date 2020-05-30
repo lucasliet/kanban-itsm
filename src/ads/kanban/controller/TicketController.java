@@ -21,6 +21,9 @@ public class TicketController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String acao = request.getParameter("acao");
 
+        int ticketId = -1;
+        int colunaId = -1;
+
         //pega o usuario logado
         UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
         UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
@@ -40,7 +43,7 @@ public class TicketController extends HttpServlet {
                 int usuarioId = usuarioLogado.getId();
 
                 //pega id da coluna em que o ticket vai ser criado
-                int colunaId = Integer.parseInt(request.getParameter("id_coluna"));
+                colunaId = Integer.parseInt(request.getParameter("id_coluna"));
 
                 ticket.setColuna(cService.buscarColuna(colunaId));
 
@@ -51,13 +54,24 @@ public class TicketController extends HttpServlet {
                 render.exibirQuadro(quadroId);
                 break;
             case "btn-excluir":
-                int ticketId = Integer.parseInt(request.getParameter("id_excluir"));
+                ticketId = Integer.parseInt(request.getParameter("id_excluir"));
                 ticket = tService.buscarTicket(ticketId);
                 tService.deletarTicket(ticketId);
 
                 //Cada ticket, possui uma coluna, e cada coluna, possui quadro
                 //logo, reflitam, posso puxar de ticket, o id de quadro pra chamar
                 //a renderização da página "ExibirQuadro.jsp"
+                render.exibirQuadro(
+                        ticket.getColuna().getQuadro().getId()
+                );
+                break;
+            case "btn-mover":
+                ticketId = Integer.parseInt(request.getParameter("id_ticket"));
+                colunaId = Integer.parseInt(request.getParameter("id_coluna"));
+
+                ticket = tService.buscarTicket(ticketId);
+                tService.moverTicket(ticketId,colunaId);
+
                 render.exibirQuadro(
                         ticket.getColuna().getQuadro().getId()
                 );
