@@ -117,11 +117,17 @@
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <form action="/ticket.do" method="post" class="col-md-2">
+                                                        <input type="hidden" name="id_ticket" value="${ticket.id}">
                                                         <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
                                                             <i class="fas fa-paperclip mr-2"></i>Anexo
                                                         </button>
-                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
+                                                        <select name="id_coluna" class="form-control" required>
+                                                            <c:forEach var="coluna" items="${colunas}">
+                                                                <option value="${coluna.id}">${coluna.titulo}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        <button type="submit" class="btn btn-outline-geral mt-2" name="acao" value="btn-mover">
                                                             <i class="fas fa-arrow-right mr-2"></i>Mover
                                                         </button>
                                                         <button type="submit" class="btn btn-outline-geral mt-2" name="" value="">
@@ -130,7 +136,7 @@
                                                         <button type="submit" class="btn btn-outline-geral mt-2" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket${ticket.id}">
                                                             <i class="fas fa-trash mr-2"></i>Excluir
                                                         </button>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

@@ -37,7 +37,7 @@ public class TicketService {
         return dao.atualizarTicket(ticket);
     }
 
-    public void moverTicket(int ticketId, int colunaId) throws IOException {
-        dao.moverTicket(ticketId, colunaId);
+    public void moverTicket(int colunaId, int ticketId) throws IOException {
+        dao.moverTicket(colunaId, ticketId);
     }
 }

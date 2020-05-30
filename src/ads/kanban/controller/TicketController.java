@@ -70,7 +70,7 @@ public class TicketController extends HttpServlet {
                 colunaId = Integer.parseInt(request.getParameter("id_coluna"));
 
                 ticket = tService.buscarTicket(ticketId);
-                tService.moverTicket(ticketId,colunaId);
+                tService.moverTicket(colunaId, ticketId);
 
                 render.exibirQuadro(
                         ticket.getColuna().getQuadro().getId()

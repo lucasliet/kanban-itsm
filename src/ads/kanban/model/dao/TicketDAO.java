@@ -190,13 +190,14 @@ public class TicketDAO {
         return id;
 	}
 
-	public void moverTicket(int ticketId, int colunaId) throws  IOException {
+	public void moverTicket(int colunaId, int ticketId) throws  IOException {
 		String sql = "UPDATE tickets SET id_coluna = ? WHERE id = ?";
 
 		try (Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement pst = conn.prepareStatement(sql);){
 				pst.setInt(1, colunaId);
 				pst.setInt(2, ticketId);
+				pst.execute();
 		} catch (SQLException e){
 			e.printStackTrace();
 			throw new IOException(e);
