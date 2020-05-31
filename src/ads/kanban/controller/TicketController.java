@@ -65,6 +65,22 @@ public class TicketController extends HttpServlet {
                         ticket.getColuna().getQuadro().getId()
                 );
                 break;
+            case "btn-atualizar":
+                ticket = tService.buscarTicket(
+                        Integer.parseInt(request.getParameter("id_ticket"))
+                );
+                ticket.setTitulo(
+                        request.getParameter("titulo")
+                );
+                ticket.setDescricao(
+                        request.getParameter("descricao")
+                );
+                tService.atualizarTicket(ticket);
+                render.exibirQuadro(
+                        ticket.getColuna().getQuadro().getId()
+                );
+                break;
+
             case "btn-mover":
                 ticketId = Integer.parseInt(request.getParameter("id_ticket"));
                 colunaId = Integer.parseInt(request.getParameter("id_coluna"));
