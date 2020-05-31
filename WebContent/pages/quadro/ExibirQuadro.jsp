@@ -29,7 +29,7 @@
             <svg class="bi bi-grid-1x2 mx-2" width="1.4em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
                 <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
             </svg>
-            <p>${quadro.titulo}</p>
+            <p style="margin: 0px">${quadro.titulo}</p>
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper">
@@ -81,7 +81,7 @@
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-info">
-                                                <h5 class="modal-title text-white" id="titleEditarTicket">Titulo do Ticket</h5>
+                                                <h5 class="modal-title text-white" id="titleEditarTicket">${ticket.titulo}</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span class="text-white" aria-hidden="true">&times;</span>
                                                 </button>
@@ -89,15 +89,20 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <form action="">
+                                                        <form action="\ticket.do" method="POST">
                                                             <div class="input-group">
+                                                                <label><i class="fas fa-id-card mr-2"></i>Insira o novo título</label>
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <input class="form-control" name="Titulo" value="" >
+                                                            </div>
+                                                            <div class="input-group mt-4">
                                                                 <label><i class="fas fa-align-left mr-2"></i>Descrição</label>
                                                             </div>
                                                             <div class="input-group">
-                                                            <textarea class="form-control" name="" value=""
-                                                                aria-label="With textarea" placeholder="Digite a descrição do ticket"></textarea>
+                                                                <textarea class="form-control" name="" aria-label="With textarea" placeholder="Digite a descrição do ticket"></textarea>
                                                             </div>
-                                                            <div class="input-group mt-5">
+                                                            <div class="input-group mt-4">
                                                                 <label><i class="fas fa-paperclip mr-2"></i>Anexo</label>
                                                             </div>
                                                             <div class="input-group">
@@ -109,7 +114,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="input-group mt-5">
+                                                            <div class="input-group mt-4">
                                                                 <label><i class="far fa-comment-alt mr-2"></i></i>Comentário</label>
                                                             </div>
                                                             <div class="input-group">
