@@ -61,7 +61,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
-                            Ainda não tem cadastro?<a class="px-1" href="pages/usuario/Cadastro.html">Clique aqui</a>
+                            Ainda não tem cadastro?<a class="px-1" href="pages/usuario/Cadastro.jsp">Clique aqui</a>
                         </div>
                         <div class="d-flex justify-content-center">
                             <a class="px-1" href="#">Esqueceu a senha?</a>
