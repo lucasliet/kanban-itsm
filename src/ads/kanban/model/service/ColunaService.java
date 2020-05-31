@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import ads.kanban.model.dao.ColunaDAO;
 import ads.kanban.model.entity.ColunaEntity;
+import ads.kanban.model.entity.TicketEntity;
 
 public class ColunaService {
 	private ColunaDAO dao;
@@ -30,6 +31,13 @@ public class ColunaService {
     }
 
 	public ArrayList<ColunaEntity> listarColunas(int quadroId) throws IOException {
-		return dao.listarColunas(quadroId);
+		ArrayList<ColunaEntity> colunas = dao.listarColunas(quadroId);
+		//puxa a arraylist de tickets do banco e adicionar em cada coluna (se não tiver ticket fica vazia mesmo)
+		TicketService tService = new TicketService();
+		for (ColunaEntity item : colunas) {
+			ArrayList<TicketEntity> tickets = tService.listarTickets(item.getId());
+			item.setTickets(tickets);
+		}
+		return colunas;
 	}
 }

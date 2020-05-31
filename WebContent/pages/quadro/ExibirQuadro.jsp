@@ -128,9 +128,7 @@
                                                                 <i class="fas fa-paperclip mr-2"></i>Anexo
                                                             </button>
                                                             <select name="id_coluna" class="form-control select-col mt-2" required>
-                                                                <c:forEach var="coluna" items="${colunas}">
-                                                                    <option value="${coluna.id}">${coluna.titulo}</option>
-                                                                </c:forEach>
+                                                                ${options_colunas}
                                                             </select>
                                                             <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="acao" value="btn-mover">
                                                                 <i class="fas fa-arrow-right mr-2"></i>Mover

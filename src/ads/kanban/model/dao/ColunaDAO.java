@@ -117,9 +117,9 @@ public class ColunaDAO {
 
     public ArrayList<ColunaEntity> listarColunas(int quadroId) throws IOException {
         String sql ="SELECT c.id, c.titulo, c.id_quadro FROM colunas c" +
-                " JOIN quadros q ON q.id = c.id_quadro" +
-                " WHERE q.id = ?" +
-                " ORDER BY c.titulo"; //TODO order by posicao
+                        " JOIN quadros q ON q.id = c.id_quadro" +
+                        " WHERE q.id = ?" +
+                        " ORDER BY c.titulo"; //TODO order by posicao
         ArrayList<ColunaEntity> colunas = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.getConnection();

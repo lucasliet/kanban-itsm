@@ -57,11 +57,13 @@ public class RenderHelper {
         QuadroEntity quadro = qService.buscarQuadro(quadroId);
         ArrayList<ColunaEntity> colunas = cService.listarColunas(quadroId);
 
+        //Faz a lista de options com cada coluna pra mandar pro JSP
+        //Seria o mesmo que o forEach em taglib, mas ele ta dando defeito
+        String optionsColunas = "";
         for (ColunaEntity item : colunas) {
-            int colunaId = item.getId();
-            ArrayList<TicketEntity>  tickets = tService.listarTickets(colunaId);
-            item.setTickets(tickets);
+            optionsColunas+= "<option value=\""+item.getId()+"\">"+item.getTitulo()+"</option>\n";
         }
+        request.setAttribute("options_colunas", optionsColunas);
 
         request.setAttribute("quadro", quadro);
         request.setAttribute("colunas", colunas);
