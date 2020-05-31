@@ -40,6 +40,7 @@ public class LoginFilter implements Filter{
 		if (usuarioLogado != null ||
 				uri.equals(path+"/") ||
 				acao.equals("login") ||
+				acao.equals("btn-cadastrar") ||
 				uri.endsWith("pages/usuario/Cadastro.jsp") ||
 				uri.endsWith("img/logoEmpresa.png") ||
 				uri.endsWith(".svg") ||

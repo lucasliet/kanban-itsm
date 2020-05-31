@@ -28,10 +28,19 @@
                 <div class="col-md-7">
                     <c:forEach var="ticket" items="${tickets}">
                         <div class="card c-coluna mb-3">
-                            <div class="card-header">
-                                <p>${ticket.titulo}</p>
+                            <div class="card-header bg-info text-white">
+                                <h2 style="font-size: large">${ticket.titulo}</h2>
                             </div>
                             <div class="card-body">
+                                <div class="input-group">
+                                    <label><i class="fas fa-align-left mr-2"></i>Descrição</label>
+                                </div>
+                                <c:if test="${empty ticket.descricao}">
+                                    <p class="lead text-secondary">Este ticket ainda não contém uma descrição no momento.</p>
+                                </c:if>
+                                <div class="input-group">
+                                    <p class="lead">${ticket.descricao}</p>
+                                </div>
                                 <img class="card-img-top" src="${ticket.foto}" alt="">
                             </div>
                             <div class="card-footer">
@@ -54,12 +63,12 @@
                 </div>
                 <div class="col-md-2"></div>
                     <div class="col-md-3">
-                        <div class="card c-coluna">
+                        <div class="card c-coluna bg-info text-white">
                             <h6 class="text-center mt-3 mb-4">
                                 <i class="fas fa-star mr-2" style="color: gold"></i>Últimos quadros
                             </h6>
                             <c:forEach var="quadro" items="${quadros}">
-                                <div class="card c-cards m-3">
+                                <div class="card c-cards m-3 rounded">
                                     <div class="card-header c-header-blue">
                                         <p class="text-white">${quadro.titulo}</p>
                                     </div>

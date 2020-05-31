@@ -26,11 +26,11 @@
             <c:import url="/pages/Menu.jsp"/>
         </header>
         <div class="d-flex bg-info c-bg-info mb-2 py-3 col-12 text-white">
-            <svg class="bi bi-grid-1x2 mx-2" width="1.4em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+            <svg class="bi bi-grid-1x2 mx-2 my-auto" width="1.4em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
                 <path fill-rule="evenodd" d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
             </svg>
-            <p style="margin: 0px">${quadro.titulo}</p>
-            <button type="button" data-toggle="modal" data-target="#ModalQuadroTitulo"></button>
+            <p class="my-auto">${quadro.titulo}</p>
+            <button type="button" class="ml-auto mr-3 my-auto btn btn-outline-light" data-toggle="modal" data-target="#ModalQuadroTitulo">Editar Titulo</button>
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper">
@@ -258,7 +258,7 @@
                 </c:forEach>
 
                 <div class="col-md-3 col-12">
-                    <button id="btn-coluna" class="btn btn-outline-geral col-md-12" data-toggle="modal" data-target="#ModalColuna">
+                    <button id="btn-coluna" class="btn btn-outline-geral col-md-12 my-3" data-toggle="modal" data-target="#ModalColuna">
                         <i class="fas fa-plus mr-1"></i>Adicionar outra coluna
                     </button>
                 </div>
