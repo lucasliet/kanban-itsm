@@ -136,7 +136,7 @@
                                                             <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="">
                                                                 <i class="far fa-edit mr-2"></i>Editar
                                                             </button>
-                                                            <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket${ticket.id}">
+                                                            <button type="button" class="btn btn-outline-geral mt-2 px-3" data-toggle="modal" data-target="#ModalExcluirTicket${ticket.id}">
                                                                 <i class="fas fa-trash mr-2"></i>Excluir
                                                             </button>
                                                         </div>
