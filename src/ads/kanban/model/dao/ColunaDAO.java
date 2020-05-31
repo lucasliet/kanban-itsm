@@ -99,11 +99,12 @@ public class ColunaDAO {
     }
 
     public ColunaEntity atualizarColuna(ColunaEntity coluna) throws IOException {
-        String sql = "UPDATE colunas SET titulo = ?, quadro_id = ? WHERE id = ?";
+        String sql = "UPDATE colunas SET titulo = ?, id_quadro = ? WHERE id = ?";
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement pst = conn.prepareStatement(sql);) {
             pst.setString(1, coluna.getTitulo());
             pst.setInt(2, coluna.getQuadro().getId());
+            pst.setInt(3, coluna.getId());
             pst.execute();
 
         } catch (SQLException e) {

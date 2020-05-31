@@ -87,9 +87,9 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-10">
-                                                        <form action="\ticket.do" method="POST">
+                                                <form action="\ticket.do" method="POST">
+                                                    <div class="row">
+                                                        <div class="col-md-10">
                                                             <div class="input-group">
                                                                 <label><i class="fas fa-id-card mr-2"></i>Insira o novo título</label>
                                                             </div>
@@ -120,29 +120,30 @@
                                                             <div class="input-group">
                                                                 <input class="form-control" value="" placeholder="Faça um comentário">
                                                             </div>
-                                                        </form>
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <input type="hidden" name="id_ticket" value="${ticket.id}">
+                                                            <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="">
+                                                                <i class="fas fa-paperclip mr-2"></i>Anexo
+                                                            </button>
+                                                            <select name="id_coluna" class="form-control select-col mt-2" required>
+                                                                <c:forEach var="coluna" items="${colunas}">
+                                                                    <option value="${coluna.id}">${coluna.titulo}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                            <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="acao" value="btn-mover">
+                                                                <i class="fas fa-arrow-right mr-2"></i>Mover
+                                                            </button>
+                                                            <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="">
+                                                                <i class="far fa-edit mr-2"></i>Editar
+                                                            </button>
+                                                            <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket${ticket.id}">
+                                                                <i class="fas fa-trash mr-2"></i>Excluir
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                    <form action="/ticket.do" method="post" class="col-md-2">
-                                                        <input type="hidden" name="id_ticket" value="${ticket.id}">
-                                                        <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="">
-                                                            <i class="fas fa-paperclip mr-2"></i>Anexo
-                                                        </button>
-                                                        <select name="id_coluna" class="form-control select-col mt-2" required>
-                                                            <c:forEach var="coluna" items="${colunas}">
-                                                                <option value="${coluna.id}">${coluna.titulo}</option>
-                                                            </c:forEach>
-                                                        </select>
-                                                        <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="acao" value="btn-mover">
-                                                            <i class="fas fa-arrow-right mr-2"></i>Mover
-                                                        </button>
-                                                        <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="">
-                                                            <i class="far fa-edit mr-2"></i>Editar
-                                                        </button>
-                                                        <button type="submit" class="btn btn-outline-geral mt-2 px-3" name="" value="" data-toggle="modal" data-target="#ModalExcluirTicket${ticket.id}">
-                                                            <i class="fas fa-trash mr-2"></i>Excluir
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-geral" name="" value="">Salvar</button>
