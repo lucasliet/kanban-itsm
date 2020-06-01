@@ -10,8 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ads.kanban.model.dao.TicketDAO;
 import ads.kanban.model.entity.ComentarioEntity;
+import ads.kanban.model.entity.TicketEntity;
+import ads.kanban.model.entity.UsuarioEntity;
 import ads.kanban.model.service.ComentarioService;
+import ads.kanban.model.service.TicketService;
+
 @WebServlet("/comentario.do")
 public class ComentarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,27 +30,27 @@ public class ComentarioController extends HttpServlet {
 		int id;
 		String corpo;
 
+		UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
+		UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
+
 
 		ComentarioEntity comentario = new ComentarioEntity();
 		ArrayList<ComentarioEntity> coment = new ArrayList<>();
 		ComentarioService cService = new ComentarioService();
+		TicketService tService = new TicketService();
+		RenderHelper render = new RenderHelper(request, response);
+
 
 		switch (acao) {
-			case "page-excluir":
-				id = Integer.parseInt(request.getParameter("id_excluir"));
-				//TODO comentario = cService.buscarComentario(id);
-				cService.excluirComentario(id);
-				request.setAttribute("comentario", coment);
-				saida = "AdmQuadro.jsp";
-				break;
-
-			case "btn-inserir":
-				corpo = request.getParameter("corpo");
-				comentario = new ComentarioEntity();
-				comentario.setCorpo(corpo);
-				id = cService.inserirComentario(comentario);
-				request.setAttribute("comentario", comentario);
-				saida = "ExibirQuadro.jsp";
+			case "btn-postar":
+				int idTicket = Integer.parseInt(request.getParameter("id_ticket"));
+				TicketEntity ticket = tService.buscarTicket(idTicket);
+				comentario.setCorpo(
+						request.getParameter("corpo")
+				);
+				comentario.setTicket(ticket);
+				comentario.setUsuario(usuarioLogado);
+				render.exibirQuadro(ticket.getColuna().getQuadro().getId());
 				break;
 		}
 		RequestDispatcher view = request.getRequestDispatcher(saida);

@@ -1,9 +1,11 @@
 package ads.kanban.controller;
 
 import ads.kanban.model.entity.ColunaEntity;
+import ads.kanban.model.entity.ComentarioEntity;
 import ads.kanban.model.entity.QuadroEntity;
 import ads.kanban.model.entity.TicketEntity;
 import ads.kanban.model.service.ColunaService;
+import ads.kanban.model.service.ComentarioService;
 import ads.kanban.model.service.QuadroService;
 import ads.kanban.model.service.TicketService;
 
@@ -20,6 +22,7 @@ public class RenderHelper {
     private final QuadroService qService = new QuadroService();
     private final ColunaService cService = new ColunaService();
     private final TicketService tService = new TicketService();
+    private final ComentarioService coService = new ComentarioService();
 
     public RenderHelper(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
@@ -56,7 +59,6 @@ public class RenderHelper {
     protected void exibirQuadro(int quadroId) throws ServletException, IOException {
         QuadroEntity quadro = qService.buscarQuadro(quadroId);
         ArrayList<ColunaEntity> colunas = cService.listarColunas(quadroId);
-
         //Faz a lista de options com cada coluna pra mandar pro JSP
         //Seria o mesmo que o forEach em taglib, mas ele ta dando defeito
         String optionsColunas = "";
