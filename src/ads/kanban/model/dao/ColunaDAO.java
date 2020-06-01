@@ -98,7 +98,7 @@ public class ColunaDAO {
         return id;
     }
 
-    public ColunaEntity atualizarColuna(ColunaEntity coluna) throws IOException {
+    public void atualizarColuna(ColunaEntity coluna) throws IOException {
         String sql = "UPDATE colunas SET titulo = ?, id_quadro = ? WHERE id = ?";
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement pst = conn.prepareStatement(sql);) {
@@ -111,8 +111,6 @@ public class ColunaDAO {
             e.printStackTrace();
             throw new IOException(e);
         }
-            ColunaEntity colunaAlterada = buscarColuna(coluna.getId());
-        return colunaAlterada;
     }
 
     public ArrayList<ColunaEntity> listarColunas(int quadroId) throws IOException {

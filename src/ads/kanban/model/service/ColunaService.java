@@ -14,8 +14,12 @@ public class ColunaService {
 		this.dao = new ColunaDAO();
 	}
 
-	public ColunaEntity buscarColuna(int id) throws IOException {
-    	return dao.buscarColuna(id);
+	public ColunaEntity buscarColuna(int idColuna) throws IOException {
+		ColunaEntity coluna = dao.buscarColuna(idColuna);
+		TicketService tService = new TicketService();
+		ArrayList<TicketEntity> tickets = tService.listarTickets(idColuna);
+		coluna.setTickets(tickets);
+    	return coluna;
     }
     
     public int deletarColuna(int id) throws IOException {
@@ -26,8 +30,8 @@ public class ColunaService {
     	return dao.inserirColuna(coluna);
     }
     
-    public ColunaEntity atualizarColuna(ColunaEntity coluna) throws IOException {
-    	return dao.atualizarColuna(coluna);
+    public void atualizarColuna(ColunaEntity coluna) throws IOException {
+    	 dao.atualizarColuna(coluna);
     }
 
 	public ArrayList<ColunaEntity> listarColunas(int quadroId) throws IOException {

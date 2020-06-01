@@ -77,6 +77,8 @@ public class QuadroDAO {
                     id = rs.getInt(1);
                     quadro.setId(id);
                 }
+
+                //Insere na tabela n pra n a relação de quadro e usuario
                 String sqlUser = "INSERT INTO quadros_usuarios (id_usuario, id_quadro) VALUES(?,?);";
                 try (PreparedStatement pst2 = conn.prepareStatement(sqlUser);){
                     pst2.setInt(1, usuario.getId());

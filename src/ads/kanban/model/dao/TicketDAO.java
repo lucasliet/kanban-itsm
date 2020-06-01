@@ -61,8 +61,6 @@ public class TicketDAO {
 		try (Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement pst = conn.prepareStatement(sql)){
 			pst.setInt(1, colunaId);
-			pst.execute();
-
 			try (ResultSet rs = pst.executeQuery();){
 			
 			while(rs.next()) {

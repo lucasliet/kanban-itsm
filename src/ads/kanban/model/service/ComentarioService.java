@@ -1,18 +1,30 @@
 package ads.kanban.model.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ads.kanban.model.dao.ComentarioDAO;
 import ads.kanban.model.entity.ComentarioEntity;
 
 public class ComentarioService {
-	public int excluirComentario(int id) throws IOException {
-    	ComentarioDAO dao = new ComentarioDAO();
-    	return dao.deletarComentario(id);
+	private ComentarioDAO dao;
+
+	public ComentarioService(){this.dao = new ComentarioDAO();}
+
+	public ComentarioEntity buscarComentario(int idComentario) throws IOException {
+		return dao.buscarComentario(idComentario);
+	}
+
+	public void excluirComentario(int id) throws IOException {
+    	dao.deletarComentario(id);
     }
+
 	public int inserirComentario(ComentarioEntity coment) throws IOException {
-    	ComentarioDAO dao = new ComentarioDAO();
-    	return dao.inserircomentario(coment);
+    	return dao.inserirComentario(coment);
     }
+
+    public ArrayList<ComentarioEntity> listarComentarios(int idTicket) throws IOException {
+		return dao.listarComentarios(idTicket);
+	}
 
 }
