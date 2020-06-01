@@ -116,9 +116,7 @@
                                                         <label><i class="fas fa-align-left mr-2"></i>Descrição</label>
                                                     </div>
                                                     <div class="input-group">
-                                                        <textarea class="form-control" name="descricao"
-                                                                  aria-label="With textarea"
-                                                                  placeholder="Digite a descrição do ticket">${ticket.descricao}</textarea>
+                                                        <textarea class="form-control" name="descricao" aria-label="With textarea" placeholder="Digite a descrição do ticket">${ticket.descricao}</textarea>
                                                     </div>
                                                     <div class="input-group mt-4">
                                                         <label><i class="fas fa-paperclip mr-2"></i>Anexo</label>
@@ -170,11 +168,8 @@
                                                             data-target="#ModalExcluirTicket${ticket.id}">
                                                         <i class="fas fa-trash mr-2"></i>Excluir
                                                     </button>
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-geral" name="acao"
-                                                            value="btn-atualizar">Salvar
+                                                    <button type="submit" class="btn btn-geral mt-2 px-3" name="acao" value="btn-atualizar">
+                                                        <i class="fas fa-save mr-2"></i>Salvar
                                                     </button>
                                                 </div>
                                             </div> <!--Row -->
