@@ -47,7 +47,7 @@ public class QuadroController extends HttpServlet {
             	break;
 
             case "btn-atualizar":
-    			id = Integer.parseInt(request.getParameter("id_atualizar"));
+    			id = Integer.parseInt(request.getParameter("id_quadro"));
     			titulo = request.getParameter("titulo");
     			quadro.setId(id);
     			quadro.setTitulo(titulo);
