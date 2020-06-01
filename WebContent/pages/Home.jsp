@@ -43,21 +43,21 @@
                                 </div>
                                 <img class="card-img-top" src="${ticket.foto}" alt="">
                             </div>
-                            <div class="card-footer">
+                            <form action="/comentario.do" method="POST" class="card-footer">
                                 <label><i class="far fa-comment-alt mr-2"></i>Comente</label>
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control text-input col-12" name="" value=""
-                                                   placeholder="Faça um comentário">
+                                            <input type="text" class="form-control text-input col-12" name="" value="" placeholder="Faça um comentário">
                                         </div>
                                     </div>
                                     <div class="2">
-                                        <button type="submit" class="btn btn-geral ml-3" name="" value="">Enviar
+                                        <button type="submit" class="btn btn-outline-geral" name="" value="">
+                                            <i class="far fa-paper-plane mr-2"></i>Postar
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </c:forEach>
                 </div>

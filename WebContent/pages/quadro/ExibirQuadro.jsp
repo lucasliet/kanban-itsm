@@ -116,12 +116,15 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="input-group mt-4">
-                                                                <label><i class="far fa-comment-alt mr-2"></i></i>Comentário</label>
-                                                            </div>
-                                                            <div class="input-group">
-                                                                <input class="form-control" value="" placeholder="Faça um comentário">
-                                                            </div>
+                                                            <form action="/comentario.do" method="POST" class="input-group">
+                                                                <label><i class="far fa-comment-alt mr-2 mt-4"></i></i>Comentário</label>
+                                                                <div class="input-group">
+                                                                    <input class="form-control col-10" name="" value="" placeholder="Faça um comentário">
+                                                                    <button type="submit" class="ml-auto btn btn-outline-geral" name="" value="">
+                                                                        <i class="far fa-paper-plane mr-2"></i>Postar
+                                                                    </button>
+                                                                </div>
+                                                            </form>
                                                         </div>
 
                                                         <div class="col-md-2">
