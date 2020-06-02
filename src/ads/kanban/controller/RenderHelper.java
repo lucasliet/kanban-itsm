@@ -1,9 +1,7 @@
 package ads.kanban.controller;
 
 import ads.kanban.model.entity.ColunaEntity;
-import ads.kanban.model.entity.ComentarioEntity;
 import ads.kanban.model.entity.QuadroEntity;
-import ads.kanban.model.entity.TicketEntity;
 import ads.kanban.model.service.ColunaService;
 import ads.kanban.model.service.ComentarioService;
 import ads.kanban.model.service.QuadroService;
@@ -46,7 +44,7 @@ public class RenderHelper {
 
     protected void home(int usuarioId) throws IOException, ServletException {
         request.setAttribute("tickets", tService.ultimosTickets(usuarioId, 3));
-        request.setAttribute("quadros", qService.listarQuadros(usuarioId, 3));
+        request.setAttribute("quadros", qService.ultimosQuadros(usuarioId, 3));
         chamaJSP("/pages/Home.jsp");
     }
 

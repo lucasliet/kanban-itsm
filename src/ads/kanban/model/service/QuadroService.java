@@ -34,7 +34,7 @@ public class QuadroService {
     	return dao.listarQuadros(usuarioId);
     }
 
-    public ArrayList<QuadroEntity> listarQuadros(int usuarioId, int limit) throws IOException{
-        return dao.listarQuadros(usuarioId ,limit);
+    public ArrayList<QuadroEntity> ultimosQuadros(int usuarioId, int limit) throws IOException{
+        return dao.ultimosQuadros(usuarioId ,limit);
     }
 }

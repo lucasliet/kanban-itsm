@@ -15,10 +15,14 @@ public class ComentarioDAO {
     public ArrayList<ComentarioEntity> listarComentarios(int idTicket) throws IOException {
         ArrayList<ComentarioEntity> comentarios = new ArrayList<>();
         String sql = "SELECT c.id, c.corpo, " +
-                            "t.id, t.titulo, descricao, t.foto, id_coluna, " +
-                            "u.id, nome, ultimo_nome, endereco, telefone, u.foto, email FROM comentarios c " +
+                            "u.id, nome, ultimo_nome, endereco, telefone, u.foto, email, " +
+                            "t.id, t.titulo, t.descricao, t.foto, " +
+                            "co.id, co.titulo, " +
+                            "q.id, q.titulo FROM comentarios c " +
                         "JOIN usuarios u ON c.id_usuario = u.id " +
                         "JOIN tickets t  ON t.id = c.id_ticket " +
+                        "JOIN colunas co ON t.id_coluna = co.id " +
+                        "JOIN quadros q  ON co.id_quadro = q.id " +
                         "WHERE t.id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
@@ -31,14 +35,20 @@ public class ComentarioDAO {
                     ComentarioEntity comentario = new ComentarioEntity();
                     comentario.setId(rs.getInt("c.id"));
                     comentario.setCorpo(rs.getString("corpo"));
-                    ColunaService cService = new ColunaService();
-                    ColunaEntity coluna = cService.buscarColuna(rs.getInt("id_coluna"));
                     TicketEntity ticket = new TicketEntity();
                     ticket.setId(rs.getInt("t.id"));
                     ticket.setTitulo(rs.getString("t.titulo"));
-                    ticket.setDescricao(rs.getString("descricao"));
+                    ticket.setDescricao(rs.getString("t.descricao"));
                     ticket.setFoto(rs.getString("t.foto"));
+                    ColunaEntity coluna = new ColunaEntity();
+                    coluna.setId(rs.getInt("co.id"));
+                    coluna.setTitulo(rs.getString("co.titulo"));
+                    QuadroEntity quadro = new QuadroEntity();
+                    quadro.setId(rs.getInt("q.id"));
+                    quadro.setTitulo(rs.getString("q.titulo"));
+                    coluna.setQuadro(quadro);
                     ticket.setColuna(coluna);
+                    comentario.setTicket(ticket);
                     UsuarioEntity usuario = new UsuarioEntity();
                     usuario.setId(rs.getInt("u.id"));
                     usuario.setNome(rs.getString("nome"));
@@ -47,7 +57,6 @@ public class ComentarioDAO {
                     usuario.setTelefone(rs.getString("telefone"));
                     usuario.setFoto(rs.getString("u.foto"));
                     usuario.setEmail(rs.getString("email"));
-                    comentario.setTicket(ticket);
                     comentario.setUsuario(usuario);
                     comentarios.add(comentario);
                 }
@@ -63,13 +72,16 @@ public class ComentarioDAO {
     }
 
     public ComentarioEntity buscarComentario(int idComentario) throws IOException {
-
         ComentarioEntity comentario = new ComentarioEntity();
         String sql = "SELECT c.id, c.corpo, " +
-                            "t.id, t.titulo, descricao, t.foto, id_coluna, " +
-                            "u.id, nome, ultimo_nome, endereco, telefone, u.foto, email FROM comentarios c " +
+                            "u.id, nome, ultimo_nome, endereco, telefone, u.foto, email, " +
+                            "t.id, t.titulo, t.descricao, t.foto, " +
+                            "co.id, co.titulo, " +
+                            "q.id, q.titulo FROM comentarios c " +
                         "JOIN usuarios u ON c.id_usuario = u.id " +
                         "JOIN tickets t  ON t.id = c.id_ticket " +
+                        "JOIN colunas co ON t.id_coluna = co.id " +
+                        "JOIN quadros q  ON co.id_quadro = q.id " +
                         "WHERE c.id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
@@ -81,14 +93,20 @@ public class ComentarioDAO {
                 while (rs.next()) {
                     comentario.setId(rs.getInt("c.id"));
                     comentario.setCorpo(rs.getString("corpo"));
-                    ColunaService cService = new ColunaService();
-                    ColunaEntity coluna = cService.buscarColuna(rs.getInt("id_coluna"));
                     TicketEntity ticket = new TicketEntity();
                     ticket.setId(rs.getInt("t.id"));
                     ticket.setTitulo(rs.getString("t.titulo"));
-                    ticket.setDescricao(rs.getString("descricao"));
+                    ticket.setDescricao(rs.getString("t.descricao"));
                     ticket.setFoto(rs.getString("t.foto"));
+                    ColunaEntity coluna = new ColunaEntity();
+                    coluna.setId(rs.getInt("co.id"));
+                    coluna.setTitulo(rs.getString("co.titulo"));
+                    QuadroEntity quadro = new QuadroEntity();
+                    quadro.setId(rs.getInt("q.id"));
+                    quadro.setTitulo(rs.getString("q.titulo"));
+                    coluna.setQuadro(quadro);
                     ticket.setColuna(coluna);
+                    comentario.setTicket(ticket);
                     UsuarioEntity usuario = new UsuarioEntity();
                     usuario.setId(rs.getInt("u.id"));
                     usuario.setNome(rs.getString("nome"));
@@ -97,7 +115,6 @@ public class ComentarioDAO {
                     usuario.setTelefone(rs.getString("telefone"));
                     usuario.setFoto(rs.getString("u.foto"));
                     usuario.setEmail(rs.getString("email"));
-                    comentario.setTicket(ticket);
                     comentario.setUsuario(usuario);
 
                 }

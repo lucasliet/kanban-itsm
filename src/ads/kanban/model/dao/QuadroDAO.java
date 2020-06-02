@@ -142,7 +142,7 @@ public class QuadroDAO {
     	
     }
     //Mesma lista de cima mas setando um limite de resultados pra tela Home
-    public ArrayList<QuadroEntity> listarQuadros(int usuarioId, int limit) throws IOException {
+    public ArrayList<QuadroEntity> ultimosQuadros(int usuarioId, int limit) throws IOException {
         String sql ="SELECT q.id, q.titulo FROM quadros q " +
                         "JOIN quadros_usuarios qu ON q.id = qu.id_quadro " +
                         "JOIN usuarios u ON u.id = qu.id_usuario " +

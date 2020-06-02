@@ -1,7 +1,6 @@
 package ads.kanban.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ads.kanban.model.dao.TicketDAO;
 import ads.kanban.model.entity.ComentarioEntity;
 import ads.kanban.model.entity.TicketEntity;
 import ads.kanban.model.entity.UsuarioEntity;
@@ -27,15 +25,10 @@ public class ComentarioController extends HttpServlet {
 		String acao = request.getParameter("acao");
 		String saida = null;
 
-		int id;
-		String corpo;
-
 		UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
 		UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
 
-
 		ComentarioEntity comentario = new ComentarioEntity();
-		ArrayList<ComentarioEntity> coment = new ArrayList<>();
 		ComentarioService cService = new ComentarioService();
 		TicketService tService = new TicketService();
 		RenderHelper render = new RenderHelper(request, response);
@@ -50,10 +43,16 @@ public class ComentarioController extends HttpServlet {
 				);
 				comentario.setTicket(ticket);
 				comentario.setUsuario(usuarioLogado);
+				cService.inserirComentario(comentario);
 				render.exibirQuadro(ticket.getColuna().getQuadro().getId());
 				break;
 		}
 		RequestDispatcher view = request.getRequestDispatcher(saida);
 		view.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 }

@@ -125,22 +125,20 @@
                                                         <div class="col-md-8">
                                                             <div class="card">
                                                                 <div class="card-body">
-                                                                    Aqui vai os anexos.
+                                                                    Aqui vão os anexos.
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <c:forEach var="comentario" items="${ticket.comentarios}">
-                                                        <div class="input-group col-md-8">
-                                                            <div class="col-2">
-                                                                <img src="${comentario.usuario.foto}">
+                                                        <div class="input-group d-flex col-md-8 my-3">
+                                                            <div class="col-4 col-md-2 d-flex">
+                                                                <img class="img-fluid rounded my-auto" src="${comentario.usuario.foto}">
                                                             </div>
-                                                            <div class="card col">
-                                                                <div class="card-header">
-                                                                    <p>${comentario.usuario.nome}&nbsp${comentario.usuario.ultimoNome}</p>
-                                                                </div>
-                                                                <div class="card-body">
-                                                                    <div class="col">
+                                                            <div class="col">
+                                                                <strong class="text-secondary">${comentario.usuario.nome}&nbsp${comentario.usuario.ultimoNome}</strong>
+                                                                <div class="card">
+                                                                    <div class="card-body py-2">
                                                                             ${comentario.corpo}
                                                                     </div>
                                                                 </div>
@@ -151,12 +149,9 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <button type="submit" class="btn btn-outline-geral mt-2 px-3"
-                                                            name="" value="">
-                                                        <i class="fas fa-paperclip mr-2"></i>Anexo
-                                                    </button>
                                                     <select name="id_coluna" class="form-control select-col mt-2"
                                                             required>
+                                                        <option value="" disabled selected>Colunas</option>
                                                             ${options_colunas}
                                                     </select>
                                                     <button type="submit" class="btn btn-outline-geral mt-2 px-3"
@@ -168,18 +163,21 @@
                                                             data-target="#ModalExcluirTicket${ticket.id}">
                                                         <i class="fas fa-trash mr-2"></i>Excluir
                                                     </button>
+                                                    <button type="submit" class="btn btn-outline-geral mt-2 px-3" disabled>
+                                                        <i class="fas fa-paperclip mr-2"></i>Anexo
+                                                    </button>
                                                     <button type="submit" class="btn btn-geral mt-2 px-3" name="acao" value="btn-atualizar">
                                                         <i class="fas fa-save mr-2"></i>Salvar
                                                     </button>
                                                 </div>
                                             </div> <!--Row -->
                                         </form>
-                                        <form action="/comentario.do" method="GET" class="input-group">
+                                        <form action="/comentario.do" method="POST" class="input-group">
                                             <label><i class="far fa-comment-alt mr-2 mt-4"></i></i>Comentário</label>
                                             <div class="input-group">
-                                                <input type="hidden" name="id_ticket" value="44">
+                                                <input type="hidden" name="id_ticket" value="${ticket.id}">
                                                 <input class="form-control col-10" name="corpo" placeholder="Faça um comentário">
-                                                <button type="submit" class="ml-auto btn btn-outline-geral" name="acao" value="btn-postar">
+                                                <button type="submit" class="ml-auto btn btn-outline-geral px-3" name="acao" value="btn-postar">
                                                     <i class="far fa-paper-plane mr-2"></i>Postar
                                                 </button>
                                             </div>
