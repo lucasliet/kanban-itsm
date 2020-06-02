@@ -27,4 +27,8 @@ public class ComentarioService {
 		return dao.listarComentarios(idTicket);
 	}
 
+	public ArrayList<ComentarioEntity> ultimosComentarios(int idTicket, int limit) throws IOException {
+		return dao.ultimosComentarios(idTicket, limit);
+	}
+
 }
