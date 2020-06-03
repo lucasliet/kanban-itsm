@@ -48,7 +48,7 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control text-input col-12" name="" value="" placeholder="Faça um comentário">
+                                            <input type="text" class="form-control col-12" name="" value="" placeholder="Faça um comentário" required>
                                         </div>
                                     </div>
                                     <div class="2">

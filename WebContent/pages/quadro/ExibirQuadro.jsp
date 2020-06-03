@@ -32,7 +32,7 @@
               d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
     </svg>
     <p class="my-auto">${quadro.titulo}</p>
-    <button type="button" class="ml-auto mr-3 my-auto btn btn-outline-light" data-toggle="modal"
+    <button type="button" class="ml-auto mr-3 my-auto btn btn-outline-branco" data-toggle="modal"
             data-target="#ModalQuadroTitulo">Editar Titulo
     </button>
 </div>
@@ -45,7 +45,7 @@
                         <div class="header c-header">
                             <p>${coluna.titulo}</p>
                             <div class="dropleft">
-                                <svg class="bi bi-filter-right" width="1.5em" height="1.5em" viewBox="0 0 16 16"
+                                <svg style="cursor: pointer" class="bi bi-filter-right" width="1.5em" height="1.5em" viewBox="0 0 16 16"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                      id="dropdown${coluna.id}" data-toggle="dropdown" aria-haspopup="true"
                                      aria-expanded="false">
@@ -55,7 +55,7 @@
                                 <div class="dropdown-menu m-2" aria-labelledby="dropdown${coluna.id}">
                                     <div class="header c-header">
                                         <span class="dropdown-item-text">Ações da coluna</span>
-                                        <i class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna"
+                                        <i style="cursor: pointer" class="fas fa-times mt-2 mr-2" data-toggle="collapse" href="#coluna"
                                            role="button" aria-expanded="false" aria-controls="coluna">
                                         </i>
                                     </div>
@@ -130,24 +130,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <c:forEach var="comentario" items="${ticket.comentarios}">
-                                                        <div class="input-group d-flex col-md-8 my-3">
-                                                            <div class="col-4 col-md-2 d-flex">
-                                                                <img class="img-fluid rounded my-auto" src="${comentario.usuario.foto}">
-                                                            </div>
-                                                            <div class="col">
-                                                                <strong class="text-secondary">${comentario.usuario.nome}&nbsp${comentario.usuario.ultimoNome}</strong>
-                                                                <div class="card">
-                                                                    <div class="card-body py-2">
-                                                                            ${comentario.corpo}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </c:forEach>
-
                                                 </div>
-
                                                 <div class="col-md-2">
                                                     <select name="id_coluna" class="form-control select-col mt-2"
                                                             required>
@@ -172,11 +155,31 @@
                                                 </div>
                                             </div> <!--Row -->
                                         </form>
+
+                                        <c:forEach var="comentario" items="${ticket.comentarios}">
+                                            <div class="input-group d-flex col-md-8 my-3">
+                                                <div class="col-4 col-md-2 d-flex">
+                                                    <img class="img-fluid rounded my-auto" src="${comentario.usuario.foto}">
+                                                </div>
+                                                <div class="col">
+                                                    <strong class="text-secondary">${comentario.usuario.nome}&nbsp${comentario.usuario.ultimoNome}</strong>
+                                                    <div class="card">
+                                                        <div class="card-body py-2">
+                                                            ${comentario.corpo}
+                                                            <button type="submit" class="btn-like float-right" name="" value="">
+                                                                <i class="far fa-thumbs-up"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+
                                         <form action="/comentario.do" method="POST" class="input-group">
                                             <label><i class="far fa-comment-alt mr-2 mt-4"></i></i>Comentário</label>
                                             <div class="input-group">
                                                 <input type="hidden" name="id_ticket" value="${ticket.id}">
-                                                <input class="form-control col-10" name="corpo" placeholder="Faça um comentário">
+                                                <input class="form-control col-10" name="corpo" placeholder="Faça um comentário" required>
                                                 <button type="submit" class="ml-auto btn btn-outline-geral px-3" name="acao" value="btn-postar">
                                                     <i class="far fa-paper-plane mr-2"></i>Postar
                                                 </button>
