@@ -37,4 +37,12 @@ public class QuadroService {
     public ArrayList<QuadroEntity> ultimosQuadros(int usuarioId, int limit) throws IOException{
         return dao.ultimosQuadros(usuarioId ,limit);
     }
+
+    public boolean inserirUsuarioNoQuadro(int idQuadro, int idUsuario) throws IOException {
+        return dao.inserirUsuarioNoQuadro(idQuadro, idUsuario);
+    }
+
+    public boolean removerUsuarioNoQuadro(int idQuadro, int idUsuario) throws IOException {
+        return dao.removerUsuarioNoQuadro(idQuadro, idUsuario);
+    }
 }

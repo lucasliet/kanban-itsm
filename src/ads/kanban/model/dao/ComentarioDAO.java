@@ -59,7 +59,7 @@ public class ComentarioDAO {
 
     public ArrayList<ComentarioEntity> ultimosComentarios(int idTicket, int limit) throws IOException {
         ArrayList<ComentarioEntity> comentarios = new ArrayList<>();
-        String sql = criaQueryDeSelect("t.id") + " ORDER BY c.id DESC LIMIT = ?";
+        String sql = criaQueryDeSelect("t.id") + " ORDER BY c.id DESC LIMIT ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
@@ -84,7 +84,7 @@ public class ComentarioDAO {
 
     public ArrayList<ComentarioEntity> listarComentarios(int idTicket) throws IOException {
         ArrayList<ComentarioEntity> comentarios = new ArrayList<>();
-        String sql = criaQueryDeSelect("t.id");
+        String sql = criaQueryDeSelect("t.id") + " ORDER BY c.id DESC";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {

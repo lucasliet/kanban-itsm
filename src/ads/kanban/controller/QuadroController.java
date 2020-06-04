@@ -22,7 +22,7 @@ public class QuadroController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String acao = request.getParameter("acao");
 
-		int id;
+		int idQuadro , idUsuario;
 		String titulo;
 		
 		QuadroEntity quadro = new QuadroEntity();
@@ -35,24 +35,24 @@ public class QuadroController extends HttpServlet {
 
         switch (acao) {
 			case "btn-excluir":
-				id = Integer.parseInt(request.getParameter("id_excluir"));
-				qService.deletarQuadro(id);
+				idQuadro = Integer.parseInt(request.getParameter("id_excluir"));
+				qService.deletarQuadro(idQuadro);
             case "page-meus-quadros":
                 render.meusQuadros(usuarioLogado.getId());
                 break;
 
             case "page-exibir":
-            	id = Integer.parseInt(request.getParameter("id_exibir"));
-            	render.exibirQuadro(id);
+            	idQuadro = Integer.parseInt(request.getParameter("id_exibir"));
+            	render.exibirQuadro(idQuadro);
             	break;
 
             case "btn-atualizar":
-    			id = Integer.parseInt(request.getParameter("id_quadro"));
+    			idQuadro = Integer.parseInt(request.getParameter("id_quadro"));
     			titulo = request.getParameter("titulo");
-    			quadro.setId(id);
+    			quadro.setId(idQuadro);
     			quadro.setTitulo(titulo);
     			qService.atualizarQuadro(quadro);
-    			render.exibirQuadro(id);
+    			render.exibirQuadro(idQuadro);
     			break;
 
 			case "btn-inserir":
@@ -60,8 +60,22 @@ public class QuadroController extends HttpServlet {
 				quadro.setTitulo(titulo);
 
 				//Insere o quadro no banco, pega o ID que o banco gerou e retorna na variável ID
-				id = qService.inserirQuadro(quadro, usuarioLogado);
-				render.exibirQuadro(id);
+				idQuadro = qService.inserirQuadro(quadro, usuarioLogado);
+				render.exibirQuadro(idQuadro);
+				break;
+			case "+usuario-quadro":
+				idQuadro = Integer.parseInt(request.getParameter("id_quadro"));
+				idUsuario = Integer.parseInt(request.getParameter("id_usuario"));
+
+				qService.inserirUsuarioNoQuadro(idQuadro, idUsuario);
+				render.exibirQuadro(idQuadro);
+				break;
+			case "-usuario-quadro":
+				idQuadro = Integer.parseInt(request.getParameter("id_quadro"));
+				idUsuario = Integer.parseInt(request.getParameter("id_usuario"));
+
+				qService.removerUsuarioNoQuadro(idQuadro, idUsuario);
+				render.exibirQuadro(idQuadro);
 				break;
 		}
 	}

@@ -44,8 +44,13 @@ public class ComentarioController extends HttpServlet {
 				comentario.setTicket(ticket);
 				comentario.setUsuario(usuarioLogado);
 				cService.inserirComentario(comentario);
-				render.exibirQuadro(ticket.getColuna().getQuadro().getId());
+				if(request.getParameter("page").equals("home")){
+					render.home(usuarioLogado.getId());
+				} else {
+					render.exibirQuadro(ticket.getColuna().getQuadro().getId());
+				}
 				break;
+
 		}
 		RequestDispatcher view = request.getRequestDispatcher(saida);
 		view.forward(request, response);

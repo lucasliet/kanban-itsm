@@ -1,11 +1,10 @@
 package ads.kanban.controller;
 
 import ads.kanban.model.entity.ColunaEntity;
+import ads.kanban.model.entity.ComentarioEntity;
 import ads.kanban.model.entity.QuadroEntity;
-import ads.kanban.model.service.ColunaService;
-import ads.kanban.model.service.ComentarioService;
-import ads.kanban.model.service.QuadroService;
-import ads.kanban.model.service.TicketService;
+import ads.kanban.model.entity.UsuarioEntity;
+import ads.kanban.model.service.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,13 +17,18 @@ public class RenderHelper {
     private final HttpServletRequest request;
     private final HttpServletResponse response;
     private final QuadroService qService = new QuadroService();
+    private final UsuarioService uService = new UsuarioService();
     private final ColunaService cService = new ColunaService();
     private final TicketService tService = new TicketService();
     private final ComentarioService coService = new ComentarioService();
+    private final UsuarioLogado puxaUsuarioLogado;
+    private final UsuarioEntity usuarioLogado;
 
     public RenderHelper(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
+        this.puxaUsuarioLogado = new UsuarioLogado(request);
+        this.usuarioLogado = puxaUsuarioLogado.getUsuario();
     }
 
     private void chamaJSP(String page) throws ServletException, IOException {
@@ -55,7 +59,8 @@ public class RenderHelper {
     }
 
     protected void exibirQuadro(int quadroId) throws ServletException, IOException {
-        QuadroEntity quadro = qService.buscarQuadro(quadroId);
+        ArrayList<UsuarioEntity> usuarios = uService.listarUsuarios();
+
         ArrayList<ColunaEntity> colunas = cService.listarColunas(quadroId);
         //Faz a lista de options com cada coluna pra mandar pro JSP
         //Seria o mesmo que o forEach em taglib, mas ele ta dando defeito
@@ -63,9 +68,18 @@ public class RenderHelper {
         for (ColunaEntity item : colunas) {
             optionsColunas+= "<option value=\""+item.getId()+"\">"+item.getTitulo()+"</option>\n";
         }
-        request.setAttribute("options_colunas", optionsColunas);
 
-        request.setAttribute("quadro", quadro);
+        String optionsUsuarios = "";
+        for (UsuarioEntity item : usuarios) {
+            //Só escreve o option pros usuários que forem diferentes do logado
+            if(item.getId() != usuarioLogado.getId()){
+                optionsUsuarios+= "<option value=\""+item.getId()+"\">"+item.getNome()+" "+item.getUltimoNome()+"</option>\n";
+            }
+        }
+        request.setAttribute("options_colunas", optionsColunas);
+        request.setAttribute("options_usuarios", optionsUsuarios);
+
+        request.setAttribute("quadro", qService.buscarQuadro(quadroId));
         request.setAttribute("colunas", colunas);
         chamaJSP("/pages/quadro/ExibirQuadro.jsp");
     }

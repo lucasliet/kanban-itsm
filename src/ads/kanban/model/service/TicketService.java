@@ -18,7 +18,7 @@ public class TicketService {
         ArrayList<TicketEntity> tickets = dao.ultimosTickets(usuarioId, limit);
         ComentarioService cService = new ComentarioService();
         for(TicketEntity ticket : tickets){
-            ArrayList<ComentarioEntity> comentarios = cService.listarComentarios(ticket.getId());
+            ArrayList<ComentarioEntity> comentarios = cService.ultimosComentarios(ticket.getId(),3);
             ticket.setComentarios(comentarios);
         }
       return tickets;

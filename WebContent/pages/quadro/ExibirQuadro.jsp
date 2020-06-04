@@ -32,8 +32,13 @@
               d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9h-5v5h5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
     </svg>
     <p class="my-auto">${quadro.titulo}</p>
-    <button type="button" class="ml-auto mr-3 my-auto btn btn-outline-branco" data-toggle="modal"
-            data-target="#ModalQuadroTitulo">Editar Titulo
+    <button type="button" class="ml-auto my-auto btn btn-outline-branco" data-toggle="modal"
+            data-target="#ModalQuadroTitulo">
+        Editar Titulo
+    </button>
+    <button type="button" class="mx-3 my-auto btn btn-outline-branco" data-toggle="modal"
+            data-target="#ModalQuadroUsuarios">
+        Gerenciar Equipe
     </button>
 </div>
 <div class="container-fluid">
@@ -135,7 +140,7 @@
                                                     <select name="id_coluna" class="form-control select-col mt-2"
                                                             required>
                                                         <option value="" disabled selected>Colunas</option>
-                                                            ${options_colunas}
+                                                        ${options_colunas}
                                                     </select>
                                                     <button type="submit" class="btn btn-outline-geral mt-2 px-3"
                                                             name="acao" value="btn-mover">
@@ -179,6 +184,7 @@
                                             <label><i class="far fa-comment-alt mr-2 mt-4"></i></i>Comentário</label>
                                             <div class="input-group">
                                                 <input type="hidden" name="id_ticket" value="${ticket.id}">
+                                                <input type="hidden" name="page" value="exibir-quadro">
                                                 <input class="form-control col-10" name="corpo" placeholder="Faça um comentário" required>
                                                 <button type="submit" class="ml-auto btn btn-outline-geral px-3" name="acao" value="btn-postar">
                                                     <i class="far fa-paper-plane mr-2"></i>Postar
@@ -350,6 +356,43 @@
             </div>
         </div>
     </form>
+</div>
+
+<div id="ModalQuadroUsuarios" class="modal fade" tabindex="-1" role="dialog"
+aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<form action="/quadro.do" method="POST">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-white" >Gerenciar membros da equipe no quadro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="text-white" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex">
+                    <div class="input-group mb-3 col-9">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div>
+                        <input type="hidden" name="id_quadro" value="${quadro.id}">
+                        <select name="id_usuario">
+                            <option value="" disabled selected>Selecione um usuário</option>
+                            ${options_usuarios}
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-outline-geral px-3" name="acao" value="+usuario-quadro">Adicionar</button>
+                        <button type="submit" class="btn btn-outline-geral px-3" name="acao" value="-usuario-quadro">Remover</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</form>
 </div>
 
 <div id="ModalQuadroTitulo" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
