@@ -21,9 +21,9 @@ public class TicketDAO {
 							 "q.id, q.titulo FROM tickets t " +
 						"JOIN colunas c ON t.id_coluna = c.id " +
 						"JOIN quadros q ON c.id_quadro = q.id " +
+						"JOIN quadros_usuarios qu ON qu.id_quadro = q.id " +
 						"JOIN usuarios_tickets ut ON ut.id_ticket = t.id " +
-						"JOIN usuarios u ON ut.id_usuario = u.id " +
-						"WHERE u.id = ? " +
+						"WHERE qu.id_usuario = ? " +
 						"ORDER BY t.id DESC LIMIT ?";
 
 		try (Connection conn = ConnectionFactory.getConnection();

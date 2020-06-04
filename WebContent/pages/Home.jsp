@@ -41,7 +41,6 @@
                                 <div class="input-group">
                                     <p class="lead">${ticket.descricao}</p>
                                 </div>
-                                <img class="card-img-top" src="${ticket.foto}">
                                 <c:forEach var="comentario" items="${ticket.comentarios}">
                                     <div class="input-group d-flex my-3">
                                         <div class="col-4 col-md-2 d-flex">
