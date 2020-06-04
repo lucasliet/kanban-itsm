@@ -139,10 +139,9 @@ public class QuadroDAO {
 		}
     	
     	return quadros;
-    	
     }
     //Mesma lista de cima mas setando um limite de resultados pra tela Home
-    public ArrayList<QuadroEntity> listarQuadros(int usuarioId, int limit) throws IOException {
+    public ArrayList<QuadroEntity> ultimosQuadros(int usuarioId, int limit) throws IOException {
         String sql ="SELECT q.id, q.titulo FROM quadros q " +
                         "JOIN quadros_usuarios qu ON q.id = qu.id_quadro " +
                         "JOIN usuarios u ON u.id = qu.id_usuario " +
@@ -174,6 +173,39 @@ public class QuadroDAO {
         }
 
         return quadros;
+    }
 
+    public boolean inserirUsuarioNoQuadro(int idQuadro, int idUsuario) throws IOException{
+        boolean checkInsert = false;
+        String sql = "INSERT INTO quadros_usuarios (id_quadro, id_usuario) VALUES (?,?)";
+
+        try(Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)){
+            pst.setInt(1,idQuadro);
+            pst.setInt(2,idUsuario);
+            pst.execute();
+            checkInsert = true;
+        } catch (SQLException e){
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+        return checkInsert;
+    }
+
+    public boolean removerUsuarioNoQuadro(int idQuadro, int idUsuario) throws IOException {
+        boolean checkRemove = false;
+        String sql = "DELETE FROM quadros_usuarios WHERE id_quadro =? AND id_usuario = ?";
+
+        try(Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)){
+            pst.setInt(1,idQuadro);
+            pst.setInt(2,idUsuario);
+            pst.execute();
+            checkRemove = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+        return checkRemove;
     }
 }

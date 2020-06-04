@@ -1,7 +1,6 @@
 package ads.kanban.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ads.kanban.model.entity.ComentarioEntity;
+import ads.kanban.model.entity.TicketEntity;
+import ads.kanban.model.entity.UsuarioEntity;
 import ads.kanban.model.service.ComentarioService;
+import ads.kanban.model.service.TicketService;
+
 @WebServlet("/comentario.do")
 public class ComentarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,33 +25,39 @@ public class ComentarioController extends HttpServlet {
 		String acao = request.getParameter("acao");
 		String saida = null;
 
-		int id;
-		String corpo;
-
+		UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
+		UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
 
 		ComentarioEntity comentario = new ComentarioEntity();
-		ArrayList<ComentarioEntity> coment = new ArrayList<>();
 		ComentarioService cService = new ComentarioService();
+		TicketService tService = new TicketService();
+		RenderHelper render = new RenderHelper(request, response);
+
 
 		switch (acao) {
-			case "page-excluir":
-				id = Integer.parseInt(request.getParameter("id_excluir"));
-				//TODO comentario = cService.buscarComentario(id);
-				cService.excluirComentario(id);
-				request.setAttribute("comentario", coment);
-				saida = "AdmQuadro.jsp";
+			case "btn-postar":
+				int idTicket = Integer.parseInt(request.getParameter("id_ticket"));
+				TicketEntity ticket = tService.buscarTicket(idTicket);
+				comentario.setCorpo(
+						request.getParameter("corpo")
+				);
+				comentario.setTicket(ticket);
+				comentario.setUsuario(usuarioLogado);
+				cService.inserirComentario(comentario);
+				if(request.getParameter("page").equals("home")){
+					render.home(usuarioLogado.getId());
+				} else {
+					render.exibirQuadro(ticket.getColuna().getQuadro().getId());
+				}
 				break;
 
-			case "btn-inserir":
-				corpo = request.getParameter("corpo");
-				comentario = new ComentarioEntity();
-				comentario.setCorpo(corpo);
-				id = cService.inserirComentario(comentario);
-				request.setAttribute("comentario", comentario);
-				saida = "ExibirQuadro.jsp";
-				break;
 		}
 		RequestDispatcher view = request.getRequestDispatcher(saida);
 		view.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 }

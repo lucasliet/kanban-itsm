@@ -16,10 +16,14 @@ public class TicketDAO {
 
 	public ArrayList<TicketEntity> ultimosTickets(int usuarioId, int limit) throws IOException {
 		ArrayList<TicketEntity> tickets = new ArrayList<>();
-		String sql = "SELECT  t.id, t.titulo, t.descricao, t.foto FROM tickets t " +
+		String sql = "SELECT  t.id, t.titulo, t.descricao, t.foto, " +
+							 "c.id, c.titulo, " +
+							 "q.id, q.titulo FROM tickets t " +
+						"JOIN colunas c ON t.id_coluna = c.id " +
+						"JOIN quadros q ON c.id_quadro = q.id " +
+						"JOIN quadros_usuarios qu ON qu.id_quadro = q.id " +
 						"JOIN usuarios_tickets ut ON ut.id_ticket = t.id " +
-						"JOIN usuarios u ON ut.id_usuario = u.id "+
-						"WHERE u.id = ? " +
+						"WHERE qu.id_usuario = ? " +
 						"ORDER BY t.id DESC LIMIT ?";
 
 		try (Connection conn = ConnectionFactory.getConnection();
@@ -32,10 +36,18 @@ public class TicketDAO {
 
 				while(rs.next()) {
 					TicketEntity ticket = new TicketEntity();
-					ticket.setId(rs.getInt("id"));
-					ticket.setTitulo(rs.getString("titulo"));
-					ticket.setDescricao(rs.getString("descricao"));
-					ticket.setFoto(rs.getString("foto"));
+					ticket.setId(rs.getInt("t.id"));
+					ticket.setTitulo(rs.getString("t.titulo"));
+					ticket.setDescricao(rs.getString("t.descricao"));
+					ticket.setFoto(rs.getString("t.foto"));
+					ColunaEntity coluna = new ColunaEntity();
+					coluna.setId(rs.getInt("c.id"));
+					coluna.setTitulo(rs.getString("c.titulo"));
+					QuadroEntity quadro = new QuadroEntity();
+					quadro.setId(rs.getInt("q.id"));
+					quadro.setTitulo(rs.getString("q.titulo"));
+					coluna.setQuadro(quadro);
+					ticket.setColuna(coluna);
 					tickets.add(ticket);
 				}
 			} catch (SQLException e) {
@@ -51,8 +63,11 @@ public class TicketDAO {
 
 	public ArrayList<TicketEntity> listarTickets(int colunaId) throws IOException {
 		ArrayList<TicketEntity> tickets = new ArrayList<>();
-		String sql = "SELECT  t.id, t.titulo, t.descricao, t.foto FROM tickets t " +
+		String sql = "SELECT  t.id, t.titulo, t.descricao, t.foto, " +
+							 "c.id, c.titulo, " +
+							 "q.id, q.titulo FROM tickets t " +
 				 	 	"JOIN colunas c ON t.id_coluna = c.id " +
+						"JOIN quadros q ON c.id_quadro = q.id " +
 					 	"JOIN usuarios_tickets ut ON ut.id_ticket = t.id " +
 					 	"JOIN usuarios u ON ut.id_usuario = u.id "+
 					 	"WHERE c.id = ? " +
@@ -65,13 +80,17 @@ public class TicketDAO {
 			
 			while(rs.next()) {
 				TicketEntity ticket = new TicketEntity();
-				ticket.setId(rs.getInt("id"));
-				ticket.setTitulo(rs.getString("titulo"));
-				ticket.setDescricao(rs.getString("descricao"));
-				ticket.setFoto(rs.getString("foto"));
+				ticket.setId(rs.getInt("t.id"));
+				ticket.setTitulo(rs.getString("t.titulo"));
+				ticket.setDescricao(rs.getString("t.descricao"));
+				ticket.setFoto(rs.getString("t.foto"));
 				ColunaEntity coluna = new ColunaEntity();
-				coluna.setId(rs.getInt("id"));
-				coluna.setTitulo(rs.getString("titulo"));
+				coluna.setId(rs.getInt("c.id"));
+				coluna.setTitulo(rs.getString("c.titulo"));
+				QuadroEntity quadro = new QuadroEntity();
+				quadro.setId(rs.getInt("q.id"));
+				quadro.setTitulo(rs.getString("q.titulo"));
+				coluna.setQuadro(quadro);
 				ticket.setColuna(coluna);
 				tickets.add(ticket);
 			}
@@ -89,7 +108,9 @@ public class TicketDAO {
 	
 	public TicketEntity buscarTicket(int id) throws IOException {
 		TicketEntity  ticket = new TicketEntity();
-		String sql = "SELECT t.id, t.titulo, t.descricao, t.foto, c.id, c.titulo, q.id, q.titulo FROM tickets t " +
+		String sql = "SELECT t.id, t.titulo, t.descricao, t.foto, " +
+							"c.id, c.titulo, " +
+							"q.id, q.titulo FROM tickets t " +
 				 		"JOIN colunas c ON t.id_coluna = c.id " +
 						"JOIN quadros q ON c.id_quadro = q.id " +
 				 		"WHERE t.id = ?";

@@ -41,7 +41,11 @@ public class ComentarioEntity {
 
 	@Override
 	public String toString() {
-		return "ComentarioEntity [id=" + id + ", corpo=" + corpo + ", usuario=" + usuario + ", ticket=" + ticket + "]";
+		return "ComentarioEntity{" +
+				"id=" + id +
+				", corpo='" + corpo + '\'' +
+				", usuario=" + usuario +
+				", ticket=" + ticket +
+				'}';
 	}
-	
 }

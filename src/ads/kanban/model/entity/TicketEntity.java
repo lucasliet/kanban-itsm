@@ -1,11 +1,14 @@
 package ads.kanban.model.entity;
 
+import java.util.ArrayList;
+
 public class TicketEntity {
 	private int id;
 	private String titulo;
 	private String descricao;
 	private String foto;
 	private ColunaEntity coluna;
+	private ArrayList<ComentarioEntity> comentarios;
 	
 	public int getId() {
 		return id;
@@ -47,9 +50,23 @@ public class TicketEntity {
 		this.coluna = coluna;
 	}
 
+	public ArrayList<ComentarioEntity> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(ArrayList<ComentarioEntity> comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	@Override
 	public String toString() {
-		return "TicketEntity [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao 
-				+ ", foto=" + foto + ", coluna=" + coluna + "]";
+		return "TicketEntity{" +
+				"id=" + id +
+				", titulo='" + titulo + '\'' +
+				", descricao='" + descricao + '\'' +
+				", foto='" + foto + '\'' +
+				", coluna=" + coluna +
+				", comentarios=" + comentarios +
+				'}';
 	}
 }
