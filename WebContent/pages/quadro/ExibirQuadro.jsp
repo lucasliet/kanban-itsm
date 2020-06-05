@@ -326,115 +326,119 @@
         </div>
     </div>
 </div>
-<!-- Modal adicionar coluna-->
-<div id="ModalColuna" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-     aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <form action="/coluna.do" method="POST">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header bg-info">
-                    <h5 class="modal-title text-white" id="titleColuna">Digite o nome da coluna</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="text-white" aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputColuna"><i class="fas fa-id-card"></i></span>
+    <!-- Modal adicionar coluna-->
+    <div id="ModalColuna" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <form action="/coluna.do" method="POST">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <h5 class="modal-title text-white" id="titleColuna">Digite o nome da coluna</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputColuna"><i class="fas fa-id-card"></i></span>
+                            </div>
+                            <input type="hidden" name="id_quadro" value="${quadro.id}">
+                            <input type="text" class="form-control" name="titulo" placeholder="Nome da Coluna"
+                                   aria-label="Username" aria-describedby="inputColuna" required
+                            />
                         </div>
-                        <input type="hidden" name="id_quadro" value="${quadro.id}">
-                        <input type="text" class="form-control" name="titulo" placeholder="Nome da Coluna"
-                               aria-label="Username" aria-describedby="inputColuna" required
-                        />
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-geral" name="acao" value="btn-inserir">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div id="ModalQuadroUsuarios" class="modal fade" tabindex="-1" role="dialog"
-aria-labelledby="mySmallModalLabel" aria-hidden="true">
-<form action="/quadro.do" method="POST">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h5 class="modal-title text-white" >Gerenciar membros da equipe no quadro</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="text-white" aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex">
-                    <div class="input-group mb-3 col-9">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                        </div>
-                        <input type="hidden" name="id_quadro" value="${quadro.id}">
-                        <select name="id_usuario">
-                            <option value="" disabled selected>Selecione um usuário</option>
-                            ${options_usuarios}
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <button type="submit" class="btn btn-outline-geral px-3" name="acao" value="+usuario-quadro">Adicionar</button>
-                        <button type="submit" class="btn btn-outline-geral px-3" name="acao" value="-usuario-quadro">Remover</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-geral" name="acao" value="btn-inserir">Salvar</button>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
-        </div>
+        </form>
     </div>
-</form>
-</div>
 
-<div id="ModalQuadroTitulo" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div id="ModalQuadroUsuarios" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <form action="/quadro.do" method="POST">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-info">
-                    <h5 class="modal-title text-white" id="titleQuadro">Insira o novo titulo do quadro</h5>
+                    <h5 class="modal-title text-white" >Gerenciar membros da equipe no quadro</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputQuadro"><i class="fas fa-id-card"></i></span>
+                    <div class="d-flex">
+                        <div class="input-group mb-3 col-8">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                            </div>
+                            <input type="hidden" name="id_quadro" value="${quadro.id}">
+                            <select name="id_usuario">
+                                <option value="" disabled selected>Selecione um usuário</option>
+                                ${options_usuarios}
+                            </select>
                         </div>
-                        <input type="hidden" name="id_quadro" value="${quadro.id}">
-                        <input type="text" class="form-control" name="titulo" value="${quadro.titulo}"
-                               aria-label="Username" aria-describedby="inputColuna" required
-                        />
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-outline-geral mb-2" name="acao" value="+usuario-quadro">
+                                <i class="fas fa-user-plus mr-2 "></i>Adicionar
+                            </button>
+                            <button type="submit" class="btn btn-outline-geral pr-3" name="acao" value="-usuario-quadro">
+                                <i class="fas fa-user-times mr-2"></i>Remover
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-geral" name="acao" value="btn-atualizar">Salvar</button>
                 </div>
             </div>
         </div>
     </form>
-</div>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    <div id="ModalQuadroTitulo" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <form action="/quadro.do" method="POST">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <h5 class="modal-title text-white" id="titleQuadro">Insira o novo titulo do quadro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputQuadro"><i class="fas fa-id-card"></i></span>
+                            </div>
+                            <input type="hidden" name="id_quadro" value="${quadro.id}">
+                            <input type="text" class="form-control" name="titulo" value="${quadro.titulo}"
+                                   aria-label="Username" aria-describedby="inputColuna" required
+                            />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-geral" name="acao" value="btn-atualizar">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
-</body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+    </body>
 </html>
