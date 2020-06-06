@@ -71,7 +71,7 @@ public class TicketDAO {
 					 	"JOIN usuarios_tickets ut ON ut.id_ticket = t.id " +
 					 	"JOIN usuarios u ON ut.id_usuario = u.id "+
 					 	"WHERE c.id = ? " +
-					 	"ORDER BY t.titulo";
+					 	"ORDER BY t.id DESC";
 
 		try (Connection conn = ConnectionFactory.getConnection();
 			 PreparedStatement pst = conn.prepareStatement(sql)){
