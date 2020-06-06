@@ -137,8 +137,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <select name="id_coluna" class="form-control select-col mt-2"
-                                                            required>
+                                                    <select name="id_coluna" class="form-control select-col mt-2">
                                                         <option value="" disabled selected>Colunas</option>
                                                         ${options_colunas}
                                                     </select>
