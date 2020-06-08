@@ -173,14 +173,16 @@
                                                         <strong class="text-secondary">${comentario.usuario.nome}&nbsp${comentario.usuario.ultimoNome}</strong>
                                                         <div class="card">
                                                             <div class="card-body py-2">
-                                                                    ${comentario.corpo}
-                                                                <span
-                                                                        class="d-flex float-right text-bold text-white badge badge-primary mt-2"
-                                                                >${comentario.curtidas}</span>
+                                                                ${comentario.corpo}
                                                                 <button type="submit" class="btn-like float-right" name="acao"
                                                                         value="curtir">
                                                                     <i class="far fa-thumbs-up"></i>
                                                                 </button>
+                                                                <c:if test="${comentario.curtidas != 0}">
+                                                                    <span class="d-flex float-right text-bold text-white badge badge-primary mt-2">
+                                                                            ${comentario.curtidas}
+                                                                    </span>
+                                                                </c:if>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -43,6 +43,7 @@ public class LoginFilter implements Filter{
 				acao.equals("btn-cadastrar") ||
 				uri.endsWith("pages/usuario/Cadastro.jsp") ||
 				uri.endsWith("img/logoEmpresa.png") ||
+				uri.endsWith("img/favicon.ico") ||
 				uri.endsWith(".svg") ||
 				uri.endsWith(".js") ||
 				uri.endsWith(".css")) {

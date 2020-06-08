@@ -32,7 +32,7 @@
 		</ul>
 		<ul class="navbar-nav mr-2">
 			<div class="dropdown  dropleft">
-				<img id="img" src="/img/fotoPadrao.png" class="c-imgLogin"
+				<img id="img" src="${usuario.foto}" class="c-imgLogin"
 					 alt="avatar" data-toggle="dropdown" aria-haspopup="true"
 					 aria-expanded="false">
 				<div class="dropdown-menu c-menu m-2" aria-labelledby="dropdownMenuButton">
