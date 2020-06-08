@@ -23,7 +23,6 @@ public class ComentarioController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String acao = request.getParameter("acao");
-		String saida = null;
 
 		UsuarioLogado puxaUsuarioLogado = new UsuarioLogado(request);
 		UsuarioEntity usuarioLogado = puxaUsuarioLogado.getUsuario();
@@ -33,27 +32,27 @@ public class ComentarioController extends HttpServlet {
 		TicketService tService = new TicketService();
 		RenderHelper render = new RenderHelper(request, response);
 
-
+		int idTicket = Integer.parseInt(request.getParameter("id_ticket"));
+		TicketEntity ticket = tService.buscarTicket(idTicket);
 		switch (acao) {
 			case "btn-postar":
-				int idTicket = Integer.parseInt(request.getParameter("id_ticket"));
-				TicketEntity ticket = tService.buscarTicket(idTicket);
 				comentario.setCorpo(
 						request.getParameter("corpo")
 				);
 				comentario.setTicket(ticket);
 				comentario.setUsuario(usuarioLogado);
 				cService.inserirComentario(comentario);
-				if(request.getParameter("page").equals("home")){
-					render.home(usuarioLogado.getId());
-				} else {
-					render.exibirQuadro(ticket.getColuna().getQuadro().getId());
-				}
 				break;
-
+			case "curtir" :
+				int idUsuario = usuarioLogado.getId();
+				int idComentario = Integer.parseInt(request.getParameter("id_comentario"));
+				cService.curtir(idUsuario,idComentario);
 		}
-		RequestDispatcher view = request.getRequestDispatcher(saida);
-		view.forward(request, response);
+		if(request.getParameter("page").equals("home")){
+			render.home(usuarioLogado.getId());
+		} else {
+			render.exibirQuadro(ticket.getColuna().getQuadro().getId());
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
