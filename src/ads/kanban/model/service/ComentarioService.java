@@ -31,4 +31,15 @@ public class ComentarioService {
 		return dao.ultimosComentarios(idTicket, limit);
 	}
 
+	public void curtir(int idUsuario, int idComentario) throws IOException {
+		if(dao.curtirCheck(idUsuario, idComentario)){
+			dao.descurtir(idUsuario,idComentario);
+		} else {
+			dao.curtir(idUsuario, idComentario);
+		}
+	}
+
+	public int contarCurtidas(int idComentario) throws IOException {
+		return dao.contarCurtidas(idComentario);
+	}
 }

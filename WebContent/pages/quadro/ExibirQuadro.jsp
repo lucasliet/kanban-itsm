@@ -161,22 +161,31 @@
                                         </form>
 
                                         <c:forEach var="comentario" items="${ticket.comentarios}">
-                                            <div class="input-group d-flex col-md-8 my-3">
-                                                <div class="col-4 col-md-2 d-flex">
-                                                    <img class="img-fluid rounded my-auto" src="${comentario.usuario.foto}">
-                                                </div>
-                                                <div class="col">
-                                                    <strong class="text-secondary">${comentario.usuario.nome}&nbsp${comentario.usuario.ultimoNome}</strong>
-                                                    <div class="card">
-                                                        <div class="card-body py-2">
-                                                            ${comentario.corpo}
-                                                            <button type="submit" class="btn-like float-right" name="" value="">
-                                                                <i class="far fa-thumbs-up"></i>
-                                                            </button>
+                                            <form action="/comentario.do" method="POST">
+                                                <input type="hidden" name="id_comentario" value="${comentario.id}">
+                                                <input type="hidden" name="id_ticket" value="${ticket.id}">
+                                                <input type="hidden" name="page" value="exibir-quadro">
+                                                <div class="input-group d-flex my-3">
+                                                    <div class="col-4 col-md-2 d-flex">
+                                                        <img class="img-fluid rounded my-auto" src="${comentario.usuario.foto}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <strong class="text-secondary">${comentario.usuario.nome}&nbsp${comentario.usuario.ultimoNome}</strong>
+                                                        <div class="card">
+                                                            <div class="card-body py-2">
+                                                                    ${comentario.corpo}
+                                                                <span
+                                                                        class="d-flex float-right text-bold text-white badge badge-primary mt-2"
+                                                                >${comentario.curtidas}</span>
+                                                                <button type="submit" class="btn-like float-right" name="acao"
+                                                                        value="curtir">
+                                                                    <i class="far fa-thumbs-up"></i>
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </c:forEach>
 
                                         <form action="/comentario.do" method="POST" class="input-group">

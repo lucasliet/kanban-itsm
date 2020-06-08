@@ -5,8 +5,12 @@ public class ComentarioEntity {
 	private String corpo;
 	private UsuarioEntity usuario;
 	private TicketEntity ticket;
-	
-	
+	private int curtidas;
+
+	public int getCurtidas() { return curtidas;	}
+
+	public void setCurtidas(int curtidas) { this.curtidas = curtidas; }
+
 	public int getId() {
 		return id;
 	}
@@ -46,6 +50,7 @@ public class ComentarioEntity {
 				", corpo='" + corpo + '\'' +
 				", usuario=" + usuario +
 				", ticket=" + ticket +
+				", curtidas=" + curtidas +
 				'}';
 	}
 }

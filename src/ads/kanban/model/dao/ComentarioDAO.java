@@ -18,6 +18,7 @@ public class ComentarioDAO {
         ComentarioEntity comentario = new ComentarioEntity();
         comentario.setId(rs.getInt("c.id"));
         comentario.setCorpo(rs.getString("corpo"));
+        comentario.setCurtidas(rs.getInt("curtidas"));
         TicketEntity ticket = new TicketEntity();
         ticket.setId(rs.getInt("t.id"));
         ticket.setTitulo(rs.getString("t.titulo"));
@@ -44,17 +45,88 @@ public class ComentarioDAO {
         return comentario;
     }
 
-    private String criaQueryDeSelect(String condicao){
+    private String criaQueryDeSelect(String condicao) {
         return "SELECT c.id, c.corpo, " +
+                      "COUNT(cu.id_usuario) AS curtidas, " +
                       "u.id, nome, ultimo_nome, endereco, telefone, u.foto, email, " +
                       "t.id, t.titulo, t.descricao, t.foto, " +
                       "co.id, co.titulo, " +
                       "q.id, q.titulo FROM comentarios c " +
+                    "JOIN curtidas cu ON cu.id_comentario = c.id " +
                     "JOIN usuarios u ON c.id_usuario = u.id " +
                     "JOIN tickets t  ON t.id = c.id_ticket " +
                     "JOIN colunas co ON t.id_coluna = co.id " +
                     "JOIN quadros q  ON co.id_quadro = q.id " +
                     "WHERE "+condicao+" = ?";
+    }
+
+    public boolean curtirCheck(int idUsuario, int idComentario) throws IOException{
+        String sql = "SELECT * FROM curtidas WHERE id_usuario = ? AND id_comentario = ?";
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql);) {
+            pst.setInt(1, idUsuario);
+            pst.setInt(2, idComentario);
+            try (ResultSet rs = pst.executeQuery();) {
+                if (rs.next()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new IOException(e);
+            }
+        } catch (SQLException e1) {
+            e1.getStackTrace();
+            throw new IOException(e1);
+        }
+    }
+
+    public void curtir(int idUsuario, int idComentario) throws IOException{
+        String sql = "INSERT INTO curtidas (id_usuario, id_comentario) VALUES (?,?)";
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)){
+            pst.setInt(1,idUsuario);
+            pst.setInt(2,idComentario);
+            pst.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+    }
+
+    public void descurtir(int idUsuario, int idComentario) throws IOException{
+        String sql = "DELETE FROM curtidas WHERE id_usuario = ? AND id_comentario = ?";
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)){
+            pst.setInt(1,idUsuario);
+            pst.setInt(2,idComentario);
+            pst.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+    }
+
+    public int contarCurtidas(int idComentario) throws IOException {
+        String sql = "SELECT COUNT(cu.id_usuario) AS curtidas FROM curtidas cu WHERE id_comentario = ?";
+        try (Connection conn = ConnectionFactory.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)){
+            pst.setInt(1,idComentario);
+            try (ResultSet rs = pst.executeQuery()){
+                if(rs.next()){
+                    return rs.getInt("curtidas");
+                } else {
+                    return 0;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new IOException(e);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
     }
 
     public ArrayList<ComentarioEntity> ultimosComentarios(int idTicket, int limit) throws IOException {
