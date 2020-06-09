@@ -74,8 +74,7 @@
                             <div class="col-3">
                                 <div class="row">
                                     <div class="text-center">
-                                        <!--TODO Substituir pro foto do usuário-->
-                                        <img id="img" src="../../img/fotoPadrao.png"
+                                        <img id="img" src="${usuario.foto}"
                                              class="avatar img-circle col"
                                              alt="avatar"/>
                                         <input type="file" id="upload" class="custom-file-input">
